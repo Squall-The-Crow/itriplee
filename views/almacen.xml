@@ -78,7 +78,6 @@
     <record id="action_wizard_series" model="ir.actions.act_window">
     <field name="name">recibir Wizard</field>
     <field name="res_model">itriplee.series.wizard</field>
-    <field name="view_type">form</field>
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
     </record> 
@@ -116,7 +115,6 @@
     <record id="action_wizard_series_recibir" model="ir.actions.act_window">
     <field name="name">Recibir Wiz</field>
     <field name="res_model">itriplee.series.wizard.recibir</field>
-    <field name="view_type">form</field>
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
     </record> 

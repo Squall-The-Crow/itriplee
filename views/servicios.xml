@@ -34,7 +34,6 @@
     <record id="action_wizard_servicio" model="ir.actions.act_window">
     <field name="name">Solicitar Refacciones</field>
     <field name="res_model">itriplee.servicio.refacciones</field>
-    <field name="view_type">form</field>
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
     </record>
@@ -59,7 +58,6 @@
     <record id="action_wizard_firma" model="ir.actions.act_window">
     <field name="name">Firmar de aceptado</field>
     <field name="res_model">itriplee.servicio.firma</field>
-    <field name="view_type">form</field>
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
     </record>
@@ -86,7 +84,6 @@
     <record id="action_wizard_calificar" model="ir.actions.act_window">
     <field name="name">Calificar Servicio</field>
     <field name="res_model">itriplee.servicio.calificacion</field>
-    <field name="view_type">form</field>
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
     </record> 
