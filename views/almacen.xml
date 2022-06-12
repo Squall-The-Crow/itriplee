@@ -130,14 +130,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.almacen</field>
       <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Actividades
-        </p>
-        <p>
-          Presiona Crear para agregar una nueva ubicación de Almacen
-        </p>
-      </field>
     </record>
 
     <record id="view_itriplee_almacen_form" model="ir.ui.view">
@@ -260,14 +252,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.movimientos</field>
       <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Actividades
-        </p>
-        <p>
-          Presiona Crear para Realizar un movimiento al inventario
-        </p>
-      </field>
     </record>
 
     <record id="view_itriplee_almacen_movimientos_form" model="ir.ui.view">

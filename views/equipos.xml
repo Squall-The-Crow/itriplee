@@ -50,14 +50,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.equipos</field>
       <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          equipos Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar un nuevo equipos
-        </p>
-      </field>
     </record>
 
     <menuitem id="menu_itriplee_equipos_action" name="Equipos" parent="menu_itriplee_ventas_categ" action="action_itriplee_equipos_view" sequence="2"/>

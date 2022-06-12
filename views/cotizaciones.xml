@@ -65,7 +65,6 @@
             <group string="Datos de Cliente">
               <group>
                 <field name="cliente_registrado"
-                       domain="[('customer','=',True)]"
                        attrs="{'invisible': [('nuevo','=', True)]}"
                         options="{'no_quick_create': True}"/>
                 <field name="empresa" attrs="{'invisible': [('nuevo','!=', True)]}"/>

@@ -109,7 +109,6 @@
             <group>
             <field name="name"/>
               <field name="cliente"
-              domain="[('customer','=',True)]"
               options="{'no_create_edit': True},
                {'no_quick_create'}"/>
               <field name="visita"/>
@@ -207,14 +206,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.servicio</field>
       <field name="view_mode">calendar,tree,form</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Servicios Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar un nuevo Servicio
-        </p>
-      </field>
     </record>
 
     <menuitem id="menu_itriplee_servicio_root" name="Servicios" sequence="10" web_icon="itriplee,static/src/img/servicio.png"/>

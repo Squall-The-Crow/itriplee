@@ -12,7 +12,6 @@
           	<group>
               <field name="folio"/>
               <field name="cliente"
-              domain="[('customer','=',True)]"
               options="{'no_create_edit': True},
                {'no_quick_create'}"/>
               <field name="serie"/>
@@ -55,14 +54,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.garantias</field>
       <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          garantias Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar un nuevo garantias
-        </p>
-      </field>
     </record>
 
     <menuitem id="menu_itriplee_garantias_action" name="Garantias" parent="menu_itriplee_servicio_categ" action="action_itriplee_garantias_view" sequence="2"/>
