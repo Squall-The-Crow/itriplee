@@ -13,7 +13,6 @@
 <record id="view_wizard_itriplee" model="ir.ui.view">
       <field name="name">itriplee.series.wizard.view</field>
       <field name="model">itriplee.series.wizard</field>
-      <field name="groups_id"></field>
 	    <field name="type">form</field>
     	<field name="arch" type="xml">
         <form string="Wizard Form">
@@ -87,7 +86,6 @@
 <record id="view_wizard_recibir_itriplee" model="ir.ui.view">
       <field name="name">itriplee.series.wizard.recibir.view</field>
       <field name="model">itriplee.series.wizard.recibir</field>
-      <field name="groups_id"></field>
 	    <field name="type">form</field>
     	<field name="arch" type="xml">
         <form string="Wizard Form">

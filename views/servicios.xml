@@ -14,7 +14,6 @@
   <record id="view_wizard_servicio_itriplee" model="ir.ui.view">
       <field name="name">itriplee.servicio.wizard.view</field>
       <field name="model">itriplee.servicio.refacciones</field>
-      <field name="groups_id"></field>
 	    <field name="type">form</field>
     	<field name="arch" type="xml">
         <form string="Wizard Form">
@@ -43,7 +42,6 @@
     <record id="view_wizard_firma_itriplee" model="ir.ui.view">
       <field name="name">itriplee.servicio.firma.view</field>
       <field name="model">itriplee.servicio.firma</field>
-      <field name="groups_id"></field>
 	    <field name="type">form</field>
     	<field name="arch" type="xml">
         <form string="Wizard Firma">
@@ -69,7 +67,6 @@
     <record id="view_wizard_calificacion" model="ir.ui.view">
       <field name="name">itriplee.servicio.calificacion.view</field>
       <field name="model">itriplee.servicio.calificacion</field>
-      <field name="groups_id"></field>
 	    <field name="type">form</field>
     	<field name="arch" type="xml">
         <form string="Wizard calificacion">
