@@ -47,8 +47,8 @@ class servicio(models.Model):
     	("Sin Garantia","Fuera de Garantia"),
     	("Variado","Variado")],
     	 'Estado del Equipo')
-    tecnico = fields.Many2one('res.users', 'Tecnico', domain=lambda self: [("groups_id", "=", self.env.ref("itriplee.servicios_grupo_base").id)]) #
-    vendedor = fields.Many2one('res.users', 'Vendedor', domain=lambda self: [("groups_id", "=", self.env.ref("itriplee.cotizaciones_grupo_general").id)])# 
+    tecnico = fields.Many2one('res.users', 'Tecnico') #
+    vendedor = fields.Many2one('res.users', 'Vendedor')# 
     reinsidencia = fields.Boolean('Es reinsidencia?')
     modelo_transicion = fields.Char('Modelo Version anterior')
     garantia_asociada = fields.Many2one('itriplee.garantias', 'Garantias')
