@@ -175,14 +175,6 @@
     <field name="view_mode">tree</field>
     <field name="view_id" ref="view_itriplee_almacen_productos_tree"/>
     <field name="act_window_id" ref="action_itriplee_productos_view" />
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Actividades
-        </p>
-        <p>
-          Presiona Crear un Nuevo Producto
-        </p>
-      </field>
     </record>
 
     <record id="view_itriplee_almacen_productos_form" model="ir.ui.view">
