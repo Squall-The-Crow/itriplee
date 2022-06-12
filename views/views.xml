@@ -115,14 +115,6 @@
     <field name="view_mode">tree</field>
     <field name="act_window_id" ref="action_itriplee_catalogo_view" />
     <field name="view_id" ref="view_itriplee_ventas_catalogo_tree"/>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Catalogo Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar un nuevo producto
-        </p>
-      </field>
     </record>
 
     <record id="action_itriplee_catalogo_view_form" model="ir.actions.act_window.view">
@@ -137,14 +129,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.marca</field>
       <field name="view_mode">tree</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Marca Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar una nueva Marca
-        </p>
-      </field>
     </record>
 
     <record id="action_itriplee_tipo_view" model="ir.actions.act_window">
@@ -152,14 +136,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.tipo</field>
       <field name="view_mode">tree</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Tipo Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar un nuevo tipo
-        </p>
-      </field>
     </record>
 
     <record id="action_itriplee_selector_view" model="ir.actions.act_window">
@@ -167,14 +143,6 @@
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.selector</field>
       <field name="view_mode">tree</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Selector  Itriplee
-        </p>
-        <p>
-          Presiona Crear para agregar un nuevo Selector de Linea
-        </p>
-      </field>
     </record>
 
     <menuitem id="menu_itriplee_ventas_root" name="Ventas" sequence="10" web_icon="itriplee,static/src/img/cotizaciones.png"/>
