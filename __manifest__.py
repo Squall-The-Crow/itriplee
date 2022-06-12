@@ -26,7 +26,7 @@
     'version': '3.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','contacts', 'base_setup', 'web_google_maps','decimal_precision'],
+    'depends': ['base','contacts', 'base_setup', 'web_google_maps'],
 
     # always loaded
     'data': [
