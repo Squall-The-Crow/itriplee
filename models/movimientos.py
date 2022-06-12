@@ -51,7 +51,6 @@ class movimientos(models.Model):
         res = super(movimientos, self).create(vals)  
         return res
 
-    @api.multi
     def button_vender(self):
         self.estado = 'entregadas'
         for line in self.salidas:
@@ -67,7 +66,6 @@ class movimientos(models.Model):
             'documento_salida':self.documento_salida
             })
 
-    @api.multi
     def button_consigna(self):
         self.estado = 'entregadas'
         for line in self.salidas:
@@ -84,7 +82,6 @@ class movimientos(models.Model):
             'tecnico':self.tecnico.id
             })
 
-    @api.multi
     def button_retornar(self):
         pass
 ##Codigo Boton Recibir
@@ -110,7 +107,6 @@ class SeriesWizardRecibir(models.TransientModel):
 
     productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_recibir', string='Cantidades', ondelete='cascade')
 
-    @api.multi
     def button_wizard_recibir(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))        
         for rec in active_obj:
@@ -226,7 +222,6 @@ class SeriesWizard(models.TransientModel):
             rec['productos'] = product_line        
         return rec
         
-    @api.multi
     def button_wizard(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
         for rec in active_obj:
@@ -250,7 +245,6 @@ class SeriesWizard(models.TransientModel):
                  #       (0, 0, {'name': record.name}),
                   #  ]})
 
-    @api.multi
     def button_surtir_wizard(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
         for rec in active_obj:
@@ -273,7 +267,6 @@ class SeriesWizard(models.TransientModel):
                     {'seriesdisponibles': line.seriesdisponibles})
             
 
-    @api.multi
     def button_retornar1_wizard(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
         regresadas = []

@@ -37,17 +37,14 @@ class cotizaciones(models.Model):
 
     #####Funcion de los botones#####
 
-    @api.multi
     def button_aceptada(self):
         for rec in self:
             rec.write({'estado': 'aceptada'})
 
-    @api.multi
     def button_facturada(self):
         for rec in self:
             rec.write({'estado': 'facturada'})
 
-    @api.multi
     def button_cancelada(self):
         for rec in self:
             rec.write({'estado': 'cancelada'})

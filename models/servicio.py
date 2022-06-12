@@ -101,7 +101,6 @@ class servicioRefacciones(models.TransientModel):
     refacciones = fields.One2many('itriplee.servicio.refacciones.transient', 'name', string='Refacciones', ondelete='cascade')
     fecha = fields.Date('Fecha', default=_default_fecha)
 
-    @api.multi
     def button_wizard(self):
         recs = []
         active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))        
@@ -129,7 +128,6 @@ class servicioFirma(models.TransientModel):
 
     firma = fields.Binary('Firma del Cliente') 
 
-    @api.multi
     def button_terminar(self):
         active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))
         active_obj.estado = 'firmado'
@@ -148,7 +146,6 @@ class servicioCalificacion(models.TransientModel):
     	 '¿El equipo quedo reparado a su entera satisfaccion?') 
     observaciones = fields.Text('Observaciones del cliente')  
 
-    @api.multi
     def button_calificar(self):
         active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))
         active_obj.estado = 'calificado'
