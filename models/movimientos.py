@@ -37,13 +37,13 @@ class movimientos(models.Model):
     cantidad = fields.Integer('Cantidad', default=1)
     documento_salida = fields.Char('Factura')
     fecha = fields.Date('Fecha', default=_default_fecha)
-    productos = fields.One2many('itriplee.movimientos.linea', 'movimiento_id', string='Cantidades', ondelete='cascade')
+    productos = fields.One2many('itriplee.movimientos.linea', 'movimiento_id', string='Cantidades', ondelete="cascade")
     series = fields.One2many('itriplee.movimientos.series', 'name', string='Series')
-    servicio = fields.Many2one('itriplee.servicio', 'Servicio', ondelete='cascade')
-    movimiento = fields.Many2one('itriplee.movimientos', 'Proviene de', ondelete='cascade')
+    servicio = fields.Many2one('itriplee.servicio', 'Servicio', ondelete="cascade")
+    movimiento = fields.Many2one('itriplee.movimientos', 'Proviene de', ondelete="cascade")
     comentarios = fields.Text('comentarios')
-    tecnico = fields.Many2one('res.users', 'Técnico', ondelete='cascade')
-    salidas = fields.One2many('itriplee.movimientos.linea', 'movimiento_id', string='Salida por venta', ondelete='cascade')
+    tecnico = fields.Many2one('res.users', 'Técnico', ondelete="cascade")
+    salidas = fields.One2many('itriplee.movimientos.linea', 'movimiento_id', string='Salida por venta', ondelete="cascade")
     
     @api.model
     def create(self, vals):
@@ -105,7 +105,7 @@ class SeriesWizardRecibir(models.TransientModel):
             rec['productos'] = product_line        
         return rec
 
-    productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_recibir', string='Cantidades', ondelete='cascade')
+    productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_recibir', string='Cantidades', ondelete="cascade")
 
     def button_wizard_recibir(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))        
@@ -161,7 +161,7 @@ class SeriesWizardRecibir(models.TransientModel):
                 rec['productos'] = product_line        
             return rec
 
-        productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_venta', string='Cantidades', ondelete='cascade')
+        productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_venta', string='Cantidades', ondelete="cascade")
 
     ##Comienza Codigo de Prueba
     
@@ -191,7 +191,7 @@ class SeriesWizard(models.TransientModel):
             rec['productos'] = product_line        
         return rec
 
-    productos = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Cantidades', ondelete='cascade')
+    productos = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Cantidades', ondelete="cascade")
     estado = fields.Selection([
         ("programada","Programada"),
         ("solicitada","Solicitada"),
@@ -203,7 +203,7 @@ class SeriesWizard(models.TransientModel):
         ("entregadas","Entregadas"),
         ], 'Estado del movimiento', default='programada')
     fecha = fields.Date('Fecha', default=_default_fecha)
-    salientes = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Equipos por Salir', ondelete='cascade', domain=[('regresar','=',False)])
+    salientes = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Equipos por Salir', ondelete="cascade", domain=[('regresar','=',False)])
 
     @api.model    
     def default_get(self, fields):        
@@ -419,7 +419,7 @@ class lineas_movimientos(models.Model):
     cantidad_recibida = fields.Integer('Cantidad Recibida')
     cantidad_faltante = fields.Integer('Cantidad Faltante')
     producto = fields.Many2one('itriplee.catalogo')
-    series = fields.One2many('itriplee.movimientos.series', 'movimiento', string='name', ondelete='cascade')
+    series = fields.One2many('itriplee.movimientos.series', 'movimiento', string='name', ondelete="cascade")
     seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series')
     estado_refaccion = fields.Selection([
                     ("nueva","Nueva"),
@@ -427,17 +427,17 @@ class lineas_movimientos(models.Model):
                     ], 'De Preferencia')
     productod = fields.Many2one('itriplee.catalogo', related='seriesdisponibles.producto', store=True,
         string="Producto")
-    tecnico = fields.Many2one('res.users', 'Técnico', ondelete='cascade')
+    tecnico = fields.Many2one('res.users', 'Técnico', ondelete="cascade")
         
 
 class lineas_movimientos_series(models.Model):
     _name = 'itriplee.movimientos.series'
 
-    name = fields.Char('Serie', ondelete='cascade')
-    movimiento = fields.Many2one('itriplee.movimientos.linea', ondelete='cascade')
+    name = fields.Char('Serie', ondelete="cascade")
+    movimiento = fields.Many2one('itriplee.movimientos.linea', ondelete="cascade")
 
 class seriesWizard(models.TransientModel):
     _name = 'itriplee.movimientos.series.transient'
 
-    name = fields.Char('Serie', ondelete='cascade')
-    movimiento = fields.Many2one('itriplee.movimientos.linea.transient', ondelete='cascade')
+    name = fields.Char('Serie', ondelete="cascade")
+    movimiento = fields.Many2one('itriplee.movimientos.linea.transient', ondelete="cascade")

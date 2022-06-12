@@ -53,7 +53,7 @@ class servicio(models.Model):
     modelo_transicion = fields.Char('Modelo Version anterior')
     garantia_asociada = fields.Many2one('itriplee.garantias', 'Garantias')
     poliza_asociada = fields.Many2one('itriplee.polizas', 'Polizas')
-    equipos = fields.One2many('itriplee.equipos', 'name', 'Equipos', ondelete='cascade')
+    equipos = fields.One2many('itriplee.equipos', 'name', 'Equipos', ondelete="cascade")
     observaciones = fields.Text('Observaciones del equipo')
     razon_cancelacion = fields.Text('Razon de Cancelación')
     falla = fields.Text('Falla Reportada')
@@ -98,7 +98,7 @@ class servicioRefacciones(models.TransientModel):
     def _default_fecha(self):
         return fields.Date.context_today(self)
 
-    refacciones = fields.One2many('itriplee.servicio.refacciones.transient', 'name', string='Refacciones', ondelete='cascade')
+    refacciones = fields.One2many('itriplee.servicio.refacciones.transient', 'name', string='Refacciones', ondelete="cascade")
     fecha = fields.Date('Fecha', default=_default_fecha)
 
     def button_wizard(self):
@@ -159,8 +159,8 @@ class servicioCalificacion(models.TransientModel):
 class ServicioWizard(models.TransientModel):
     _name = 'itriplee.servicio.refacciones.transient'
 
-    name = fields.Many2one('itriplee.servicio.refacciones', ondelete='cascade')
-    producto = fields.Many2one('itriplee.catalogo', 'Refaccion', ondelete='cascade')
+    name = fields.Many2one('itriplee.servicio.refacciones', ondelete="cascade")
+    producto = fields.Many2one('itriplee.catalogo', 'Refaccion', ondelete="cascade")
     estado_refaccion = fields.Selection([
         ("nueva","Nueva"),
         ("reparada","Reparada"),

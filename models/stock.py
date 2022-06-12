@@ -24,7 +24,7 @@ class stock(models.Model):
     almacen = fields.Many2one('itriplee.almacen', string='Almacen')
     minimo = fields.Integer('Cantidad Minima')
     cb =  fields.Char('Codigo de Barras')
-    tecnico = fields.Many2one('res.users', 'Técnico', ondelete='cascade')
+    tecnico = fields.Many2one('res.users', 'Técnico', ondelete="cascade")
     series =  fields.One2many('itriplee.stock.series', 'producto', string='Numeros de Serie')
 
 
@@ -40,7 +40,7 @@ class series(models.Model):
     reparado = fields.Boolean('Reparada', default=False)
     definitivo = fields.Boolean('No genero entrada', default=False)
     documento = fields.Char('No. de documento de entrada')
-    tecnico = fields.Many2one('res.users', 'Técnico', ondelete='cascade')
+    tecnico = fields.Many2one('res.users', 'Técnico', ondelete="cascade")
     documento_salida = fields.Char('No. de documento de salida')
     movimiento_entrada = fields.Many2one('itriplee.movimientos', 'Movimiento de entrada')
     movimiento_salida = fields.Many2one('itriplee.movimientos', 'Movimiento de salida')

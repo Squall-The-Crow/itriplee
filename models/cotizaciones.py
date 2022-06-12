@@ -185,7 +185,7 @@ class Linea(models.Model):
             line.update({
                 'name': name,
             })
-    orden_id = fields.Many2one('itriplee.cotizaciones', string='Order Reference', required=True, ondelete='cascade', index=True,
+    orden_id = fields.Many2one('itriplee.cotizaciones', string='Order Reference', required=True, ondelete="cascade", index=True,
                                copy=False, default=33)
     name = fields.Text(compute='_compute_descripcion', string='Descripcion', required=True, readonly=False, store=True)
     product_id = fields.Many2one('itriplee.catalogo', string='Equipo',
