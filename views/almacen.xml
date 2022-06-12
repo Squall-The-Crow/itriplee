@@ -184,19 +184,19 @@
         <form string="Almacen">
           <sheet>
           <div class="oe_button_box" name="button_box">
-           <button type="object" class="oe_stat_button" icon="fa-lock">
+           <button name="reservado" type="object" class="oe_stat_button" icon="fa-lock">
            <field name="reservado" string="Reservado" widget="statinfo"/>
            </button>
-           <button type="object" class="oe_stat_button" icon="fa-check-square">
+           <button name="cantidad" type="object" class="oe_stat_button" icon="fa-check-square">
            <field name="cantidad" string="Disponibles" widget="statinfo"/>
            </button>
-           <button type="object" class="oe_stat_button" icon="fa-truck">
+           <button name="entrega" type="object" class="oe_stat_button" icon="fa-truck">
            <field name="entrega" string="Por Recibir" widget="statinfo"/>
            </button>
-            <button type="object" class="oe_stat_button" icon="fa-dollar">
+            <button name="vendidos" type="object" class="oe_stat_button" icon="fa-dollar">
            <field name="vendidos" string="Vendidos" widget="statinfo"/>
            </button>       
-          <button type="object" class="oe_stat_button" icon="fa-certificate">
+          <button name="garantias" type="object" class="oe_stat_button" icon="fa-certificate">
            <field name="garantias" string="Ins en Garantia" widget="statinfo"/>
            </button>
           </div>
