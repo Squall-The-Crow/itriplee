@@ -49,11 +49,6 @@
                 </field>
           </group>
           <footer>
-           <button name="button_wizard_recibir" 
-           string="Recibir" 
-           class="btn-primary" 
-           type="object"
-           attrs="{'invisible': [('estado','!=', 'programada')]}" />
            <button name="button_surtir_wizard" 
            string="Surtir" 
            class="btn-primary" 
