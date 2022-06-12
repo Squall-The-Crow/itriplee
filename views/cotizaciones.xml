@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+
+    <record id="seq_cotizaciones" model="ir.sequence">
+      <field name="name">Secuencia de Cotizaciones</field>
+      <field name="code">cotizaciones</field>
+      <field name="prefix">COT</field>
+      <field name="padding">4</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+     <record id="view_itriplee_cotizaciones_search" model="ir.ui.view">
+      <field name="name">view.itriplee.cotizaciones.search</field>
+      <field name="model">itriplee.cotizaciones</field>
+      <field name="arch" type="xml">
+              <search>
+                <field name="cliente"/>
+                <field name="cliente_registrado"/>
+                <field name="empresa"/>
+                <field name="vendedor"/>
+                <field name="modelo"/>
+                <field name="name" string="No. Cotizacion"/>
+              </search>
+      </field>
+     </record>
+
+    <record id="view_itriplee_cotizaciones_graph" model="ir.ui.view">
+      <field name="name">view.itriplee.cotizaciones.graph</field>
+      <field name="model">itriplee.cotizaciones</field>
+      <field name="arch" type="xml">
+              <graph type="bar" string="Ventas por vendedor">
+                <field name="vendedor" type="row"/>
+                <field name="total" type="measure"/>
+              </graph>
+      </field>
+     </record>
+
+    <record id="view_itriplee_cotizaciones_form" model="ir.ui.view">
+      <field name="name">view.itriplee.cotizaciones.form</field>
+      <field name="model">itriplee.cotizaciones</field>
+      <field name="arch" type="xml">
+        <form string="cotizaciones Form">
+          <header>
+            <button name="button_aceptada" string="Aceptada" class="oe_highlight" type="object"/>
+            <button name="button_facturada" string="Facturada" class="oe_highlight" type="object"/>
+            <button name="button_cancelada" string="Cancelada" type="object"/>
+            <field name="estado" widget="statusbar" statusbar_visible="vigente,vencida,cancelada,aceptada,facturada"/>
+          </header>
+          <sheet>
+            <group string="Seccion Inicial">
+              <group>
+                <field name="name"/>
+                <field name="fecha"/>
+                <field name="vendedor"
+                options="{'no_create_edit': True},
+                        {'no_quick_create'}"/>
+              </group>
+              <group>
+                <field name="nuevo" string="Datos de Cliente"/>
+                <field name="tipo"/>
+                <field name="usdomxn"/>
+              </group>
+            </group>
+            <group string="Datos de Cliente">
+              <group>
+                <field name="cliente_registrado"
+                       domain="[('customer','=',True)]"
+                       attrs="{'invisible': [('nuevo','=', True)]}"
+                        options="{'no_quick_create': True}"/>
+                <field name="empresa" attrs="{'invisible': [('nuevo','!=', True)]}"/>
+                <field name="cliente" attrs="{'invisible': [('nuevo','!=', True)]}"/>
+              </group>
+              <group>
+                <field name="telefono" attrs="{'invisible': [('nuevo','!=', True)]}"/>
+                <field name="tipo_telefono" attrs="{'invisible': [('nuevo','!=', True)]}"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="Equipos">
+                <group>
+                  <group>
+                    <field name="multilinea"
+                           attrs="{'invisible': [('tipo','!=', 'multilinea')]}" colspan="2">
+                       <tree string="Sales Order Lines" editable="bottom">
+                         <field name="sequence" widget="handle"/>
+                         <field name="orden_id" invisible="True"/>
+                         <field name="product_id"/>
+                         <field name="name"/>
+                         <field name="precio_line"/>
+                         <field name="cantidad"/>
+                         <field name="descuento"/>
+                         <field name="subtotal"/>
+                       </tree>
+                    </field>
+                    </group>
+                </group>
+                  <group>
+                    <group>
+                    <field name="tipo_equipo"
+                           attrs="{'invisible': [('tipo','=', 'multilinea')]}"
+                           options="{'no_create_edit': True},
+                           {'no_quick_create'}"/>
+                    <field name="marca"
+                           attrs="{'invisible': [('tipo','=', 'multilinea')]}"
+                           domain="[('tipo','=', tipo_equipo)]"
+                           options="{'no_create_edit': True},
+                           {'no_quick_create'}"/>
+                    <field name="modelo" attrs="{'invisible': [('tipo','=', 'multilinea')]}"
+                           domain="[('cotizable','=', usdomxn), ('marca','=', marca)]"
+                           options="{'no_create_edit': True},
+                           {'no_quick_create'}"/>
+                    <field name="campo_memo" attrs="{'invisible': [('tipo','!=', 'otro')]}"/>
+                  </group>
+                    <group>
+                    <field name="precio" attrs="{'invisible': [('tipo','!=', 'otro')]}"/>
+                    <field name="cantidad" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                    <field name="descuento" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                    </group>
+                </group>
+                <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                <field name="subtotal_multilinea" attrs="{'invisible': [('tipo','!=', 'multilinea')]}"/>
+                <field name="iva_multilinea" attrs="{'invisible': [('tipo','!=', 'multilinea')]}"/>
+                <field name="precio_final" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                <field name="descuento_total" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                <field name="subtotal" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                <field name="iva" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                </div>
+                <field name="total_multilinea" attrs="{'invisible': [('tipo','!=', 'multilinea')]}"/>
+                <field name="total" attrs="{'invisible': [('tipo','=', 'multilinea')]}"/>
+                </group>
+              </page>
+              <page string="Condiciones">
+                <group>
+                  <group>
+                    <field name="tiempo_entrega"/>
+                    <field name="condiciones_pago"/>
+                    <field name="vigencia"/>
+                  </group>
+                  <group>
+                    <field name="incluye"/>
+                    <field name="entrega"/>
+                  </group>
+                </group>
+                <field name="notas"/>
+              </page>
+            </notebook>
+          </sheet>
+           <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity" modifiers="{}"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_tc_form" model="ir.ui.view">
+      <field name="name">view.itriplee.tc.form</field>
+      <field name="model">itriplee.tc</field>
+      <field name="arch" type="xml">
+        <form string="TC Form">
+          <sheet>
+          	<group>
+              <field name="name"/>
+              <field name="tc"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_cotizaciones_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.cotizaciones.tree</field>
+      <field name="model">itriplee.cotizaciones</field>
+      <field name="arch" type="xml">
+        <tree string="cotizaciones Tree">
+          <field name="name"/>
+          <field name="cliente"/>
+          <field name="empresa"/>
+          <field name="vendedor"/>
+          <field name="fecha"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_itriplee_tc_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.tc.tree</field>
+      <field name="model">itriplee.tc</field>
+      <field name="arch" type="xml">
+        <tree string="TC Tree">
+          <field name="name"/>
+          <field name="tc"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_itriplee_tc_view" model="ir.actions.act_window">
+      <field name="name">Itriplee TC</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.tc</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Tipo de Cambio
+        </p>
+        <p>
+          Presiona para modificar un tipo de cambio
+        </p>
+      </field>
+    </record>
+
+    <record id="action_itriplee_cotizaciones_view" model="ir.actions.act_window">
+      <field name="name">Itriplee Cotizaciones</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.cotizaciones</field>
+      <field name="view_mode">tree,form,graph</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Cotizaciones Itriplee
+        </p>
+        <p>
+          Presiona Crear para agregar una nueva cotizacion
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_itriplee_cotizaciones_action" name="Cotizaciones" parent="menu_itriplee_ventas_categ" action="action_itriplee_cotizaciones_view" sequence="0"/>
+    <menuitem id="menu_itriplee_tc_action" name="TC" parent="menu_itriplee_configuracion_categ" action="action_itriplee_tc_view" sequence="4"/>
+
+  </data>
+</odoo>

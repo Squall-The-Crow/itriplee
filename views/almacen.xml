@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+    <data>
+<!-- Series-->
+    <record id="seq_movimientos" model="ir.sequence">
+      <field name="name">Secuencia de Movimientos</field>
+      <field name="code">movimientos</field>
+      <field name="prefix">Mov</field>
+      <field name="padding">4</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+<record id="view_wizard_itriplee" model="ir.ui.view">
+      <field name="name">itriplee.series.wizard.view</field>
+      <field name="model">itriplee.series.wizard</field>
+      <field name="groups_id"></field>
+	    <field name="type">form</field>
+    	<field name="arch" type="xml">
+        <form string="Wizard Form">
+        <group>
+        <field name="estado"/>
+          <field name="productos"
+          attrs="{'invisible': [('estado','=', 'retornada')]}">
+                    <tree string="Cantidades" editable="bottom">
+                      <field name="producto"/>
+                      <field name="cantidad"/>
+                      <field name="movimiento_id"/>
+                      <field name="seriesdisponibles"                   
+                      domain="[('producto','=', producto),('estado','=', 'disponible')]"/>
+                      <field name="series" 
+                      attrs="{'invisible': [('parent.estado','!=', 'programada')]}"                     
+                      widget="many2many_tags"/>
+                      <field name="regresar"/>
+                    </tree> 
+                </field>
+          <field name="salientes" 
+          attrs="{'invisible': [('estado','!=', 'retornada')]}"
+          context="{'regresar': False}">
+                    <tree string="Cantidades" editable="bottom">
+                      <field name="producto"/>
+                      <field name="cantidad"/>
+                      <field name="seriesdisponibles"                      
+                      domain="[('producto','=', producto)]"/>
+                      <field name="tipo_salida"/>
+                      <field name="serie_nueva"
+                       attrs="{'invisible': [('tipo_salida','!=', 'garantia')]}"/>
+                      <field name="factura"
+                       attrs="{'invisible': [('tipo_salida','!=', 'venta')]}"/>
+                    </tree> 
+                </field>
+          </group>
+          <footer>
+           <button name="button_wizard_recibir" 
+           string="Recibir" 
+           class="btn-primary" 
+           type="object"
+           attrs="{'invisible': [('estado','!=', 'programada')]}" />
+           <button name="button_surtir_wizard" 
+           string="Surtir" 
+           class="btn-primary" 
+           type="object"
+           attrs="{'invisible': [('estado','!=', 'solicitada')]}"/>
+           <button name="button_retornar1_wizard" 
+           string="Siguiente" 
+           class="btn-primary" 
+           type="object"
+           attrs="{'invisible': [('estado','!=', 'surtida')]}"/>
+           <button name="button_retornar2_wizard" 
+           string="Terminar" 
+           class="btn-primary" 
+           type="object"
+           attrs="{'invisible': [('estado','!=', 'retornada')]}"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>            
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_series" model="ir.actions.act_window">
+    <field name="name">recibir Wizard</field>
+    <field name="res_model">itriplee.series.wizard</field>
+    <field name="view_type">form</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record> 
+<!-- Empieza codigo de prueba-->
+<record id="view_wizard_recibir_itriplee" model="ir.ui.view">
+      <field name="name">itriplee.series.wizard.recibir.view</field>
+      <field name="model">itriplee.series.wizard.recibir</field>
+      <field name="groups_id"></field>
+	    <field name="type">form</field>
+    	<field name="arch" type="xml">
+        <form string="Wizard Form">
+        <group>
+          <field name="productos">
+                    <tree string="Cantidades" editable="bottom">
+                      <field name="producto"/>
+                      <field name="cantidad"/>
+                      <field name="cantidad_recibida"/>
+                      <field name="cantidad_faltante"/>
+                      <field name="series"                    
+                      widget="many2many_tags"/>
+                    </tree> 
+                </field>
+          </group>
+
+          <footer>
+           <button name="button_wizard_recibir" 
+           string="Recibir" 
+           class="btn-primary" 
+           type="object"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>            
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_series_recibir" model="ir.actions.act_window">
+    <field name="name">Recibir Wiz</field>
+    <field name="res_model">itriplee.series.wizard.recibir</field>
+    <field name="view_type">form</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record> 
+    
+    <!-- Finaliza codigo de prueba-->
+
+    <record id="action_itriplee_almacen_view" model="ir.actions.act_window">
+      <field name="name">Itriplee Almacen</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.almacen</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Actividades
+        </p>
+        <p>
+          Presiona Crear para agregar una nueva ubicación de Almacen
+        </p>
+      </field>
+    </record>
+
+    <record id="view_itriplee_almacen_form" model="ir.ui.view">
+      <field name="name">view.itriplee.almacen.form</field>
+      <field name="model">itriplee.almacen</field>
+      <field name="arch" type="xml">
+        <form string="Almacen">
+          <sheet>
+          	<group>
+              <field name="name"/>
+              <field name="ubicacion"/>
+            </group>
+            <field name="productos"/>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_almacen_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.almacen.tree</field>
+      <field name="model">itriplee.almacen</field>
+      <field name="arch" type="xml">
+        <tree string="Almacen Tree">
+          <field name="name"/>
+          <field name="ubicacion"/>
+        </tree>
+      </field>
+    </record>
+
+        <act_window id="action_itriplee_productos_view"
+        name="Itriplee Productos"
+        res_model="itriplee.catalogo"
+        view_mode="tree,form"
+        limit="80"
+        />
+
+    <record id="view_itriplee_almacen_productos_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.almacen.productos.tree</field>
+      <field name="model">itriplee.catalogo</field>
+      <field name="arch" type="xml">
+        <tree string="name">
+        <field name="name"/>
+          <field name="cantidad"/>
+          <field name="almacen"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="action_itriplee_productos_view_tree" model="ir.actions.act_window.view">
+    <field eval="3" name="sequence"/>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="view_itriplee_almacen_productos_tree"/>
+    <field name="act_window_id" ref="action_itriplee_productos_view" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Actividades
+        </p>
+        <p>
+          Presiona Crear un Nuevo Producto
+        </p>
+      </field>
+    </record>
+
+    <record id="view_itriplee_almacen_productos_form" model="ir.ui.view">
+      <field name="name">view.itriplee.almacen.productos.form</field>
+      <field name="model">itriplee.catalogo</field>
+      <field name="arch" type="xml">
+        <form string="Almacen">
+          <sheet>
+          <div class="oe_button_box" name="button_box">
+           <button type="object" class="oe_stat_button" icon="fa-lock">
+           <field name="reservado" string="Reservado" widget="statinfo"/>
+           </button>
+           <button type="object" class="oe_stat_button" icon="fa-check-square">
+           <field name="cantidad" string="Disponibles" widget="statinfo"/>
+           </button>
+           <button type="object" class="oe_stat_button" icon="fa-truck">
+           <field name="entrega" string="Por Recibir" widget="statinfo"/>
+           </button>
+            <button type="object" class="oe_stat_button" icon="fa-dollar">
+           <field name="vendidos" string="Vendidos" widget="statinfo"/>
+           </button>       
+          <button type="object" class="oe_stat_button" icon="fa-certificate">
+           <field name="garantias" string="Ins en Garantia" widget="statinfo"/>
+           </button>
+          </div>
+              <field name="imagen" widget='image' class="oe_avatar"/>
+            <div class="oe_title">
+              <h1>
+                <field name="name" default_focus="1" placeholder="Modelo"/>
+              </h1>
+            </div>
+          <group>
+          	<group>
+              <field name="marca"/>
+              <field name="tipo"/>
+            </group>
+            <group>
+              <field name="almacen"/>
+              <field name="minimo"/>
+              <field name="cb"/>
+            </group>
+            </group>
+            <field name="series"/>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_itriplee_productos_view_form" model="ir.actions.act_window.view">
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_itriplee_almacen_productos_form"/>
+    <field name="act_window_id" ref="action_itriplee_productos_view" />
+    <field name="sequence">15</field>
+    </record> 
+
+    <record id="action_itriplee_movimientos_view" model="ir.actions.act_window">
+      <field name="name">Itriplee Movimientos</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.movimientos</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Actividades
+        </p>
+        <p>
+          Presiona Crear para Realizar un movimiento al inventario
+        </p>
+      </field>
+    </record>
+
+    <record id="view_itriplee_almacen_movimientos_form" model="ir.ui.view">
+      <field name="name">view.itriplee.almacen.movimientos.form</field>
+      <field name="model">itriplee.movimientos</field>
+      <field name="arch" type="xml">
+        <form string="Movimientos">
+        <header>            
+          <button name="%(action_wizard_series_recibir)d" 
+          string="recibir" 
+          class="oe_highlight" 
+          type="action"
+          attrs="{'invisible': [('estado','!=', 'programada')]}"
+          ></button>
+          <button name="%(action_wizard_series)d" 
+          string="Surtir" 
+          class="oe_highlight" 
+          type="action"
+          attrs="{'invisible': [('estado','!=', 'solicitada')]}"
+          ></button>
+          <button name="%(action_wizard_series)d" 
+          string="Regresar" 
+          class="oe_highlight" 
+          type="action"
+          attrs="{'invisible': [('estado','!=', 'surtida')]}"
+          ></button>
+          <button name="button_vender" 
+          string="Aplicar venta" 
+          class="oe_highlight" 
+          type="object"
+          attrs="{'invisible': [('tipo','!=', 'salida'),('tsalida','!=', 'venta')]}"/>
+          <button name="button_consigna" 
+          string="Aplicar consigna" 
+          class="oe_highlight" 
+          type="object"
+          attrs="{'invisible': [('tipo','!=', 'salida'),('tsalida','!=', 'consigna')]}"/>
+          <button name="button_retornar" 
+          string="Regresar unidades" 
+          class="oe_highlight" 
+          type="object"
+          attrs="{'invisible': [('estado','!=', 'entregadas'),('tsalida','!=', 'consigna')]}"/>
+            <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada,surtida"/>
+          </header>
+          <sheet>
+          <group>
+          	<group>
+              <field name="name"/>
+              <field name="tipo"/>
+              <field name="tsalida" 
+               attrs="{'invisible': [('tipo','!=', 'salida')]}"/>
+              <field name="documento"/>
+              <field name="fecha"/>              
+            </group>
+            <group>
+              <field name="servicio"
+              attrs="{'invisible': ['|',('estado','!=', 'solicitada'),('estado','!=', 'surtida'),('estado','!=', 'entregadas')]}"/>
+              <field name="tecnico"
+              attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/> 
+            <!--  <field name="cantidad"/>  -->         
+            </group>
+            </group>
+            <field name="productos">
+              <tree string="Cantidades" editable="bottom">
+                  <!--<field name="movimiento_id"/> -->
+                  <field name="cantidad"/>
+                  <field name="cantidad_recibida"
+                  invisible="context.get('estado',1)"/>
+                  <field name="cantidad_faltante"/>
+                  <field name="producto"/>
+                <!--  <field name="seriesdisponibles" string="Serie"                     
+                    domain="[('producto','=', producto),('estado','=', 'disponible')]"
+                    attrs="{'invisible': [('parent.estado','=', 'programada')]}"/>-->
+                  <field name="series" string="Series" widget="many2many_tags"/>
+              </tree> 
+            </field>
+            <field name="salidas"
+            attrs="{'invisible': [('tipo','!=', 'salida')]}">
+              <tree string="Ventas" editable="bottom">
+                  <field name="seriesdisponibles"/>
+                  <field name="productod"/>
+                  <field name="movimiento_id"/>
+              </tree> 
+            </field>
+                <field name="comentarios"/>          
+          </sheet>
+          <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity" modifiers="{}"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_almacen_movimientos_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.almacen.movimientos.tree</field>
+      <field name="model">itriplee.movimientos</field>
+      <field name="arch" type="xml">
+        <tree string="Almacen Tree">
+          <field name="name"/>
+          <field name="tipo"/>
+          <field name="fecha"/>
+        </tree>
+      </field>
+    </record>
+    
+
+    <menuitem id="menu_itriplee_almacen_root" name="Almacen" sequence="11"  web_icon="itriplee,static/src/img/almacen.jpeg"/>
+    <menuitem id="menu_itriplee_almacen_almacen" name="Almacen" parent="menu_itriplee_almacen_root" action="action_itriplee_almacen_view" sequence="30"/>
+    <menuitem id="menu_itriplee_almacen_productos" name="Productos" parent="menu_itriplee_almacen_root" action="action_itriplee_productos_view" sequence="70"/>
+    <menuitem id="menu_itriplee_almacen_movimientos" name="Movimientos" parent="menu_itriplee_almacen_root" action="action_itriplee_movimientos_view" sequence="10"/>
+    <menuitem id="menu_itriplee_almacen_configuracion" name="Configuración" parent="menu_itriplee_ventas_root" sequence="40"/>
+
+
+
+    </data>
+</odoo>

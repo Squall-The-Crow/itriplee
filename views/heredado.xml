@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+      <!-- Vista de herencia para usuarios-->
+      <record id="view_users_inherit_form" model="ir.ui.view">
+      <field name="name">view.users.inherit.form</field>
+      <field name="model">res.users</field>
+      <field name="inherit_id" ref="base.view_users_form"/>
+      <field name="arch" type="xml">
+          <field name="login" position="after">
+              <field name="puesto" />
+          </field>
+      </field>
+      </record>
+
+       <!-- Vista de herencia para partners -->
+
+        <record id="view_partner_inherit_form" model="ir.ui.view">
+      <field name="name">view.partner.inherit.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+          <field name="comment" position="after">
+              <field name="cotizaciones" />
+          </field>
+          <field name="category_id" position="after">
+              <field name="sector" />
+          </field>
+          <field name="sector" position="after">
+              <field name="tcliente" />
+          </field>
+      </field>
+      </record>
+
+      
+  </data>
+</odoo>

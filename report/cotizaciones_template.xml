@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="cotizaciones_template">
+          <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="itriplee.internal_layout">
+                    <!--<div class="header">
+                        <img src='/itriplee/static/src/img/logo.jpg' width="100" height="100"/>
+                    </div>
+                    <div class="page"> -->
+                    <t t-if="o.tipo == 'catalogo'">
+                        <t t-call="itriplee.contenido1">
+                        </t>
+                        </t>
+                    <t t-if="o.tipo == 'otro'">
+                    <t t-call="itriplee.contenido2">
+                        </t>
+                    </t>
+                    <t t-if="o.tipo == 'multilinea'">
+                    <t t-call="itriplee.contenido3">
+                        </t>
+                    </t>
+                    <t t-call="itriplee.custom_footer">
+                        </t>
+
+                </t>
+            </t>
+        </t>
+
+    </template>
+    <template id="internal_layout">
+        <!-- Multicompany -->
+        <div class="header">
+            <div class="row">
+                <div class="col-xs-12 text-right align-middle">
+                    <img style="float:left" src='/itriplee/static/src/img/logo.jpg' width="300" height="94"/>
+                    <div class="content-heading text-middle"> <h4>      Ciudad de Mexico <span t-field="o.fecha"/></h4></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5  text-left">
+                    <strong>EMPRESA: </strong>
+                    <t t-if="o.nuevo == True">
+                    <span t-field="o.empresa"/>
+                    </t>
+                    <t t-if="o.nuevo == False">
+                    <span t-field="o.cliente_registrado.parent_id.name"/>
+                    </t>
+                    </div>
+                <div class="col-xs-3 text-right">
+                    <strong>Telefono: </strong>
+                    <t t-if="o.nuevo == True">
+                    <span t-field="o.telefono"/>
+                    </t>
+                    <t t-if="o.nuevo == False">
+                    <span t-field="o.cliente_registrado.phone"/>
+                    </t>
+                </div>
+                <div class="col-xs-2 text-right">
+                    <strong>Cotizacion: </strong>
+                    </div>
+                <div class="col-xs-2 text-left">
+                <div class="text-danger"><strong><span t-field="o.name"/></strong><div/>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <t t-if="o.nuevo == True">
+               <div class="col-xs-4  text-center">
+                    <strong>At'n: </strong><span t-field="o.cliente"/>
+                    </div>
+                </t>
+                <t t-if="o.nuevo == False">
+               <div class="col-xs-4  text-center">
+                    <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
+                    </div>
+                </t>
+            </div>
+        </div>
+        <div class="article">
+          <t t-raw="0" />
+        </div>
+    </template>
+
+    <template id="contenido1">
+        <!-- Multicompany -->
+        <div class="page" >
+            <table class="table table-condensed">
+                    <thead>
+                    <tr class="danger">
+                        <th>Descripcion</th>
+                        <th class="text-right">Cantidad</th>
+                        <th class="text-right">Precio</th>
+                        <th class="text-right">Costo</th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <tr>
+                        <td>
+                            <p><strong><span t-field="o.tipo_equipo.name"/> <span t-field="o.marca.name"/> - Modelo: </strong>
+                            <span t-field="o.modelo.name"/></p>
+                            <p><strong>Capacidad: </strong><span t-field="o.modelo.capacidad"/>
+                            <strong> Fases: </strong><span t-field="o.modelo.fases"/></p>
+                            <p><strong>Voltaje de Entrada: </strong><span t-field="o.modelo.voltaje_entrada"/></p>
+                            <p><strong>Voltaje de Salida: </strong><span t-field="o.modelo.voltaje_salida"/></p>
+                            <p>
+                                <strong>Medidas: </strong>
+                                    <span t-field="o.modelo.alto"/> X
+                                    <span t-field="o.modelo.ancho"/> X
+                                    <span t-field="o.modelo.fondo"/>
+                                    Cm.
+                                <strong>Peso: </strong>
+                                    <span t-field="o.modelo.peso"/>
+                                    Kg.
+                             </p>
+                            <t t-if="o.tipo_equipo.name == 'UPS'">
+                                <p><strong>Tiempo de Respaldo: </strong><span t-field="o.modelo.tiempo_respaldo"/></p>
+                                <p><strong>Tecnologia: </strong><span t-field="o.modelo.tecnologia"/></p>
+                            </t>
+                        </td>
+                        <td class="text-right">
+                            <p><span t-field="o.cantidad"/></p>
+                            <t t-if="o.descuento != 0">
+                            <p><span t-field="o.descuento"/> %</p>
+                            </t>
+                            <p>  </p>
+                            <p>16 % </p>
+                            <p>
+                                <p>
+                                </p>
+                            <t t-if="o.usdomxn == 'USD'">
+                                    USD
+                                </t>
+                            </p>
+                        </td>
+                        <td class="text-right">
+                            <p>$<span t-field="o.precio_final"/></p>
+                            <t t-if="o.descuento != 0">
+                            <p>Descuento: </p>
+                            </t>
+                             <p>Subtotal: </p>
+                             <p>IVA: </p>
+                             <p>Total: </p>
+                        </td>
+                         <td class="text-right">
+                            <p>$<span t-esc="'{0:,.2f}'.format(int(o.cantidad*o.precio_final))"/></p>
+                             <t t-if="o.descuento != 0">
+                           <p> $<span t-esc="'{0:,.2f}'.format(int(o.cantidad*o.descuento_total))"/></p>
+                             </t>
+                            <p> $<span t-field="o.subtotal"/></p>
+                            <p> $<span t-field="o.iva"/></p>
+                            <p> <strong>$<span t-field="o.total"/></strong></p>
+                        </td>
+                    </tr>
+                    <t t-if="o.modelo.tecnologia == 'trifasico'">
+                        <tr>
+                            <td>
+                                <div class="text-danger">
+                                <p><strong>Selector de Linea marca Vogar</strong></p>
+                            <p><strong>Modelo: </strong><span t-field="o.modelo.selector.name"/></p>
+                            <p><strong>Capacidad: </strong><span t-field="o.modelo.selector.capacidad"/></p>
+                                </div>
+
+                            </td>
+                            <td class="text-right">
+                                <div class="text-danger">
+                                <p> 1 </p>
+                            <p>16 % </p>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <div class="text-danger">
+                              <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc"
+                                         t-options='{"widget": "float", "precision": 2}'/></p>
+                            <p> IVA: </p>
+                            <p> Total</p>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <div class="text-danger">
+                              <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc"
+                                         t-options='{"widget": "float", "precision": 2}'/></p>
+                            <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc * 0.16"
+                                       t-options='{"widget": "float", "precision": 2}'/></p>
+                            <p> <strong>$<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc * 1.16"
+                                               t-options='{"widget": "float", "precision": 2}'/></strong></p>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <div class="row">
+                <t t-if="o.modelo.tecnologia == 'trifasico'">
+                    <div class="col-xs-12">
+                        <div class="text-danger">
+                        <small>Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
+                        alimentacion alterna en caso de que el acondicionador requiera mantenimiento</small>
+                        </div>
+             </div>
+                </t>
+
+
+                <div class="col-xs-7 text-left">
+                    <t t-if="o.tipo_equipo.name == 'Baterias'">
+                        <p>
+                    <strong>Volts: </strong>
+                        <span t-field="o.modelo.volts"/>
+                        Kg.
+                    </p>
+                        <p>
+                    <strong>Amperes: </strong>
+                        <span t-field="o.modelo.amperes"/>
+                        Kg.
+                    </p>
+                        </t>
+                    <p>
+                    <strong>Notas: </strong>
+                        <t t-if="o.tipo_equipo.name == 'UPS'">
+                        <span t-field="o.modelo.notas"/>
+                        </t>
+                        <span t-field="o.notas"/>
+                    </p>
+                    <t t-if="o.modelo.FT is not False">
+                    <p><strong>Ficha Tecnica:</strong>
+                        <div class="text-pupdauprimary"><span t-field="o.modelo.FT"/></div></p>
+                    </t>
+                    <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
+                        <div class="fixed-bottom">
+                         <img src='/itriplee/static/src/img/tira.jpeg' width="300" height="62"/>
+                        </div>
+                    </t>
+                    <t t-if="o.tipo_equipo.name == 'UPS'">
+                    <div class="fixed-bottom">
+                         <img src='/itriplee/static/src/img/tira_salicru.jpeg' width="300" height="62"/>
+                        </div>
+                    </t>
+                </div>
+                <t t-if="o.modelo.imagen is not False">
+               <div class="col-xs-5 text-right align-right">
+                    <span t-field="o.modelo.imagen" t-field-options='{"widget": "image", "style":"max-height:240px"}'/>
+                </div>
+                </t>
+                 <t t-if="o.modelo.imagen is False">
+               <div class="col-xs-5 text-right align-right">
+                    <img src='/itriplee/static/src/img/logo1.png' width="250" height="250"/>
+                </div>
+                </t>
+
+            </div>
+        </div>
+        <div class="article">
+          <t t-raw="body" />
+        </div>
+    </template>
+
+    <template id="contenido2">
+       <div class="page" >
+           <div class="fixed-top">
+            <table class="table table-condensed">
+                    <thead>
+                    <tr class="danger">
+                        <th>Descripcion</th>
+                        <th class="text-right">Cantidad</th>
+                        <th class="text-right">Precio</th>
+                        <th class="text-right">Costo</th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <tr>
+                        <td>
+                            <p><span t-field="o.campo_memo"/></p>
+
+                        </td>
+                        <td class="text-right">
+                            <p><span t-field="o.cantidad"/></p>
+                            <t t-if="o.descuento != 0">
+                            <p><span t-field="o.descuento"/> %</p>
+                            </t>
+                            <p>  </p>
+                            <p>16 % </p>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="o.precio"/>
+                            <t t-if="o.descuento != 0">
+                            <p>Descuento: </p>
+                            </t>
+                             <p>Subtotal: </p>
+                             <p>IVA: </p>
+                             <p>Total: </p>
+                        </td>
+                         <td class="text-right">
+                            <p>$<span t-esc="'{0:,.2f}'.format(int(o.cantidad*o.precio_final))"/></p>
+                             <t t-if="o.descuento != 0">
+                           <p> $<span t-esc="'{0:,.2f}'.format(int(o.cantidad*o.descuento_total))"/></p>
+                             </t>
+                            <p> $<span t-field="o.subtotal"/></p>
+                            <p> $<span t-field="o.iva"/></p>
+                            <p> <strong>$<span t-field="o.total"/></strong></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+               </div>
+           <div class="row">
+                <div class="col-xs-7 text-left">
+                    <p>
+                    <strong>Notas: </strong>
+                        <span t-field="o.notas"/>
+                    </p>
+                </div>
+                <t t-if="o.modelo.imagen is not False">
+               <div class="col-xs-5 text-right align-right">
+                    <span t-field="o.modelo.imagen" t-field-options='{"widget": "image"}'/>
+                </div>
+                </t>
+                 <t t-if="o.modelo.imagen is False">
+               <div class="col-xs-5 text-right">
+                    <img src='/itriplee/static/src/img/logo1.png' class="rounded float-right" width="150" height="150"/>
+                </div>
+                </t>
+            </div>
+
+        </div>
+
+        <div class="article">
+          <t t-raw="body" />
+        </div>
+    </template>
+
+        <template id="contenido3">
+          <div class="page" >
+            <table class="table table-condensed">
+                    <thead>
+                    <tr class="danger">
+                        <th>Modelo</th>
+                        <th class="text-center">Descripcion</th>
+                        <th class="text-right">Precio</th>
+                        <th class="text-right">Cantidad</th>
+                        <th class="text-right">Descuento</th>
+                        <th class="text-right">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <tr t-foreach="o.multilinea" t-as='line'>
+                        <td><span t-esc="line.product_id.name"/></td>
+                        <td><span t-esc="line.name"/></td>
+                        <td class="text-right">$<span t-esc="line.precio_line"
+                        t-options='{"widget": "float", "precision": 2}'/></td>
+                        <td class="text-right"><span t-esc="line.cantidad"/></td>
+                        <td class="text-right"><span t-esc="line.descuento"/>%</td>
+                        <td class="text-right">$<span t-esc="line.subtotal"
+                        t-options='{"widget": "float", "precision": 2}'/></td>
+                    </tr>
+                    <tr class="text-right">
+                                <td colspan="6">
+                                    <p>
+                                    <strong>Subtotal: </strong>$
+                                       <span t-esc="o.subtotal_multilinea"
+                                       t-options='{"widget": "float", "precision": 2}'/>
+                                    </p>
+                                    <p>
+                                    <strong>IVA: </strong>$
+                                        <span t-esc="o.iva_multilinea"
+                                        t-options='{"widget": "float", "precision": 2}'/>
+                                    </p>
+                                    <p>
+                                    <strong>Total: $
+                                        <span t-esc="o.total_multilinea"
+                                        t-options='{"widget": "float", "precision": 2}'/>
+                                        </strong>
+                                    </p>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="article">
+          <t t-raw="body" />
+        </div>
+    </template>
+
+    <template id="custom_footer">
+    <div class="footer">
+       <div class="row">
+         <table class="table table-condensed">
+                    <thead class="danger text-center">
+                    <tr class="danger text-center">
+                        <th>CARACTERISTICAS COMERCIALES</th>
+                    </tr>
+                </thead>
+                <tbody class="invoice_tbody">
+                    <tr>
+                        <td>
+                            <p>
+                                <strong>Tiempo de Entrega: </strong>
+                                <span t-field="o.tiempo_entrega"/> -
+                                <strong>Vigencia de cotizacion: </strong>
+                                <span t-field="o.vigencia"/>
+                            </p>
+                            <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
+
+                                <p>
+                                    3 AÑOS DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
+                                </p>
+                             </t>
+                    <t t-if="o.tipo_equipo.name == 'UPS'">
+                   <p>
+                                    1 AÑO DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
+                                </p>
+                    </t>
+                            <p>
+                                <strong>Condiciones de pago: </strong>
+                                <span t-field="o.condiciones_pago"/>
+                                a Integracion de Equipos Electricos y Electronicos, S.A. de C.V.,
+                            </p>
+                            <p>
+                                                    BBVA M.N. 0453048020, Clabe: 01218000453048020-8;
+                            </p>
+                            <p>
+                                                    BBVA USD 0144263596 SUC. 3463, Clabe: 012180001442635966;
+                            </p>
+                            <p>
+                                                    HSBC M.N. 4031905698 - Clabe: 0211800040319056989
+                            </p>
+                            <p>
+                                <strong>La cotizacion incluye: </strong>
+                                <span t-field="o.incluye"/>
+                            </p>
+                            <p>
+                                <t t-if="o.usdomxn == 'USD'">
+                                    El precio es en Dolares Americanos pagadero en Moneda Nacional al tipo de cambio interbancario
+                                    del dia de la operacion. Tomando como referencia el de BBVA.
+                                </t>
+                                <t t-if="o.usdomxn == 'MXN'">
+                                    El precio es en Moneda Nacional y es L.A.B. en sus instalaciones.
+                                </t>
+
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+         </table>
+       </div>
+        <div class="row">
+                <div class="col-xs-12 text-center align-center">
+                    <p><strong>
+                        A T E N T A M E N T E:
+                    </strong></p>
+                </div>
+            <div class="col-xs-2 text-center align-center">
+                .
+            </div>
+                    <div class="col-xs-10 text-center align-center">
+                    <span t-field="o.vendedor.digital_signature" t-field-options='{"widget": "image"}'/>
+                    </div>
+
+            <div class="col-xs-12 text-center align-center">
+                    <p><strong>
+                        <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
+                    </strong></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center align-center">
+                   <small><span t-field="o.vendedor.signature"/></small>
+                </div>
+            </div>
+
+    </div>
+        <div class="article">
+          <t t-raw="0" />
+        </div>
+    </template>
+
+</odoo>

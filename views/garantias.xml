@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+
+    <record id="view_itriplee_garantias_form" model="ir.ui.view">
+      <field name="name">view.itriplee.garantias.form</field>
+      <field name="model">itriplee.garantias</field>
+      <field name="arch" type="xml">
+        <form string="garantias Form">
+          <sheet>
+          	<group>
+          	<group>
+              <field name="folio"/>
+              <field name="cliente"
+              domain="[('customer','=',True)]"
+              options="{'no_create_edit': True},
+               {'no_quick_create'}"/>
+              <field name="serie"/>
+              <field name="fecha_de_venta"/> 
+              <field name="fecha1"/> 
+            </group>
+            <group>
+              <field name="factura"/>
+              <field name="equipo"/>
+              <field name="modelo"/>
+              <field name="marca"/>
+              <field name="tipo"/>                             
+            </group>
+            </group>    
+            <group>    
+	            <field name="visitas"/>
+	            <field name="observaciones"/>
+	            <field name="valoracion"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_garantias_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.garantias.tree</field>
+      <field name="model">itriplee.garantias</field>
+      <field name="arch" type="xml">
+        <tree string="garantias Tree">
+          <field name="cliente"/>
+          <field name="factura"/>
+          <field name="serie"/>
+          <field name="modelo"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_itriplee_garantias_view" model="ir.actions.act_window">
+      <field name="name">Itriplee garantias</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.garantias</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          garantias Itriplee
+        </p>
+        <p>
+          Presiona Crear para agregar un nuevo garantias
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_itriplee_garantias_action" name="Garantias" parent="menu_itriplee_servicio_categ" action="action_itriplee_garantias_view" sequence="2"/>
+
+  </data>
+</odoo>

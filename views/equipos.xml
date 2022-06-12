@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+
+    <record id="view_itriplee_equipos_form" model="ir.ui.view">
+      <field name="name">view.itriplee.equipos.form</field>
+      <field name="model">itriplee.equipos</field>
+      <field name="arch" type="xml">
+        <form string="equipos Form">
+          <sheet>
+            <group>
+          	<group>
+              <field name="name"/>
+              <field name="factura"/>
+              <field name="venta"/>
+              <field name="vendedor"/> 
+              </group>              
+              <group>
+              <field name="modelo"/>
+              <field name="marca"/>
+              <field name="tipo"/>
+              <field name="cliente"/>                           
+            </group>
+            </group>            
+            <group>
+              <field name="poliza"/>
+              <field name="garantia"/>
+              <field name="visitas"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_equipos_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.equipos.tree</field>
+      <field name="model">itriplee.equipos</field>
+      <field name="arch" type="xml">
+        <tree string="Equipos Tree">
+          <field name="name"/>
+          <field name="factura"/>
+          <field name="cliente"/>
+          <field name="vendedor"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_itriplee_equipos_view" model="ir.actions.act_window">
+      <field name="name">Itriplee equipos</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.equipos</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          equipos Itriplee
+        </p>
+        <p>
+          Presiona Crear para agregar un nuevo equipos
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_itriplee_equipos_action" name="Equipos" parent="menu_itriplee_ventas_categ" action="action_itriplee_equipos_view" sequence="2"/>
+
+  </data>
+</odoo>

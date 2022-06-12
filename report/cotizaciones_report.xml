@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report id="formato_cotizacion"
+            model="itriplee.cotizaciones"
+            string="Formato de cotizaciones"
+            report_type="qweb-pdf"
+            name="itriplee.cotizaciones_template"
+            file="itriplee.cotizaciones_template"/>
+</odoo>

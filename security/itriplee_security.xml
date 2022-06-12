@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="ir.module.category" id="module_category_cotizaciones">
+            <field name="name">Cotizaciones Itriplee</field>
+            <field name="description">Categorias de seguridad para Cotizaciones</field>
+            <field name="sequence">45</field>
+        </record>
+
+        <record id="cotizaciones_grupo_base" model="res.groups">
+            <field name="name">Grupo de solo lectura</field>
+            <field name="category_id" ref="module_category_cotizaciones"/>
+        </record>
+
+        <record id="cotizaciones_grupo_contabilidad" model="res.groups">
+            <field name="name">Grupo de Facturacion</field>
+            <field name="category_id" ref="module_category_cotizaciones"/>
+            <field name="implied_ids" eval="[(4, ref('cotizaciones_grupo_base'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record id="cotizaciones_grupo_general" model="res.groups">
+            <field name="name">Vendedores</field>
+            <field name="category_id" ref="module_category_cotizaciones"/>
+            <field name="implied_ids" eval="[(4, ref('cotizaciones_grupo_base'))]"/>
+        </record>
+
+        <record id="cotizaciones_grupo_supervisor" model="res.groups">
+            <field name="name">Gerentes</field>
+            <field name="category_id" ref="module_category_cotizaciones"/>
+             <field name="implied_ids" eval="[(4, ref('cotizaciones_grupo_general'))]"/>
+        </record>
+
+        <record id="cotizaciones_grupo_administrador" model="res.groups">
+            <field name="name">Administradores</field>
+           <field name="category_id" ref="module_category_cotizaciones"/>
+             <field name="implied_ids" eval="[(4, ref('cotizaciones_grupo_supervisor'))]"/>
+             <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record id="catalogo_grupo_encargado" model="res.groups">
+            <field name="name">Encargados de Catalogo</field>
+            <field name="category_id" ref="module_category_cotizaciones"/>
+             <field name="implied_ids" eval="[(4, ref('cotizaciones_grupo_base'))]"/>
+             <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record model="ir.module.category" id="module_category_servicios">
+            <field name="name">Servicios Itriplee</field>
+            <field name="description">Categorias de seguridad para Modulo de Servicios</field>
+            <field name="sequence">46</field>
+        </record>
+
+        <record id="servicios_grupo_base" model="res.groups">
+            <field name="name">Tecnicos</field>
+            <field name="category_id" ref="module_category_servicios"/>
+        </record>
+
+        <record id="servicios_grupo_calidad" model="res.groups">
+            <field name="name">Gerente de Calidad</field>
+            <field name="category_id" ref="module_category_servicios"/>
+        </record>
+
+        <record id="servicios_grupo_gerencia" model="res.groups">
+            <field name="name">Gerentes de Servicio</field>
+            <field name="category_id" ref="module_category_servicios"/>
+            <field name="implied_ids" eval="[(4, ref('servicios_grupo_base'))]"/>
+        </record>
+<!-- Reglas de acceso interno -->
+        <record model="ir.rule" id="cotizaciones_registros_regla">
+            <field name="name">Solo ver sus propias cotizaciones</field>
+            <field name="model_id" ref="model_itriplee_cotizaciones"/>
+            <field name="domain_force">['|',('vendedor','=',user.id),('vendedor','=',False)]</field>
+            <field name="groups" eval="[(4, ref('cotizaciones_grupo_general'))]"/>
+        </record>
+
+        <record model="ir.rule" id="cotizaciones_registros_gerente_regla">
+            <field name="name">Puede ver todas las cotizaciones</field>
+            <field name="model_id" ref="model_itriplee_cotizaciones"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('cotizaciones_grupo_supervisor'))]"/>
+        </record>
+
+          <record model="ir.rule" id="clientes_registros_regla">
+            <field name="name">Solo ver sus propios clientes</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('cotizaciones_grupo_general'))]"/>
+        </record>
+
+        <record model="ir.rule" id="clientes_registros_gerente_regla">
+            <field name="name">Puede ver todos los clientes</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('cotizaciones_grupo_supervisor'))]"/>
+        </record>
+
+        <record model="ir.rule" id="servicios_registros_regla">
+            <field name="name">Solo ver sus propios servicios</field>
+            <field name="model_id" ref="model_itriplee_servicio"/>
+            <field name="domain_force">['|',('tecnico','=',user.id),('tecnico','=',False)]</field>
+            <field name="groups" eval="[(4, ref('servicios_grupo_base'))]"/>
+        </record>
+
+        <record model="ir.rule" id="servicios_registros_gerente_regla">
+            <field name="name">Puede ver todas los servicios</field>
+            <field name="model_id" ref="model_itriplee_servicio"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('servicios_grupo_gerencia'))]"/>
+        </record>
+
+        <record model="ir.rule" id="no_editar_estado_cancelada">
+            <field name="name">No editar cuando el estado sea cancelado</field>
+            <field name="model_id" ref="model_itriplee_cotizaciones"/>
+            <field name="domain_force">[('estado','=','facturada')]</field>
+            <field name="groups" eval="[(4, ref('cotizaciones_grupo_contabilidad'))]"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+        </record>
+
+        <record model="ir.rule" id="bloquear_recibida">
+            <field name="name">No editar cuando el estado sea recibida</field>
+            <field name="model_id" ref="model_itriplee_almacen"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+            <field name="domain_force">[('estado','=','recibida')]</field>
+        </record>
+
+
+
+    </data>
+
+</odoo>

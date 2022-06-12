@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+
+  <!-- Series-->
+    <record id="seq_servicios" model="ir.sequence">
+      <field name="name">Secuencia de Servicios</field>
+      <field name="code">servicio</field>
+      <field name="prefix">Ser</field>
+      <field name="padding">4</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+  <record id="view_wizard_servicio_itriplee" model="ir.ui.view">
+      <field name="name">itriplee.servicio.wizard.view</field>
+      <field name="model">itriplee.servicio.refacciones</field>
+      <field name="groups_id"></field>
+	    <field name="type">form</field>
+    	<field name="arch" type="xml">
+        <form string="Wizard Form">
+          <field name="refacciones">
+          <tree string="Refacciones" editable="bottom">
+            <field name="producto"/>
+            <field name="estado_refaccion"/>
+          </tree>
+          </field>
+          <footer>
+           <button name="button_wizard" string="Solicitar" class="btn-primary" type="object"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_servicio" model="ir.actions.act_window">
+    <field name="name">Solicitar Refacciones</field>
+    <field name="res_model">itriplee.servicio.refacciones</field>
+    <field name="view_type">form</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+
+    <record id="view_wizard_firma_itriplee" model="ir.ui.view">
+      <field name="name">itriplee.servicio.firma.view</field>
+      <field name="model">itriplee.servicio.firma</field>
+      <field name="groups_id"></field>
+	    <field name="type">form</field>
+    	<field name="arch" type="xml">
+        <form string="Wizard Firma">
+        <group>
+        <field name="firma" widget="signature"/>
+          </group>
+          <footer>
+           <button name="button_terminar" string="Terminar" class="btn-primary" type="object"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_firma" model="ir.actions.act_window">
+    <field name="name">Firmar de aceptado</field>
+    <field name="res_model">itriplee.servicio.firma</field>
+    <field name="view_type">form</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+
+    <record id="view_wizard_calificacion" model="ir.ui.view">
+      <field name="name">itriplee.servicio.calificacion.view</field>
+      <field name="model">itriplee.servicio.calificacion</field>
+      <field name="groups_id"></field>
+	    <field name="type">form</field>
+    	<field name="arch" type="xml">
+        <form string="Wizard calificacion">
+        <group>
+        <field name="horario"/>
+        <field name="reparado"/>
+        <field name="observaciones"/>
+          </group>
+          <footer>
+           <button name="button_calificar" string="Terminar" class="btn-primary" type="object"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_calificar" model="ir.actions.act_window">
+    <field name="name">Calificar Servicio</field>
+    <field name="res_model">itriplee.servicio.calificacion</field>
+    <field name="view_type">form</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record> 
+
+    <record id="view_itriplee_servicio_form" model="ir.ui.view">
+      <field name="name">view.itriplee.servicio.form</field>
+      <field name="model">itriplee.servicio</field>
+      <field name="arch" type="xml">
+        <form string="Servicio Form">
+        <header>
+        <button name="%(action_wizard_servicio)d" string="Solicitar Refacciones" class="oe_highlight" type="action"></button>
+        <button name="%(action_wizard_calificar)d" string="Calificar Servicio" class="oe_highlight" type="action"></button>
+        <button name="%(action_wizard_firma)d" string="Firma de cliente" class="oe_highlight" type="action"></button>
+        <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada"/>
+        </header>
+          <sheet>
+            <group>
+            <field name="name"/>
+              <field name="cliente"
+              domain="[('customer','=',True)]"
+              options="{'no_create_edit': True},
+               {'no_quick_create'}"/>
+              <field name="visita"/>
+            </group>
+            <notebook colspan='4'>
+            <page name='servicios_servicio' string='Servicio'>
+            <group>  
+            <group>
+              <field name="tipo_visita"/>              
+              <field name="prioridad"/>
+              <field name="estado_equipo"/>
+            </group>
+            <group>
+              <field name="ubicacion"/>
+              <field name="tecnico"
+              options="{'no_create_edit': True},
+                        {'no_quick_create'}"/>
+              <field name="vendedor"
+              options="{'no_create_edit': True},
+                        {'no_quick_create'}"/>
+              <field name="reinsidencia"/>       
+            </group>
+            </group>
+            <group>
+            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]"/>
+            <field name="garantia_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Garantia')]}"/>
+            <field name="poliza_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Poliza')]}" />
+            <field name="observaciones"/>
+            <field name="falla" attrs="{'invisible': [('visita','!=', 'Ordinaria')]}"/>
+            <field name="razon_cancelacion"/>
+            </group>
+          </page>
+            <page name='servicios_resultado' string='Resultado'>
+            <group>
+            <field name="responsable"/>
+            <field name="resultado"/>
+            <field name="comentarios"/>
+            <field name="firma" widget="image" readonly="1"/>
+            </group>
+          </page>
+            <page name='refacciones' string='Refacciones'>
+            <group>
+            <field name="estado_refacciones"/>
+            <field name="refacciones"/>
+            </group>
+          </page>
+          <page name='calidad' string='Calidad'>
+          <group>
+            <field name="horario"/>
+            <field name="reparado"/>
+            <field name="observaciones"/>
+            </group>
+          
+          </page>
+        </notebook>
+      </sheet>
+      <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity" modifiers="{}"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+        </form>
+      </field>
+    </record>
+
+    
+
+    <record id="view_itriplee_servicio_tree" model="ir.ui.view">
+      <field name="name">view.itriplee.servicio.tree</field>
+      <field name="model">itriplee.servicio</field>
+      <field name="arch" type="xml">
+        <tree string="Servicio Tree">
+          <field name="cliente"/>
+          <field name="visita"/>
+          <field name="estado"/>
+          <field name="estado_equipo"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_itriplee_servicio_calendar" model="ir.ui.view">
+      <field name="name">view.itriplee.servicio.calendar</field>
+      <field name="model">itriplee.servicio</field>
+      <field name="priority" eval="2"/>
+      <field name="arch" type="xml">
+        <calendar string="Servicio Calendar" date_start="visita" color="tecnico">
+          <field name="tecnico"/>
+          <field name="cliente"/>
+        </calendar>
+      </field>
+    </record>
+
+    <record id="action_itriplee_servicio_view" model="ir.actions.act_window">
+      <field name="name">Itriplee Servicio</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">itriplee.servicio</field>
+      <field name="view_mode">calendar,tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Servicios Itriplee
+        </p>
+        <p>
+          Presiona Crear para agregar un nuevo Servicio
+        </p>
+      </field>
+    </record>
+
+    <menuitem id="menu_itriplee_servicio_root" name="Servicios" sequence="10" web_icon="itriplee,static/src/img/servicio.png"/>
+    <menuitem id="menu_itriplee_servicio_categ" name="Servicios" parent="menu_itriplee_servicio_root" sequence="0"/>
+    <menuitem id="menu_itriplee_servicio_action" name="Servicios" parent="menu_itriplee_servicio_categ" action="action_itriplee_servicio_view" sequence="0"/>
+
+  </data>
+</odoo>
