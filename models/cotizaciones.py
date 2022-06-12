@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from odoo.addons import decimal_precision as dp
 from datetime import timedelta
 
 
@@ -108,23 +107,23 @@ class cotizaciones(models.Model):
     ########Compartidos Cotizaciones#####
     descuento = fields.Integer('Descuento a Aplicar')
     cantidad = fields.Integer('Cantidad')
-    precio_final = fields.Float('Precio', dp.get_precision('Precio'), store=True, compute="_operaciones")
-    descuento_total = fields.Float('Total del Descuento', dp.get_precision('Precio'), store=True,
+    precio_final = fields.Float('Precio', digits='Precio', store=True, compute="_operaciones")
+    descuento_total = fields.Float('Total del Descuento', digits='Precio', store=True,
                                    compute="_operaciones")
-    iva = fields.Float('IVA', dp.get_precision('Precio'), store=True, compute="_operaciones")
-    subtotal = fields.Float('Subtotal', dp.get_precision('Precio'), store=True, compute="_operaciones")
-    total = fields.Float('Total', dp.get_precision('Precio'), store=True, compute="_operaciones")
+    iva = fields.Float('IVA', digits='Precio', store=True, compute="_operaciones")
+    subtotal = fields.Float('Subtotal', digits='Precio', store=True, compute="_operaciones")
+    total = fields.Float('Total', digits='Precio', store=True, compute="_operaciones")
     tipo_equipo = fields.Many2one('itriplee.tipo', string='Tipo de Equipo')
     marca = fields.Many2one('itriplee.marca', string='Marca')
     modelo = fields.Many2one('itriplee.catalogo', string='Modelo')
     ########Contenido 2#####
-    precio = fields.Float('Precio Unitario', dp.get_precision('Precio'))
+    precio = fields.Float('Precio Unitario', digits='Precio')
     campo_memo = fields.Html('Descripcion')
     ########Contenido 3#####
     multilinea = fields.One2many('itriplee.orden.linea', 'orden_id', string='Equipos', copy=True, auto_join=True) # Falta poner la multilinea
-    iva_multilinea = fields.Float('IVA', dp.get_precision('Precio'), store=True, compute="_costo_total")
-    subtotal_multilinea = fields.Float('Subtotal', dp.get_precision('Precio'), store=True, compute="_costo_total")
-    total_multilinea = fields.Float('Total', dp.get_precision('Precio'), store=True, compute="_costo_total")
+    iva_multilinea = fields.Float('IVA', digits='Precio', store=True, compute="_costo_total")
+    subtotal_multilinea = fields.Float('Subtotal', digits='Precio', store=True, compute="_costo_total")
+    total_multilinea = fields.Float('Total', digits='Precio', store=True, compute="_costo_total")
     #######Fin de campos, inicia codigo automatizado######
     ######Calculo de totales de contenido 1 y 2#########
     @api.depends('modelo', 'cantidad', 'tipo', 'precio', 'descuento')
@@ -190,12 +189,12 @@ class Linea(models.Model):
     name = fields.Text(compute='_compute_descripcion', string='Descripcion', required=True, readonly=False, store=True)
     product_id = fields.Many2one('itriplee.catalogo', string='Equipo',
                                  default=0, ondelete='restrict', required=True)
-    cantidad = fields.Float(string='Cantidad', digits=dp.get_precision('Precio'), required=True,
+    cantidad = fields.Float(string='Cantidad', digits='Precio', required=True,
                                    default=1.0)
     #precio = fields.Float(string='Precio', required=True, digits=dp.get_precision('Precio'))
-    descuento = fields.Float(string='Descuento (%)', digits=dp.get_precision('Precio'), default=0.0)
-    subtotal = fields.Float(compute='_compute_amount', digits=dp.get_precision('Precio'), string='Subtotal')
-    precio_line = fields.Float(compute='_compute_amount', string='Precio', required=True, readonly=False, digits=dp.get_precision('Precio'))
+    descuento = fields.Float(string='Descuento (%)', digits='Precio', default=0.0)
+    subtotal = fields.Float(compute='_compute_amount', digits='Precio', string='Subtotal')
+    precio_line = fields.Float(compute='_compute_amount', string='Precio', required=True, readonly=False, digits='Precio')
     sequence = fields.Integer(string='Sequence', default=10)
 
 
