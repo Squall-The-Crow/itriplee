@@ -17,6 +17,7 @@
     """,
 
     'author': "Sitecnet",
+    "license": "AGPL-3",
     'website': "http://www.sitecnet.com",
 
     # Categories can be used to filter modules in modules listing
@@ -27,7 +28,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base','contacts', 'base_setup', 'web_google_maps'],
-
+    "application": True,
     # always loaded
     'data': [
         'security/itriplee_security.xml',
