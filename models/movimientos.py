@@ -13,8 +13,7 @@ class movimientos(models.Model):
     name = fields.Char(string='ID de Movimiento', readonly=True, index=True,
                        default=lambda self: ('New'))
     estado = fields.Selection([
-        ("1","1"),
-        ("2","Programada"),
+        ("programada","Programada"),
         ("solicitada","Solicitada"),
         ("recibida","Recibida"),
         ("atrasada","Atrasada"),
@@ -22,7 +21,7 @@ class movimientos(models.Model):
         ("surtida","Surtida"),
         ("retornada","Refacciones retornadas"),
         ("entregadas","Refacciones entregadas"),
-        ], 'Estado del movimiento', default='1')
+        ], 'Estado del movimiento', default='programada')
     tipo = fields.Selection([
         ("entrada","Entrada"),
         ("salida","Salida"),
