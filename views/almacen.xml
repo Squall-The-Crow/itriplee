@@ -149,6 +149,13 @@
       </field>
     </record>
 
+        <act_window id="action_itriplee_productos_view"
+        name="Itriplee Productos"
+        res_model="itriplee.catalogo"
+        view_mode="tree,form"
+        limit="80"
+        />
+
     <record id="view_itriplee_almacen_productos_tree" model="ir.ui.view">
       <field name="name">view.itriplee.almacen.productos.tree</field>
       <field name="model">itriplee.catalogo</field>
@@ -162,10 +169,12 @@
     </record>
 
 
-    <record id="action_itriplee_productos_view" model="ir.actions.act_window">
+    <record id="action_itriplee_productos" model="ir.actions.act_window">
     <field name="name">Itriplee Productos</field>
     <field name="model">itriplee.catalogo</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="view_itriplee_almacen_productos_tree"/>
+    <field name="act_window_id" ref="action_itriplee_productos_view" />
     </record>
 
     <record id="view_itriplee_almacen_productos_form" model="ir.ui.view">
