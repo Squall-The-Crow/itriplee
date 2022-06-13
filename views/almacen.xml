@@ -80,9 +80,8 @@
 <record id="view_wizard_recibir_itriplee" model="ir.ui.view">
       <field name="name">itriplee.series.wizard.recibir.view</field>
       <field name="model">itriplee.series.wizard.recibir</field>
-	    <field name="type">form</field>
     	<field name="arch" type="xml">
-        <form string="Wizard Form">
+        <form>
         <group>
           <field name="productos">
                     <tree string="Cantidades" editable="bottom">
@@ -110,7 +109,8 @@
     <record id="action_wizard_series_recibir" model="ir.actions.act_window">
     <field name="name">Recibir Wiz</field>
     <field name="res_model">itriplee.series.wizard.recibir</field>
-	  <field name="view_mode">form</field>
+	  <field name="binding_model_id" ref="model_itriplee_catalogo" />
+<field name="binding_view_types">form</field>
     <field name="target">new</field>
     </record> 
     
