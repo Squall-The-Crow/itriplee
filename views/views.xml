@@ -102,28 +102,7 @@
         </tree>
       </field>
     </record>
-<!--
-    <act_window id="action_itriplee_catalogo_view"
-        name="Itriplee Catalogo"
-        res_model="itriplee.catalogo"
-        view_mode="tree,form"
-        limit="80"
-        />
 
-    <record id="action_itriplee_catalogo_view_tree" model="ir.actions.act_window.view">
-    <field eval="3" name="sequence"/>
-    <field name="view_mode">tree</field>
-    <field name="act_window_id" ref="action_itriplee_catalogo_view" />
-    <field name="view_id" ref="view_itriplee_ventas_catalogo_tree"/>
-    </record>
-
-    <record id="action_itriplee_catalogo_view_form" model="ir.actions.act_window.view">
-    <field name="view_mode">form</field>
-    <field name="act_window_id" ref="action_itriplee_catalogo_view" />
-    <field name="view_id" ref="view_itriplee_ventas_catalogo_form"/>
-      <field name="sequence">70</field>
-    </record>
--->
     <record id="action_itriplee_catalogo_view" model="ir.actions.act_window">
       <field name="name">Itriplee Catalogo</field>
       <field name="res_model">itriplee.catalogo</field>
@@ -132,87 +111,29 @@
 
     <record id="action_itriplee_marca_view" model="ir.actions.act_window">
       <field name="name">Itriplee Marca</field>
-      <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.marca</field>
       <field name="view_mode">tree</field>
     </record>
 
     <record id="action_itriplee_tipo_view" model="ir.actions.act_window">
       <field name="name">Itriplee Tipo</field>
-      <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.tipo</field>
       <field name="view_mode">tree</field>
     </record>
 
     <record id="action_itriplee_selector_view" model="ir.actions.act_window">
       <field name="name">Itriplee Selector</field>
-      <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.selector</field>
       <field name="view_mode">tree</field>
     </record>
 
-    <menuitem id="menu_itriplee_ventas_root" name="Ventas" sequence="10" web_icon="itriplee,static/src/img/cotizaciones.png"/>
+    <menuitem id="menu_itriplee_ventas_root" name="Ventas" sequence="10" web_icon="itriplee.static/src/img/cotizaciones.png"/>
     <menuitem id="menu_itriplee_ventas_categ" name="Ventas" parent="menu_itriplee_ventas_root" sequence="0"/>
     <menuitem id="menu_itriplee_configuracion_categ" name="Configuracion" parent="menu_itriplee_ventas_root" sequence="2"/>
     <menuitem id="menu_itriplee_catalogo_action" name="Catalogo" parent="menu_itriplee_ventas_categ" action="action_itriplee_catalogo_view" sequence="1"/>
     <menuitem id="menu_itriplee_marca_action" name="Marca" parent="menu_itriplee_configuracion_categ" action="action_itriplee_marca_view" sequence="2"/>
     <menuitem id="menu_itriplee_tipo_action" name="Tipo" parent="menu_itriplee_configuracion_categ" action="action_itriplee_tipo_view" sequence="3"/>
     <menuitem id="menu_itriplee_selector_action" name="Selectores" parent="menu_itriplee_configuracion_categ" action="action_itriplee_selector_view" sequence="4"/>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="itriplee.list">
-      <field name="name">itriplee list</field>
-      <field name="model">itriplee.itriplee</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
-
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="itriplee.action_window">
-      <field name="name">itriplee window</field>
-      <field name="res_model">itriplee.itriplee</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="itriplee.action_server">
-      <field name="name">itriplee server</field>
-      <field name="model_id" ref="model_itriplee_itriplee"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="itriplee" id="itriplee.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="itriplee.menu_1" parent="itriplee.menu_root"/>
-    <menuitem name="Menu 2" id="itriplee.menu_2" parent="itriplee.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="itriplee.menu_1_list" parent="itriplee.menu_1"
-              action="itriplee.action_window"/>
-    <menuitem name="Server to list" id="itriplee" parent="itriplee.menu_2"
-              action="itriplee.action_server"/>
-    -->
+    
   </data>
 </odoo>
