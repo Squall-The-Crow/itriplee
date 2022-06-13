@@ -102,7 +102,7 @@
         </tree>
       </field>
     </record>
-
+<!--
     <act_window id="action_itriplee_catalogo_view"
         name="Itriplee Catalogo"
         res_model="itriplee.catalogo"
@@ -122,6 +122,12 @@
     <field name="act_window_id" ref="action_itriplee_catalogo_view" />
     <field name="view_id" ref="view_itriplee_ventas_catalogo_form"/>
       <field name="sequence">70</field>
+    </record>
+-->
+    <record id="action_itriplee_catalogo_view" model="ir.actions.act_window">
+      <field name="name">Itriplee Catalogo</field>
+      <field name="res_model">itriplee.catalogo</field>
+      <field name="view_mode">tree,form</field>
     </record>
 
     <record id="action_itriplee_marca_view" model="ir.actions.act_window">
