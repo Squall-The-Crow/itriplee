@@ -165,7 +165,7 @@
     <record id="action_itriplee_productos_view" model="ir.actions.act_window">
     <field name="name">Itriplee Productos</field>
     <field name="model">itriplee.catalogo</field>
-    <field name="view_mode">tree</field>
+    <field name="view_mode">tree,form</field>
     </record>
 
     <record id="view_itriplee_almacen_productos_form" model="ir.ui.view">
