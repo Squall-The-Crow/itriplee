@@ -342,7 +342,7 @@
     </record>
     
 
-    <menuitem id="menu_itriplee_almacen_root" name="Almacen" sequence="11"  web_icon="itriplee,static/src/img/almacen.jpeg"/>
+    <menuitem id="menu_itriplee_almacen_root" name="Almacen" sequence="11"  web_icon="itriplee,static/src/img/almacen.png"/>
     <menuitem id="menu_itriplee_almacen_almacen" name="Almacen" parent="menu_itriplee_almacen_root" action="action_itriplee_almacen_view" sequence="30"/>
     <menuitem id="menu_itriplee_almacen_productos" name="Productos" parent="menu_itriplee_almacen_root" action="action_itriplee_productos_view" sequence="70"/>
     <menuitem id="menu_itriplee_almacen_movimientos" name="Movimientos" parent="menu_itriplee_almacen_root" action="action_itriplee_movimientos_view" sequence="10"/>

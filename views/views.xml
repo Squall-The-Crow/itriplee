@@ -127,7 +127,7 @@
       <field name="view_mode">tree</field>
     </record>
 
-    <menuitem id="menu_itriplee_ventas_root" name="Ventas" sequence="10" web_icon="itriplee.static/src/img/cotizaciones.png"/>
+    <menuitem id="menu_itriplee_ventas_root" name="Ventas" sequence="10" web_icon="itriplee,static/src/img/ventas.png"/>
     <menuitem id="menu_itriplee_ventas_categ" name="Ventas" parent="menu_itriplee_ventas_root" sequence="0"/>
     <menuitem id="menu_itriplee_configuracion_categ" name="Configuracion" parent="menu_itriplee_ventas_root" sequence="2"/>
     <menuitem id="menu_itriplee_catalogo_action" name="Catalogo" parent="menu_itriplee_ventas_categ" action="action_itriplee_catalogo_view" sequence="1"/>
