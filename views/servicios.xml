@@ -112,8 +112,7 @@
         type="action"
         attrs="{'invisible': [('estado','!=', 'terminado')]}">
         </button>
-        <button name="button_terminar" string="Terminar" type="object"
-        attrs="{'invisible': ['|','|','|'('estado_refacciones','=', 'calificado'),('estado_refacciones','=', 'terminado'),('estado_refacciones','=', 'firmado'),('estado_refacciones','=', 'cancelado')]}"/>
+
         <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada"/>
         </header>
           <sheet>
