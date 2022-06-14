@@ -104,7 +104,7 @@
         string="Calificar Servicio" 
         class="oe_highlight" 
         type="action"
-        attrs="{'invisible': [('estado_refacciones','!=', 'calificado')]}">
+        attrs="{'invisible': [('estado_refacciones','!=', 'firmado')]}">
         </button>
         <button name="%(action_wizard_firma)d" 
         string="Firma de cliente" 
@@ -113,7 +113,7 @@
         attrs="{'invisible': [('estado','!=', 'terminado')]}">
         </button>
         <button name="button_terminar" string="Terminar" type="object" class="oe_highlight" 
-        attrs="{'invisible': ['|',('estado_refacciones','=', 'calificado'),('estado_refacciones','=', 'terminado'),('estado_refacciones','=', 'firmado'),('estado_refacciones','=', 'cancelado')]}"/>
+        attrs="{'invisible': ['|','|',('estado_refacciones','=', 'calificado'),('estado_refacciones','=', 'terminado'),('estado_refacciones','=', 'firmado'),('estado_refacciones','=', 'cancelado')]}"/>
         <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada"/>
         </header>
           <sheet>
