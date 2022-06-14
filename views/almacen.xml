@@ -109,9 +109,9 @@
     <record id="action_wizard_series_recibir" model="ir.actions.act_window">
     <field name="name">Recibir Wiz</field>
     <field name="res_model">itriplee.series.wizard.recibir</field>
-	  <field name="binding_model_id" ref="model_itriplee_catalogo" />
-<field name="binding_view_types">form</field>
+	  <field name="view_mode">form</field>
     <field name="target">new</field>
+    <field name="view_id" ref="view_wizard_recibir_itriplee"/>
     </record> 
     
     <!-- Finaliza codigo de prueba-->
