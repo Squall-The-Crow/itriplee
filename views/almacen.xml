@@ -285,7 +285,8 @@
               <field name="tipo"/>
               <field name="tsalida" 
                attrs="{'invisible': [('tipo','!=', 'salida')]}"/>
-              <field name="documento"/>
+              <field name="documento"
+              attrs="{'invisible': [('tipo','!=', 'entrada')]}"/>
               <field name="fecha"/>              
             </group>
             <group>
@@ -300,14 +301,14 @@
               <tree string="Cantidades" editable="bottom">
                   <!--<field name="movimiento_id"/> -->
                   <field name="cantidad"/>
-                  <field name="cantidad_recibida"
-                  invisible="context.get('estado',1)"/>
-                  <field name="cantidad_faltante"/>
+                  <field name="cantidad_recibida" string="Recibido"/>
+                  <field name="cantidad_faltante" string="Faltante"/>
                   <field name="producto"/>
                 <!--  <field name="seriesdisponibles" string="Serie"                     
                     domain="[('producto','=', producto),('estado','=', 'disponible')]"
                     attrs="{'invisible': [('parent.estado','=', 'programada')]}"/>-->
-                  <field name="series" string="Series" widget="many2many_tags"/>
+                  <field name="series" string="Series" widget="many2many_tags" 
+                  attrs="{'column_invisible': [('parent.estado', '!=', 'recibida')]}"/>
               </tree> 
             </field>
             <field name="salidas"
