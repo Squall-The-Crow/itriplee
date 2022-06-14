@@ -94,9 +94,26 @@
       <field name="arch" type="xml">
         <form string="Servicio Form">
         <header>
-        <button name="%(action_wizard_servicio)d" string="Solicitar Refacciones" class="oe_highlight" type="action"></button>
-        <button name="%(action_wizard_calificar)d" string="Calificar Servicio" class="oe_highlight" type="action"></button>
-        <button name="%(action_wizard_firma)d" string="Firma de cliente" class="oe_highlight" type="action"></button>
+        <button name="%(action_wizard_servicio)d" 
+        string="Solicitar Refacciones" 
+        class="oe_highlight" 
+        type="action" 
+        attrs="{'invisible': [('estado_refacciones','=', 'solicitadas')]}">
+        </button>
+        <button name="%(action_wizard_calificar)d" 
+        string="Calificar Servicio" 
+        class="oe_highlight" 
+        type="action"
+        attrs="{'invisible': [('estado_refacciones','!=', 'calificado')]}">
+        </button>
+        <button name="%(action_wizard_firma)d" 
+        string="Firma de cliente" 
+        class="oe_highlight" 
+        type="action"
+        attrs="{'invisible': [('estado','!=', 'terminado')]}">
+        </button>
+        <button name="button_terminar" string="Terminar" type="object"
+        attrs="{'invisible': ['|','|','|'('estado_refacciones','=', 'calificado'),('estado_refacciones','=', 'terminado'),('estado_refacciones','=', 'firmado'),('estado_refacciones','=', 'cancelado')]}"/>
         <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada"/>
         </header>
           <sheet>

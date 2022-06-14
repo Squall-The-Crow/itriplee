@@ -28,6 +28,10 @@ class servicio(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    def button_terminar(self):
+        for rec in self:
+            rec.write({'estado': 'terminado'})
+
     name = fields.Char('consecutivo')
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)
     visita = fields.Datetime('Visita Programada', required=True)
