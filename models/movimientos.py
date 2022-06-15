@@ -16,6 +16,7 @@ class movimientos(models.Model):
         ("programada","Programada"),
         ("solicitada","Solicitada"),
         ("recibida","Recibida"),
+        ("recepcionp","Parcialmente recibida"),
         ("atrasada","Atrasada"),
         ("cancelada","Cancelada"),
         ("surtida","Surtida"),
