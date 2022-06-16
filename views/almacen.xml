@@ -320,6 +320,7 @@
             <field name="salidas"
             attrs="{'invisible': [('tipo','!=', 'salida')]}">
               <tree string="Ventas" editable="bottom">
+              <field name="estado1" readonly="1"/>
                   <field name="seriesdisponibles_disponibles"/>
                   <field name="productoe"/>
               </tree> 

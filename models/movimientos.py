@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from email.policy import default
 from odoo import models, fields, api
 
 
@@ -417,13 +418,14 @@ class lineas_movimientos(models.Model):
 
     movimiento_id = fields.Many2one('itriplee.movimientos', string='Movimiento')
     cantidad = fields.Integer('Cantidad')
+    estado1 = fields.Char('disponibilidad', default="disponible")
     cantidad_recibida = fields.Integer('Cantidad Recibida')
     cantidad_faltante = fields.Integer('Cantidad Faltante')
     producto = fields.Many2one('itriplee.catalogo')
     series = fields.One2many('itriplee.movimientos.series', 'movimiento', string='name')
     seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series')
     seriesdisponibles_disponibles = fields.Many2one('itriplee.stock.series', string='Series',
-    domain="[('estado', '=', disponible)]")
+    domain="[('estado1', '=', disponible)]")
     estado_refaccion = fields.Selection([
                     ("nueva","Nueva"),
                     ("reparada","Reparada"),
