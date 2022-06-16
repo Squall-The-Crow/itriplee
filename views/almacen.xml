@@ -334,7 +334,7 @@
             </group>
             <group>
               <field name="servicio"
-              attrs="{'invisible': ['|',('estado','!=', 'solicitada'),('estado','!=', 'surtida'),('estado','!=', 'entregadas')]}"/>
+              attrs="{'invisible': ['|','|',('estado','!=', 'solicitada'),('estado','!=', 'surtida'),('estado','!=', 'entregadas')]}"/>
               <field name="tecnico"
               attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/> 
               <field name="documento_salida" 
@@ -343,7 +343,7 @@
             </group>
             </group>
             <field name="productos" 
-            attrs="{'invisible': [('tipo','!=', 'entrada'),('estado','!=', 'solicitada')]}">
+            attrs="{'invisible': [('tipo','!=', 'entrada')'|',('estado','!=', 'solicitada'),('estado','!=', 'surtida')]}">
               <tree string="Cantidades" editable="bottom">
                   <!--<field name="movimiento_id"/> -->
                   <field name="cantidad"/>
