@@ -108,9 +108,7 @@ class SeriesWizardRecibir(models.TransientModel):
     productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_recibir', string='Cantidades')
 
     def button_wizard_recibir(self):
-        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))        
-        for rec in active_obj:
-            rec.estado = 'recibida'
+        active_obj = self.env['itriplee.movimientos'].browse(self._c4ontext.get('active_ids')) 
         for a in active_obj.productos:
             for line in self.productos:
                 if line.producto == a.producto:
@@ -138,6 +136,8 @@ class SeriesWizardRecibir(models.TransientModel):
                             'cantidad_recibida': cantidadr,
                             'cantidad_faltante': cantidadf,
                             })
+        for rec in active_obj:
+            rec.estado = 'recepcionp'
                 
     ##Finaliza Codigo Boton Recibir
 
@@ -163,7 +163,7 @@ class SeriesWizardRecibir(models.TransientModel):
 
         productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_venta', string='Cantidades')
 
-    ##Comienza Codigo de Prueba
+    ##termina Codigo de Prueba
     
 
 

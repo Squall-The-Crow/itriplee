@@ -76,7 +76,7 @@
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
     </record> 
-<!-- Empieza codigo de prueba-->
+<!-- Empieza codigo de wizard de recepcion-->
 <record id="view_wizard_recibir_itriplee" model="ir.ui.view">
       <field name="name">itriplee.series.wizard.recibir.view</field>
       <field name="model">itriplee.series.wizard.recibir</field>
@@ -116,7 +116,7 @@
     <field name="view_id" ref="view_wizard_recibir_itriplee"/>
     </record> 
     
-    <!-- Finaliza codigo de prueba-->
+    <!-- Finaliza codigo de wizard de recepcion-->
 
     <record id="action_itriplee_almacen_view" model="ir.actions.act_window">
       <field name="name">Itriplee Almacen</field>
@@ -267,12 +267,12 @@
           string="Aplicar venta" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': [('tipo','!=', 'salida'),('tsalida','!=', 'venta')]}"/>
+          attrs="{'invisible': [('tsalida','!=', 'venta')]}"/>
           <button name="button_consigna" 
           string="Aplicar consigna" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': [('tipo','!=', 'salida'),('tsalida','!=', 'consigna')]}"/>
+          attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/>
           <button name="button_retornar" 
           string="Regresar unidades" 
           class="oe_highlight" 
@@ -286,7 +286,7 @@
               <field name="name"/>
               <field name="tipo"/>
               <field name="tsalida" 
-               attrs="{'invisible': [('tipo','!=', 'salida')]}"/>
+               attrs="{'invisible': [('tipo','!=', 'salida')]}"/>               
               <field name="documento"
               attrs="{'invisible': [('tipo','!=', 'entrada')]}"/>
               <field name="fecha"/>              
@@ -296,10 +296,13 @@
               attrs="{'invisible': ['|',('estado','!=', 'solicitada'),('estado','!=', 'surtida'),('estado','!=', 'entregadas')]}"/>
               <field name="tecnico"
               attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/> 
+              <field name="documento_salida" 
+               attrs="{'invisible': [('tipo','!=', 'salida')]}"/>
             <!--  <field name="cantidad"/>  -->         
             </group>
             </group>
-            <field name="productos">
+            <field name="productos" 
+            attrs="{'invisible': [('tipo','!=', 'entrada')]}">
               <tree string="Cantidades" editable="bottom">
                   <!--<field name="movimiento_id"/> -->
                   <field name="cantidad"/>
@@ -319,7 +322,6 @@
               <tree string="Ventas" editable="bottom">
                   <field name="seriesdisponibles"/>
                   <field name="productod"/>
-                  <field name="movimiento_id"/>
               </tree> 
             </field>
                 <field name="comentarios"/>          
