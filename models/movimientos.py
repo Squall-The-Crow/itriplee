@@ -418,7 +418,7 @@ class lineas_movimientos(models.Model):
 
     movimiento_id = fields.Many2one('itriplee.movimientos', string='Movimiento')
     cantidad = fields.Integer('Cantidad')
-    estado1 = fields.Char('disponibilidad', default="disponible")
+    estado = fields.Char('disponibilidad', default="disponible")
     cantidad_recibida = fields.Integer('Cantidad Recibida')
     cantidad_faltante = fields.Integer('Cantidad Faltante')
     producto = fields.Many2one('itriplee.catalogo')
