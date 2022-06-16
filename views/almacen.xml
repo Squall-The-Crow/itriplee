@@ -249,7 +249,7 @@
           string="recibir" 
           class="oe_highlight" 
           type="action"
-          attrs="{'invisible': ['&amp;',('estado','!=', 'programada'),('tipo','!=', 'entrada')]}"
+          attrs="{'invisible': [('estado','!=', 'programada'),('tipo','!=', 'entrada')]}"
           ></button>
           <button name="%(action_wizard_series)d" 
           string="Surtir" 
@@ -321,8 +321,8 @@
             attrs="{'invisible': [('tipo','!=', 'salida')]}">
               <tree string="Ventas" editable="bottom">
 
-                  <field name="seriesdisponibles_disponibles"/>
-                  <field name="productoe"/>
+                  <field name="seriesdisponibles"/>
+                  <field name="productod"/>
               </tree> 
             </field>
                 <field name="comentarios"/>          
