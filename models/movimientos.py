@@ -425,7 +425,7 @@ class lineas_movimientos(models.Model):
     series = fields.One2many('itriplee.movimientos.series', 'movimiento', string='name')
     seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series')
     seriesdisponibles_disponibles = fields.Many2one('itriplee.stock.series', string='Series',
-    domain="[('estado', '==', disponible)]")
+    domain="[('estado', '=', 'disponible')]")
     estado_refaccion = fields.Selection([
                     ("nueva","Nueva"),
                     ("reparada","Reparada"),
