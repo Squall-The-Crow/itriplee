@@ -249,7 +249,7 @@
           string="recibir" 
           class="oe_highlight" 
           type="action"
-          attrs="{'invisible': [('estado','!=', 'programada')]}"
+          attrs="{'invisible': ['&amp;',('estado','!=', 'programada'),('tipo','!=', 'entrada')]}"
           ></button>
           <button name="%(action_wizard_series)d" 
           string="Surtir" 
@@ -267,7 +267,7 @@
           string="Aplicar venta" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': [('tsalida','!=', 'venta')]}"/>
+          attrs="{'invisible': ['&amp;',('tsalida','!=', 'venta'),('tipo','!=', 'entregadas')]}"/>
           <button name="button_consigna" 
           string="Aplicar consigna" 
           class="oe_highlight" 
@@ -297,7 +297,7 @@
               <field name="tecnico"
               attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/> 
               <field name="documento_salida" 
-               attrs="{'invisible': [('tipo','!=', 'salida')]}"/>
+               attrs="{'invisible': [('tsalida','!=', 'venta')]}"/>
             <!--  <field name="cantidad"/>  -->         
             </group>
             </group>
@@ -320,7 +320,7 @@
             <field name="salidas"
             attrs="{'invisible': [('tipo','!=', 'salida')]}">
               <tree string="Ventas" editable="bottom">
-                  <field name="seriesdisponibles"/>
+                  <field name="seriesdisponibles" domain="[('estado', '=', disponible)]"/>
                   <field name="productod"/>
               </tree> 
             </field>
