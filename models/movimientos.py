@@ -120,7 +120,7 @@ class SeriesWizardRecibir(models.TransientModel):
                             'estado': 'disponible',
                             'producto': line.producto.id,
                             'documento': active_obj.documento,
-                            'movimiento_entrada': line.movimiento_id.id,
+                            'movimiento_entrada': active_obj.id,
                         }
                         self.env['itriplee.stock.series'].create(vals)
                         a.write({'series': [
