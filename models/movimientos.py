@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+
 class movimientos(models.Model):
     _name = 'itriplee.movimientos'
     _rec_name = 'name'
@@ -421,11 +422,15 @@ class lineas_movimientos(models.Model):
     producto = fields.Many2one('itriplee.catalogo')
     series = fields.One2many('itriplee.movimientos.series', 'movimiento', string='name')
     seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series')
+    seriesdisponibles_disponibles = fields.Many2one('itriplee.stock.series', string='Series',
+    domain="[('estado', '=', disponible)]")
     estado_refaccion = fields.Selection([
                     ("nueva","Nueva"),
                     ("reparada","Reparada"),
                     ], 'De Preferencia')
     productod = fields.Many2one('itriplee.catalogo', related='seriesdisponibles.producto', store=True,
+        string="Producto")
+    productoe = fields.Many2one('itriplee.catalogo', related='seriesdisponibles_disponibles.producto', store=True,
         string="Producto")
     tecnico = fields.Many2one('res.users', 'Técnico', ondelete="cascade")
         
