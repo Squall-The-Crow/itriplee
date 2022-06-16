@@ -249,7 +249,7 @@
           string="recibir" 
           class="oe_highlight" 
           type="action"
-          attrs="{'invisible': [('estado','!=', 'programada'),('tipo','=', 'entrada')]}"
+          attrs="{'invisible': ['|',('estado','!=', 'programada'),('tipo','!=', 'entrada')]}"
           ></button>
           <button name="%(action_wizard_series)d" 
           string="Surtir" 
@@ -267,7 +267,7 @@
           string="Aplicar venta" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': [('tsalida','!=', 'venta'),('tipo','=', 'entregadas')]}"/>
+          attrs="{'invisible': ['|',('tsalida','!=', 'venta'),('tipo','=', 'entregadas')]}"/>
           <button name="button_consigna" 
           string="Aplicar consigna" 
           class="oe_highlight" 
