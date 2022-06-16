@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class almacen(models.Model):
     _name = 'itriplee.almacen'
     _rec_name = 'name'
+    _description = "Modelo del almacen fisico"
 
 ########Campos De sistema##############
     name = fields.Char(string='Nombre de Almacen', required=True)

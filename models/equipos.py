@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class equipos(models.Model):
     _name = 'itriplee.equipos'
     _rec_name = 'name'
+    _description = "Modulo de registro de los equipos de cliente y sus movimientos"
 
     name = fields.Char('Serie')
     factura = fields.Char('factura')
