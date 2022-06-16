@@ -423,7 +423,8 @@ class lineas_movimientos(models.Model):
     cantidad_faltante = fields.Integer('Cantidad Faltante')
     producto = fields.Many2one('itriplee.catalogo')
     series = fields.One2many('itriplee.movimientos.series', 'movimiento', string='name')
-    seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series')
+    seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series',
+    domain="[('estado', '=', 'disponible')]")
     seriesdisponibles_disponibles = fields.Many2one('itriplee.stock.series', string='Series',
     domain="[('estado', '=', 'disponible')]")
     estado_refaccion = fields.Selection([
