@@ -249,7 +249,7 @@
           string="recibir" 
           class="oe_highlight" 
           type="action"
-          attrs="{'invisible': [('estado','!=', 'programada'),('tipo','!=', 'entrada')]}"
+          attrs="{'invisible': [('estado','!=', 'programada'),'&',('tipo','!=', 'entrada')]}"
           ></button>
           <button name="%(action_wizard_series)d" 
           string="Surtir" 
