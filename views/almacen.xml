@@ -49,12 +49,15 @@
                 </field>
           </group>
           <footer>
+          <!--
            <button name="button_surtir_wizard" 
            string="Surtir" 
            class="btn-primary" 
            type="object"
            attrs="{'invisible': [('estado','!=', 'solicitada')]}"/>
+             -->
            <button name="button_retornar1_wizard" 
+         
            string="Siguiente" 
            class="btn-primary" 
            type="object"
