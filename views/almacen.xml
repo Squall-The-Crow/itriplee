@@ -343,7 +343,7 @@
             </group>
             </group>
             <field name="productos" 
-            attrs="{'invisible': [('tipo','!=', 'entrada')'|',('estado','!=', 'solicitada'),('estado','!=', 'surtida')]}">
+            attrs="{'invisible': [('tipo','!=', 'entrada'),'|',('estado','!=', 'solicitada'),('estado','!=', 'surtida')]}">
               <tree string="Cantidades" editable="bottom">
                   <!--<field name="movimiento_id"/> -->
                   <field name="cantidad"/>
