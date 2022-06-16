@@ -145,25 +145,46 @@ class SeriesWizardRecibir(models.TransientModel):
 
     ##Comienza Codigo de Prueba
 
-    class SeriesWizardVenta(models.TransientModel):
-        _name = 'itriplee.series.wizard.venta'
+class SeriesWizardSurtir(models.TransientModel):
+    _name = 'itriplee.series.wizard.surtir'
 
-        @api.model    
-        def default_get(self, fields):        
-            rec = super(SeriesWizardVenta, self).default_get(fields)
-            product_line = []
-            active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids')) 
-            for producto in active_obj.productos:
-                product_line.append((0, 0, {
-                'movimiento_id': producto.movimiento_id.id,
-                'cantidad': producto.cantidad,
-                'producto': producto.producto.id,
-                'series': [],
-                }))
-                rec['productos'] = product_line        
-            return rec
+    @api.model    
+    def default_get(self, fields):        
+        rec = super(SeriesWizardSurtir, self).default_get(fields)
+        product_line = []
+        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids')) 
+        for producto in active_obj.productos:
+            product_line.append((0, 0, {
+            'movimiento_id': producto.movimiento_id.id,
+            'cantidad': producto.cantidad,
+            'producto': producto.producto.id,
+            'series': [],
+            }))
+            rec['productos'] = product_line        
+        return rec
 
-        productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_venta', string='Cantidades')
+    productos = fields.One2many('itriplee.movimientos.linea.transient', 'producto_surtir', string='Cantidades')
+
+    def button_surtir_wizard(self):
+        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
+        for rec in active_obj:
+            rec.estado = 'surtida'
+            rec.servicio.estado_refacciones = 'surtida'
+        for line in self.productos:
+            disponible = line.producto.cantidad - line.cantidad
+            reservado = line.producto.reservado + line.cantidad
+            serie = line.producto
+            line.producto.update({
+                'cantidad': disponible,
+                'reservado': reservado,
+            })
+            line.seriesdisponibles.update({
+                'estado': 'reservado',
+            })
+            for prod in active_obj.productos:
+                if serie == prod.producto:
+                    prod.update(
+                    {'seriesdisponibles': line.seriesdisponibles})
 
     ##termina Codigo de Prueba
     
@@ -247,7 +268,7 @@ class SeriesWizard(models.TransientModel):
                  #       (0, 0, {'name': record.name}),
                   #  ]})
 
-    def button_surtir_wizard(self):
+    def button_surtir_wizard1(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
         for rec in active_obj:
             rec.estado = 'surtida'
@@ -400,7 +421,7 @@ class lineasWizard(models.TransientModel):
     cantidad_faltante = fields.Integer('Cantidad Faltante')
     producto = fields.Many2one('itriplee.catalogo')
     producto_recibir = fields.Many2one('itriplee.series.wizard.recibir', string='Movimiento')
-    producto_venta = fields.Many2one('itriplee.series.wizard.venta', string='Movimiento')
+    producto_surtir = fields.Many2one('itriplee.series.wizard.surtir', string='Movimiento')
     movimiento_id = fields.Many2one('itriplee.movimientos', string='Movimiento')
     series = fields.One2many('itriplee.movimientos.series.transient', 'movimiento', string='Series')
     seriesdisponibles = fields.Many2one('itriplee.stock.series', string='Series')

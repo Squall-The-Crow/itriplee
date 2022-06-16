@@ -116,7 +116,45 @@
     <field name="view_id" ref="view_wizard_recibir_itriplee"/>
     </record> 
     
+    
     <!-- Finaliza codigo de wizard de recepcion-->
+
+    <!-- Empieza codigo de wizard de Surtir-->
+<record id="view_wizard_surtir_itriplee" model="ir.ui.view">
+      <field name="name">itriplee.series.wizard.surtir.view</field>
+      <field name="model">itriplee.series.wizard.surtir</field>
+    	<field name="arch" type="xml">
+        <form>
+        <group>
+          <field name="productos">
+                    <tree string="Cantidades" editable="bottom">
+                      <field name="producto"/>
+                      <field name="cantidad"/>
+                      <field name="seriesdisponibles"/>
+                    </tree> 
+                </field>
+          </group>
+
+          <footer>
+           <button name="button_wizard_surtir" 
+           string="Surtir" 
+           class="btn-primary" 
+           type="object"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>            
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_series_surtir" model="ir.actions.act_window">
+    <field name="name">Recibir Wiz</field>
+    <field name="res_model">itriplee.series.wizard.surtir</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="view_wizard_surtir_itriplee"/>
+    </record> 
+
+    <!-- Finaliza codigo de wizard de Surtir-->
 
     <record id="action_itriplee_almacen_view" model="ir.actions.act_window">
       <field name="name">Itriplee Almacen</field>
@@ -251,7 +289,7 @@
           type="action"
           attrs="{'invisible': ['|',('estado','!=', 'programada'),('tipo','!=', 'entrada')]}"
           ></button>
-          <button name="%(action_wizard_series)d" 
+          <button name="%(action_wizard_series_surtir)d" 
           string="Surtir" 
           class="oe_highlight" 
           type="action"
@@ -302,7 +340,7 @@
             </group>
             </group>
             <field name="productos" 
-            attrs="{'invisible': [('tipo','!=', 'entrada')]}">
+            attrs="{'invisible': ['|',('tipo','!=', 'entrada'),('estado','!=', 'solicitada')]}">
               <tree string="Cantidades" editable="bottom">
                   <!--<field name="movimiento_id"/> -->
                   <field name="cantidad"/>
