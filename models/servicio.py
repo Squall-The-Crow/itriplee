@@ -27,6 +27,7 @@ class servicio(models.Model):
     _name = 'itriplee.servicio'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = "Modulo para agendar y realizar servicios a clientes"
 
     def button_terminar(self):
         for rec in self:
@@ -98,6 +99,7 @@ class servicio(models.Model):
 
 class servicioRefacciones(models.TransientModel):
     _name = 'itriplee.servicio.refacciones'
+    _description = "Modulo que se encarga de solicitar refacciones al almacen"
 
     def _default_fecha(self):
         return fields.Date.context_today(self)
@@ -129,6 +131,7 @@ class servicioRefacciones(models.TransientModel):
     
 class servicioFirma(models.TransientModel):
     _name = 'itriplee.servicio.firma'
+    _description = "modulo transitorio para firmar los servicios terminados"
 
     firma = fields.Binary('Firma del Cliente') 
 
@@ -139,6 +142,7 @@ class servicioFirma(models.TransientModel):
 
 class servicioCalificacion(models.TransientModel):
     _name = 'itriplee.servicio.calificacion'
+    _description = "Modulo transitorio para calificar los servicios realizados"
 
     horario = fields.Selection([
     	("si","Si"),
@@ -162,6 +166,7 @@ class servicioCalificacion(models.TransientModel):
 
 class ServicioWizard(models.TransientModel):
     _name = 'itriplee.servicio.refacciones.transient'
+    _description = "Wizard para solicitar refacciones al almacen"
 
     name = fields.Many2one('itriplee.servicio.refacciones', ondelete="cascade")
     producto = fields.Many2one('itriplee.catalogo', 'Refaccion', ondelete="cascade")

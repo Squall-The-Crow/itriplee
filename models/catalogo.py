@@ -8,6 +8,7 @@ from odoo import models, fields, api
 class catalogo(models.Model):
     _name = 'itriplee.catalogo'
     _rec_name = 'name'
+    _description = "Catalogo de productos"
 
     name = fields.Char('Modelo', required=True,)
     imagen = fields.Binary()
@@ -47,16 +48,19 @@ class catalogo(models.Model):
 
 class tipo(models.Model):
     _name = 'itriplee.tipo'
+    _description = "tipo de productos"
     name = fields.Char('Tipo')
 
 class marca(models.Model):
     _name = 'itriplee.marca'
+    _description = "Marca de productos"
     name = fields.Char('Marca')
     imagen = fields.Binary()
     tipo = fields.Many2one('itriplee.tipo', string='Tipo')
 
 class selector(models.Model):
     _name = 'itriplee.selector'
+    _description = "Lista de selectores para asociar productos trifasicos"
     name = fields.Char('Modelo')
     imagen = fields.Binary()
     capacidad = fields.Char('Capacidad')

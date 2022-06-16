@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 class garantias(models.Model):
     _name = 'itriplee.garantias'
     _rec_name = 'folio'
+    _description = "Modulo de garantias"
 
     folio = fields.Integer('Folio')
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)

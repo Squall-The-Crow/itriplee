@@ -13,6 +13,7 @@ AVAILABLE_STATES = [
 
 class stock(models.Model):
     _inherit = 'itriplee.catalogo'
+    _description = "campos agregados al catalogo para el manejo de almacen"
 
     cantidad = fields.Integer('Cantidad Disponible')
     reservado = fields.Integer('Cantidad Reservada')
@@ -31,6 +32,7 @@ class stock(models.Model):
 class series(models.Model):
     _name = 'itriplee.stock.series'
     _rec_name = 'name'
+    _description = "Modulo de manejo de los productos individuales del almacen"
 
     name = fields.Char('Numero de Serie')
     estado = fields.Selection(AVAILABLE_STATES, 'Estado', default='disponible')

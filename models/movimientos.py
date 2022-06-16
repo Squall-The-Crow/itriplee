@@ -8,6 +8,7 @@ class movimientos(models.Model):
     _name = 'itriplee.movimientos'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = "Modelo para registrar los movimientos realizados al almacen"
 
     def _default_fecha(self):
         return fields.Date.context_today(self)
@@ -89,6 +90,7 @@ class movimientos(models.Model):
 ##Codigo Boton Recibir
 class SeriesWizardRecibir(models.TransientModel):
     _name = 'itriplee.series.wizard.recibir'
+    _description = "Wizard que se encarga de aplicar la recepción de productos despues de solicitarlos"
 
     @api.model    
     def default_get(self, fields):        
@@ -147,6 +149,7 @@ class SeriesWizardRecibir(models.TransientModel):
 
 class SeriesWizardSurtir(models.TransientModel):
     _name = 'itriplee.series.wizard.surtir'
+    _description = "Wizard que se encargar de surtir las refacciones pedidas por servicio"
 
     @api.model    
     def default_get(self, fields):        
@@ -193,6 +196,7 @@ class SeriesWizardSurtir(models.TransientModel):
 
 class SeriesWizard(models.TransientModel):
     _name = 'itriplee.series.wizard'
+    _description = "wizard que se encarga de aplicar los movimientos de las refacciones apartadas"
 
     def _default_fecha(self):
         return fields.Date.context_today(self)
@@ -413,6 +417,7 @@ class SeriesWizard(models.TransientModel):
 
 class lineasWizard(models.TransientModel):
     _name = 'itriplee.movimientos.linea.transient'
+    _description = "Modelo transitorio para crear las lineas de productos de los wizards de almacen"
 
     productow = fields.Many2one('itriplee.series.wizard', string='Movimiento')
     salientes = fields.Many2one('itriplee.series.wizard', string='Productos por Salir')
@@ -436,6 +441,7 @@ class lineasWizard(models.TransientModel):
 class lineas_movimientos(models.Model):
     _name = 'itriplee.movimientos.linea'
     _rec_name = 'movimiento_id'
+    _description = "modelo que se encarga de mostrar las lineas de productos de los movimientos del almacen"
 
     movimiento_id = fields.Many2one('itriplee.movimientos', string='Movimiento')
     cantidad = fields.Integer('Cantidad')
@@ -461,12 +467,14 @@ class lineas_movimientos(models.Model):
 
 class lineas_movimientos_series(models.Model):
     _name = 'itriplee.movimientos.series'
+    _description = "dummy para las series"
 
     name = fields.Char('Serie')
     movimiento = fields.Many2one('itriplee.movimientos.linea', ondelete="cascade")
 
 class seriesWizard(models.TransientModel):
     _name = 'itriplee.movimientos.series.transient'
+    _description = "dummy transitorio para las series"
 
     name = fields.Char('Serie')
     movimiento = fields.Many2one('itriplee.movimientos.linea.transient', ondelete="cascade")

@@ -8,6 +8,7 @@ class cotizaciones(models.Model):
     _name = 'itriplee.cotizaciones'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = "Modelo principal para cotizar"
 ###Funcion Fecha automatica######
     def _default_fecha(self):
         return fields.Date.context_today(self)
@@ -201,5 +202,6 @@ class Linea(models.Model):
 class tc(models.Model):
     _name = 'itriplee.tc'
     _rec_name = 'name'
+    _description = "Tipo de cambio"
     name = fields.Char('Tipo de Cambio')
     tc = fields.Float('Pesos')

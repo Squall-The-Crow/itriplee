@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class polizas(models.Model):
     _name = 'itriplee.polizas'
     _rec_name = 'folio'
+    _description = "Modulo de polizas"
 
     folio = fields.Integer('Folio', required=True)
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)
