@@ -118,7 +118,8 @@
         </header>
           <sheet>
             <group>
-            <field name="name"/>
+            <field name="name"
+            readonly="1"/>
               <field name="cliente"
               options="{'no_create_edit': True},
                {'no_quick_create'}"/>
