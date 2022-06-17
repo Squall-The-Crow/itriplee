@@ -266,9 +266,13 @@ class SeriesWizard(models.TransientModel):
                 rec.env['itriplee.movimientos'].create(vals)
             else:
                 pass
-            return{
-                "type": "ir.actions.do_nothing"
-            }
+            return {
+            "type": "ir.actions.act_window",
+            "res_model": self._name,
+            "res_id": self.id,
+            "view_mode": "form",
+            "target": "new",
+        }
 
             
     def button_retornar2_wizard(self):
