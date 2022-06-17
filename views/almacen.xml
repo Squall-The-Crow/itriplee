@@ -17,6 +17,7 @@
     	<field name="arch" type="xml">
         <form string="Wizard Form">
         <group>
+        <field name="estado"/>
           <field name="productos">
                     <tree string="Cantidades" editable="bottom">
                       <field name="producto"/>
