@@ -194,7 +194,7 @@ class SeriesWizardSurtir(models.TransientModel):
     ##termina Codigo de Boton Surtir
     
 
-
+#Empieza Codigo de boton para regresar refacciones usadas en servicios
 
 class SeriesWizard(models.TransientModel):
     _name = 'itriplee.series.wizard'
@@ -207,8 +207,7 @@ class SeriesWizard(models.TransientModel):
     def default_get(self, fields):        
         rec = super(SeriesWizard, self).default_get(fields)
         product_line = []
-        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids')) 
-        self.write({'estado' : active_obj.estado})
+        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
         for producto in active_obj.productos:
             product_line.append((0, 0, {
             'movimiento_id': producto.movimiento_id.id,
@@ -221,80 +220,9 @@ class SeriesWizard(models.TransientModel):
         return rec
 
     productos = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Cantidades')
-    estado = fields.Selection([
-        ("programada","Programada"),
-        ("solicitada","Solicitada"),
-        ("recibida","Recibida"),
-        ("atrasada","Atrasada"),
-        ("cancelada","Cancelada"),
-        ("retornada","Refacciones retornadas"),
-        ("surtida","Surtida"),
-        ("entregadas","Entregadas"),
-        ], 'Estado del movimiento', default='programada')
     fecha = fields.Date('Fecha', default=_default_fecha)
     salientes = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Equipos por Salir', domain=[('regresar','=',False)])
 
-    @api.model    
-    def default_get(self, fields):        
-        rec = super(SeriesWizard, self).default_get(fields)
-        product_line = []
-        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids')) 
-        self.write({'estado' : active_obj.estado})
-        for producto in active_obj.productos:
-            product_line.append((0, 0, {
-            'movimiento_id': producto.movimiento_id.id,
-            'cantidad': producto.cantidad,
-            'producto': producto.producto.id,
-            'series': [],
-            'seriesdisponibles': producto.seriesdisponibles.id,
-            }))
-            rec['productos'] = product_line        
-        return rec
-        
-    def button_wizard(self):
-        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
-        for rec in active_obj:
-            rec.estado = 'recibida'
-        for line in self.productos:
-            total = line.producto.cantidad + line.cantidad
-            line.producto.update({
-                'cantidad': total
-            })         
-            for record in line.series:                
-                vals = {
-                    'name': record.name,
-                    'estado': 'disponible',
-                    'producto': line.producto.id,
-                    'documento': active_obj.documento,
-                    'movimiento_entrada': line.movimiento_id.id
-                }
-                self.env['itriplee.stock.series'].create(vals)
-               # if line.producto.id == line.producto.id:   #Colocar bien el filtro                 
-                #    active_obj.productos.write({'series': [
-                 #       (0, 0, {'name': record.name}),
-                  #  ]})
-
-    def button_surtir_wizard1(self):
-        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
-        for rec in active_obj:
-            rec.estado = 'surtida'
-            rec.servicio.estado_refacciones = 'surtida'
-        for line in self.productos:
-            disponible = line.producto.cantidad - line.cantidad
-            reservado = line.producto.reservado + line.cantidad
-            serie = line.producto
-            line.producto.update({
-                'cantidad': disponible,
-                'reservado': reservado,
-            })
-            line.seriesdisponibles.update({
-                'estado': 'reservado',
-            })
-            for prod in active_obj.productos:
-                if serie == prod.producto:
-                    prod.update(
-                    {'seriesdisponibles': line.seriesdisponibles})
-            
 
     def button_retornar1_wizard(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
