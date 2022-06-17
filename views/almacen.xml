@@ -60,7 +60,7 @@
            string="Terminar" 
            class="btn-primary" 
            type="object"
-           attrs="{'invisible': [('parent.estado','!=', 'retornada')]}"/>
+           attrs="{'invisible': [('estado','!=', 'retornada')]}"/>
             <button string="Cancel" class="btn-secondary" special="cancel"/>            
           </footer>
         </form>
