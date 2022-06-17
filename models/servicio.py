@@ -33,7 +33,7 @@ class servicio(models.Model):
         for rec in self:
             rec.write({'estado': 'terminado'})
 
-    name = fields.Char('consecutivo')
+    name = fields.Char('Consecutivo')
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)
     visita = fields.Datetime('Visita Programada', required=True)
     tipo_visita = fields.Selection([
