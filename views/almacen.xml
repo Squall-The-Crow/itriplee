@@ -349,15 +349,15 @@
                   <!--<field name="movimiento_id"/> -->
                   <field name="cantidad"/>
                   <field name="cantidad_recibida" string="Recibido" readonly="1"
-                  attrs="{'column_invisible': [('parent.estado', 'not in', ('solicitada','surtida','entregadas'))]}"/>
+                  attrs="{'column_invisible': [('parent.estado', 'in', ('solicitada','surtida','entregadas'))]}"/>
                   <field name="cantidad_faltante" string="Faltante" readonly="1"
-                  attrs="{'column_invisible': [('parent.estado', 'not in', ('solicitada','surtida','entregadas'))]}"/>
+                  attrs="{'column_invisible': [('parent.estado', 'in', ('solicitada','surtida','entregadas'))]}"/>
                   <field name="producto"/>
                 <!--  <field name="seriesdisponibles" string="Serie"                     
                     domain="[('producto','=', producto),('estado','=', 'disponible')]"
                     attrs="{'invisible': [('parent.estado','=', 'programada')]}"/>-->
                   <field name="series" string="Series" widget="many2many_tags" 
-                  attrs="{'column_invisible': [('parent.estado', 'not in', ('solicitada','surtida','entregadas'))]}"
+                  attrs="{'column_invisible': [('parent.estado', 'in', ('solicitada','surtida','entregadas'))]}"
                   readonly="1"/>
                   <field name="seriesdisponibles" string="Series" 
                   attrs="{'column_invisible': [('parent.estado','not in', ('solicitada','surtida','entregadas'))]}"
