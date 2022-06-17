@@ -122,6 +122,7 @@ class servicioRefacciones(models.TransientModel):
                 'tipo': 'apartado',
                 'fecha': self.fecha,
                 'productos': recs,
+                'tecnico': active_obj.tecnico.id,
                 }   
         movimiento = self.env['itriplee.movimientos'].create(vals)
         for rec in active_obj:

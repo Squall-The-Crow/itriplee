@@ -172,8 +172,7 @@ class SeriesWizardSurtir(models.TransientModel):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
         for rec in active_obj:
             rec.estado = 'surtida'
-            rec.servicio.estado_refacciones = 'surtida'
-            rec.tecnico.id = active_obj.servicio.tecnico.id
+            rec.servicio.estado_refacciones = 'surtida'            
         for line in self.productos:
             disponible = line.producto.cantidad - line.cantidad
             reservado = line.producto.reservado + line.cantidad
