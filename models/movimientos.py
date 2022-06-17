@@ -85,7 +85,10 @@ class movimientos(models.Model):
             'tecnico':self.tecnico.id
             })
 
-    ##Codigo Boton retornar
+    def button_retornar(self):
+        pass
+
+'''Codigo Boton retornar
 
 class SeriesWizardRetornar(models.TransientModel):
     _name = 'itriplee.series.wizard.retornar'
@@ -249,6 +252,7 @@ class SeriesWizardRetornar(models.TransientModel):
                     'comentarios' : 'no se trajo pieza de remplazo por equipo de garantia'
                     })
 ##Finaliza Boton Retornar
+'''
 ##Codigo Boton Recibir
 class SeriesWizardRecibir(models.TransientModel):
     _name = 'itriplee.series.wizard.recibir'

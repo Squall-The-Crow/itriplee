@@ -75,7 +75,7 @@
     <field name="target">new</field>
     </record>
 
-    <!-- Empieza codigo de wizard de retornar-->
+    <!-- Empieza codigo de wizard de retornar
 
     <record id="view_wizard_itriplee_retornar" model="ir.ui.view">
       <field name="name">itriplee.series.wizard.view.retornar</field>
@@ -112,13 +112,6 @@
                 </field>
           </group>
           <footer>
-          <!--
-           <button name="button_surtir_wizard" 
-           string="Surtir" 
-           class="btn-primary" 
-           type="object"
-           attrs="{'invisible': [('estado','!=', 'solicitada')]}"/>
-             -->
            <button name="button_retornar1_wizard" 
          
            string="Siguiente" 
@@ -142,7 +135,7 @@
     <field name="target">new</field>
     </record>
 
-    <!-- Finaliza codigo de wizard de retornar-->
+  -->
 
 <!-- Empieza codigo de wizard de recepcion-->
 <record id="view_wizard_recibir_itriplee" model="ir.ui.view">
@@ -380,7 +373,7 @@
           class="oe_highlight" 
           type="object"
           attrs="{'invisible': ['|',('tsalida','!=', 'consigna'),('estado','=', 'entregadas')]}"/>
-          <button name="%(action_wizard_series_retornar)d"
+          <button name="button_retornar"
           string="Regresar unidades" 
           class="oe_highlight" 
           type="object"
