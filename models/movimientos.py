@@ -222,6 +222,17 @@ class SeriesWizard(models.TransientModel):
     productos = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Cantidades')
     fecha = fields.Date('Fecha', default=_default_fecha)
     salientes = fields.One2many('itriplee.movimientos.linea.transient', 'productow', string='Equipos por Salir', domain=[('regresar','=',False)])
+    estado = fields.Selection([
+        ("programada","Programada"),
+        ("solicitada","Solicitada"),
+        ("recibida","Recibida"),
+        ("recepcionp","Parcialmente recibida"),
+        ("atrasada","Atrasada"),
+        ("cancelada","Cancelada"),
+        ("surtida","Surtida"),
+        ("retornada","Refacciones retornadas"),
+        ("entregadas","Refacciones entregadas"),
+        ], 'Estado del movimiento', default='programada')
 
 
     def button_retornar1_wizard(self):
