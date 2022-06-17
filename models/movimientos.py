@@ -145,7 +145,7 @@ class SeriesWizardRecibir(models.TransientModel):
                 
     ##Finaliza Codigo Boton Recibir
 
-    ##Comienza Codigo de Prueba
+    ##Comienza Codigo de Boton Surtir
 
 class SeriesWizardSurtir(models.TransientModel):
     _name = 'itriplee.series.wizard.surtir'
@@ -191,7 +191,7 @@ class SeriesWizardSurtir(models.TransientModel):
                     prod.update(
                     {'seriesdisponibles': line.seriesdisponibles})
 
-    ##termina Codigo de Prueba
+    ##termina Codigo de Boton Surtir
     
 
 
@@ -327,7 +327,7 @@ class SeriesWizard(models.TransientModel):
                 rec.env['itriplee.movimientos'].create(vals)
             else:
                 pass
-            return {"type": "set_scrollTop"}
+
             
     def button_retornar2_wizard(self):
         active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
