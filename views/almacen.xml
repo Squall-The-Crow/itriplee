@@ -309,12 +309,12 @@
           string="Aplicar consigna" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/>
+          attrs="{'invisible': ['|',('tsalida','!=', 'consigna'),('estado','=', 'entregadas')]}"/>
           <button name="button_retornar" 
           string="Regresar unidades" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': [('estado','!=', 'entregadas'),('tsalida','!=', 'consigna')]}"/>
+          attrs="{'invisible': ['|',('estado','=', 'entregadas'),('tsalida','!=', 'consigna')]}"/>
             <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada,surtida"/>
           </header>
           <sheet>
