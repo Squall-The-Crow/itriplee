@@ -18,7 +18,8 @@
         <form string="Wizard Form">
         <group>
         <field name="estado"/>
-          <field name="productos">
+          <field name="productos"
+          attrs="{'invisible': [('estado','=', 'retornada')]}">
                     <tree string="Cantidades" editable="bottom">
                       <field name="producto"/>
                       <field name="cantidad"/>
@@ -29,7 +30,8 @@
                     </tree> 
                 </field>
           <field name="salientes" 
-          context="{'regresar': False}">
+          context="{'regresar': False}"
+          attrs="{'invisible': [('estado','!=', 'retornada')]}">
                     <tree string="Cantidades" editable="bottom">
                       <field name="producto"/>
                       <field name="cantidad"/>

@@ -98,7 +98,7 @@
         string="Solicitar Refacciones" 
         class="oe_highlight" 
         type="action" 
-        attrs="{'invisible': [('estado_refacciones','=', 'solicitadas')]}">
+        attrs="{'invisible': [('estado_refacciones','!=', 'disponible')]}">
         </button>
         <button name="%(action_wizard_calificar)d" 
         string="Calificar Servicio" 
