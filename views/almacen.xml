@@ -73,7 +73,77 @@
     <field name="res_model">itriplee.series.wizard</field>
 	  <field name="view_mode">form</field>
     <field name="target">new</field>
-    </record> 
+    </record>
+
+    <!-- Empieza codigo de wizard de retornar-->
+
+    <record id="view_wizard_itriplee_retornar" model="ir.ui.view">
+      <field name="name">itriplee.series.wizard.view.retornar</field>
+      <field name="model">itriplee.series.wizard.retornar</field>
+	    <field name="type">form</field>
+    	<field name="arch" type="xml">
+        <form string="Wizard Form">
+        <group>
+        <field name="estado"/>
+          <field name="productos"
+          attrs="{'invisible': [('estado','=', 'retornada')]}">
+                    <tree string="Cantidades" editable="bottom">
+                      <field name="producto"/>
+                      <field name="cantidad"/>
+                      <field name="movimiento_id"/>
+                      <field name="seriesdisponibles"/>
+                      <field name="regresar"/>
+                    </tree> 
+                </field>
+          <field name="salientes" 
+          context="{'regresar': False}"
+          attrs="{'invisible': [('estado','!=', 'retornada')]}">
+                    <tree string="Cantidades" editable="bottom">
+                      <field name="producto"/>
+                      <field name="cantidad"/>
+                      <field name="seriesdisponibles"                      
+                      domain="[('producto','=', producto)]"/>
+                      <field name="tipo_salida"/>
+                      <field name="serie_nueva"
+                       attrs="{'invisible': [('tipo_salida','!=', 'garantia')]}"/>
+                      <field name="factura"
+                       attrs="{'invisible': [('tipo_salida','!=', 'venta')]}"/>
+                    </tree> 
+                </field>
+          </group>
+          <footer>
+          <!--
+           <button name="button_surtir_wizard" 
+           string="Surtir" 
+           class="btn-primary" 
+           type="object"
+           attrs="{'invisible': [('estado','!=', 'solicitada')]}"/>
+             -->
+           <button name="button_retornar1_wizard" 
+         
+           string="Siguiente" 
+           class="btn-primary" 
+           type="object"/>
+           <button name="button_retornar2_wizard" 
+           string="Terminar" 
+           class="btn-primary" 
+           type="object"
+           attrs="{'invisible': [('estado','!=', 'retornada')]}"/>
+            <button string="Cancel" class="btn-secondary" special="cancel"/>            
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_wizard_series_retornar" model="ir.actions.act_window">
+    <field name="name">recibir Wizard</field>
+    <field name="res_model">itriplee.series.wizard.retornar</field>
+	  <field name="view_mode">form</field>
+    <field name="target">new</field>
+    </record>
+
+    <!-- Finaliza codigo de wizard de retornar-->
+
 <!-- Empieza codigo de wizard de recepcion-->
 <record id="view_wizard_recibir_itriplee" model="ir.ui.view">
       <field name="name">itriplee.series.wizard.recibir.view</field>
@@ -310,11 +380,11 @@
           class="oe_highlight" 
           type="object"
           attrs="{'invisible': ['|',('tsalida','!=', 'consigna'),('estado','=', 'entregadas')]}"/>
-          <button name="button_retornar" 
+          <button name="%(action_wizard_series_retornar)d"
           string="Regresar unidades" 
           class="oe_highlight" 
           type="object"
-          attrs="{'invisible': ['|',('estado','=', 'entregadas'),('tsalida','!=', 'consigna')]}"/>
+          attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/>
             <field name="estado" widget="statusbar" statusbar_visible="solicitada,atrasada,recibida,cancelada,surtida"/>
           </header>
           <sheet>

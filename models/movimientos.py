@@ -85,8 +85,170 @@ class movimientos(models.Model):
             'tecnico':self.tecnico.id
             })
 
-    def button_retornar(self):
-        pass
+    ##Codigo Boton retornar
+
+class SeriesWizardRetornar(models.TransientModel):
+    _name = 'itriplee.series.wizard.retornar'
+    _description = "wizard que se encarga de Retornar las refacciones solicitadas en consigna"
+
+    def _default_fecha(self):
+        return fields.Date.context_today(self)
+
+    @api.model    
+    def default_get(self, fields):        
+        rec = super(SeriesWizardRetornar, self).default_get(fields)
+        product_line = []
+        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
+        self.estado = active_obj.estado
+        for producto in active_obj.productos:
+            product_line.append((0, 0, {
+            'movimiento_id': producto.movimiento_id.id,
+            'cantidad': producto.cantidad,
+            'producto': producto.producto.id,
+            'series': [],
+            'seriesdisponibles': producto.seriesdisponibles.id,
+            }))
+            rec['productos'] = product_line        
+        return rec
+
+    productos = fields.One2many('itriplee.movimientos.linea.transient', 'productor', string='Cantidades')
+    fecha = fields.Date('Fecha', default=_default_fecha)
+    salientes = fields.One2many('itriplee.movimientos.linea.transient', 'productor', string='Equipos por Salir', domain=[('regresar','=',False)])
+    estado = fields.Selection([
+        ("programada","Programada"),
+        ("solicitada","Solicitada"),
+        ("recibida","Recibida"),
+        ("recepcionp","Parcialmente recibida"),
+        ("atrasada","Atrasada"),
+        ("cancelada","Cancelada"),
+        ("surtida","Surtida"),
+        ("retornada","Refacciones retornadas"),
+        ("entregadas","Refacciones entregadas"),
+        ], 'Estado del movimiento', default='programada')
+
+
+    def button_retornar1_wizard(self):
+        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
+        regresadas = []
+        self.estado = 'retornada'        
+        for rec in active_obj:
+            rec.servicio.estado_refacciones = 'regresadas'
+        for line in self.productos:
+            if line.regresar == True:
+                disponible = line.producto.cantidad + line.cantidad
+                reservado = line.producto.reservado - line.cantidad
+                line.producto.update({
+                    'cantidad': disponible,
+                    'reservado': reservado,
+                })
+                line.seriesdisponibles.update({
+                    'estado': 'disponible',
+                }) 
+                regresadas.append((0, 0, {
+                    'producto': line.producto.id,
+                    'cantidad': 1,
+                    'seriesdisponibles': line.seriesdisponibles.id
+                    }))
+                vals = {
+                'estado': 'recibida',
+                'tipo': 'entrada',
+                'fecha': self.fecha,
+                'productos': regresadas,
+                } 
+                rec.env['itriplee.movimientos'].create(vals)
+            else:
+                pass
+            return {
+            "type": "ir.actions.act_window",
+            "res_model": self._name,
+            "res_id": self.id,
+            "view_mode": "form",
+            "target": "new",
+        }
+    
+    def button_retornar2_wizard(self):
+        active_obj = self.env['itriplee.movimientos'].browse(self._context.get('active_ids'))
+        salidas = []
+        entradas = []
+        for line in self.salientes:
+            salida = line.producto.reservado - line.cantidad
+            line.producto.update({
+                'reservado': salida
+                }) 
+            if line.tipo_salida == 'garantia':
+                garantia = line.producto.garantias + line.cantidad
+                line.producto.update({
+                'garantias': garantia
+                })
+                line.seriesdisponibles.update({
+                'estado': 'Instalado',
+                'movimiento_salida': active_obj.id
+                }) 
+            elif line.tipo_salida == 'venta':
+                venta = line.producto.vendidos + line.cantidad
+                line.producto.update({
+                'vendidos': venta
+                }) 
+                line.seriesdisponibles.update({
+                'estado': 'vendida',
+                'movimiento_salida': active_obj.id,
+                'documento_salida': line.factura
+                })# Aqui acaban los movimientos directo al inventario del producto
+            else:
+                pass
+            salidas.append((0, 0, {
+                    'producto': line.producto.id,
+                    'cantidad': 1,
+                    'seriesdisponibles': line.seriesdisponibles.id
+                    }))
+            vals = {
+                'estado': 'entregadas',
+                'tipo': 'salida',
+                'fecha': self.fecha,
+                'movimiento': active_obj.id,
+                'productos': salidas,
+                } 
+            self.env['itriplee.movimientos'].create(vals)# Aqui acaba la creación de los movimientos de salida
+            if line.serie_nueva != False and line.tipo_salida == 'garantia':
+                for reg in self.salientes:
+                    total2 = line.producto.reservado + line.cantidad
+                    line.producto.update({
+                    'reservado': total2
+                    })
+                    vals2 = {
+                    'name': reg.serie_nueva,
+                    'reparado': True,
+                    'estado': 'garantia',
+                    'producto': line.producto.id,
+                    'documento': active_obj.servicio.name,
+                    'movimiento_entrada': line.movimiento_id.id,
+                    }
+                nuevo = self.env['itriplee.stock.series'].create(vals2)                    
+                entradas.append((0, 0, {
+                    'producto': line.producto.id,
+                    'cantidad': 1,
+                    'seriesdisponibles': nuevo.id
+                    }))
+                vals3 = {
+                    'estado': 'solicitada',
+                    'tipo': 'entrada',
+                    'fecha': self.fecha,
+                    'movimiento': active_obj.id,
+                    'productos': entradas,
+                    }
+                self.env['itriplee.movimientos'].create(vals3)
+                line.seriesdisponibles.update({
+                'remplazo': nuevo.id
+                })
+                return nuevo
+            elif line.serie_nueva == False and line.tipo_salida == 'garantia':
+                line.seriesdisponibles.update({
+                'definitivo': True
+                })
+                active_obj.write({
+                    'comentarios' : 'no se trajo pieza de remplazo por equipo de garantia'
+                    })
+##Finaliza Boton Retornar
 ##Codigo Boton Recibir
 class SeriesWizardRecibir(models.TransientModel):
     _name = 'itriplee.series.wizard.recibir'
@@ -370,6 +532,8 @@ class lineasWizard(models.TransientModel):
 
     productow = fields.Many2one('itriplee.series.wizard', string='Movimiento')
     salientes = fields.Many2one('itriplee.series.wizard', string='Productos por Salir')
+    productor = fields.Many2one('itriplee.series.wizard.retornar', string='Movimiento')
+    salientesr = fields.Many2one('itriplee.series.wizard.retornar', string='Productos por Salir')
     cantidad = fields.Integer('Cantidad')
     cantidad_recibida = fields.Integer('Cantidad Recibida')
     cantidad_faltante = fields.Integer('Cantidad Faltante')
