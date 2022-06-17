@@ -17,23 +17,17 @@
     	<field name="arch" type="xml">
         <form string="Wizard Form">
         <group>
-        <field name="estado"/>
-          <field name="productos"
-          attrs="{'invisible': [('estado','=', 'retornada')]}">
+          <field name="productos">
                     <tree string="Cantidades" editable="bottom">
                       <field name="producto"/>
                       <field name="cantidad"/>
                       <field name="movimiento_id"/>
-                      <field name="seriesdisponibles"                   
-                      domain="[('producto','=', producto),('estado','=', 'disponible')]"/>
-                      <field name="series" 
-                      attrs="{'invisible': [('parent.estado','!=', 'programada')]}"                     
-                      widget="many2many_tags"/>
+                      <field name="seriesdisponibles"/>
+                      <field name="series" />
                       <field name="regresar"/>
                     </tree> 
                 </field>
           <field name="salientes" 
-          attrs="{'invisible': [('estado','!=', 'retornada')]}"
           context="{'regresar': False}">
                     <tree string="Cantidades" editable="bottom">
                       <field name="producto"/>
@@ -60,8 +54,7 @@
          
            string="Siguiente" 
            class="btn-primary" 
-           type="object"
-           attrs="{'invisible': [('estado','!=', 'surtida')]}"/>
+           type="object"/>
            <button name="button_retornar2_wizard" 
            string="Terminar" 
            class="btn-primary" 
