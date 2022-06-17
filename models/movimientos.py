@@ -340,7 +340,7 @@ class SeriesWizard(models.TransientModel):
                     'comentarios' : 'no se trajo pieza de remplazo por equipo de garantia'
                     })
 
-
+#Termina Codigo de Boton Retornar refacciones solicitadas por servicio.
             
 
 
