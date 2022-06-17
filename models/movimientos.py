@@ -173,6 +173,7 @@ class SeriesWizardSurtir(models.TransientModel):
         for rec in active_obj:
             rec.estado = 'surtida'
             rec.servicio.estado_refacciones = 'surtida'
+            rec.tecnico.id = active_obj.servicio.tecnico.id
         for line in self.productos:
             disponible = line.producto.cantidad - line.cantidad
             reservado = line.producto.reservado + line.cantidad
@@ -183,6 +184,8 @@ class SeriesWizardSurtir(models.TransientModel):
             })
             line.seriesdisponibles.update({
                 'estado': 'reservado',
+                'movimiento': active_obj.id,
+                'tecnico': active_obj.servicio.tecnico.id,
             })
             for prod in active_obj.productos:
                 if serie == prod.producto:

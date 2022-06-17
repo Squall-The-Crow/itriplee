@@ -337,7 +337,7 @@
               <field name="servicio"
                 attrs="{'invisible': [('estado','not in', ('solicitada','surtida','entregadas'))]}"/>
               <field name="tecnico"
-              attrs="{'invisible': [('tsalida','!=', 'consigna')]}"/> 
+              attrs="{'invisible': [('estado','not in', ('solicitada','surtida','entregadas'))]}"/>
               <field name="documento_salida" 
                attrs="{'invisible': [('tsalida','!=', 'venta')]}"/>
             <!--  <field name="cantidad"/>  -->         
