@@ -55,8 +55,7 @@
            <button name="button_retornar1_wizard"          
            string="Siguiente" 
            class="btn-primary" 
-           type="object"
-           attrs="{'invisible': [('estado','=', 'retornada')]}"/>
+           type="object"/>
            <button name="button_retornar2_wizard" 
            string="Terminar" 
            class="btn-primary" 
