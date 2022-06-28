@@ -55,12 +55,15 @@
            <button name="button_retornar1_wizard"          
            string="Siguiente" 
            class="btn-primary" 
-           type="object"/>
+           type="object"
+           attrs="{'invisible': [('estado','=', 'retornada')]}"/>
+           
            <button name="button_retornar2_wizard" 
            string="Terminar" 
            class="btn-primary" 
            type="object"
            attrs="{'invisible': [('estado','!=', 'retornada')]}"/>
+
             <button string="Cancel" class="btn-secondary" special="cancel"/>            
           </footer>
         </form>
@@ -395,7 +398,7 @@
                 attrs="{'invisible': [('estado','not in', ('solicitada','surtida','entregadas'))]}"/>
               <field name="tecnico"
               attrs="{'invisible': ['|','&amp;',('estado','not in', ('solicitada','surtida','entregadas')),('estado','!=', 'programada'),('tsalida','!=','consigna')]}"/>
-             <!--Revisar bien esta funcionalidad-->>
+             <!--Revisar bien esta funcionalidad-->
               <field name="documento_salida" 
                attrs="{'invisible': [('tsalida','!=', 'venta')]}"/>
             <!--  <field name="cantidad"/>  -->         
