@@ -395,7 +395,7 @@
               <field name="servicio"
                 attrs="{'invisible': [('estado','not in', ('solicitada','surtida','entregadas'))]}"/>
               <field name="tecnico"
-              attrs="{'invisible': ['|'('estado','not in', ('solicitada','surtida','entregadas')),('estado','not in', ('programada'),(tipo,'=','salida'))]}"/>
+              attrs="{'invisible': ['|'('estado','not in', ('solicitada','surtida','entregadas')),('estado','not in', ('programada')),(tipo,'=','salida')]}"/>
               <field name="documento_salida" 
                attrs="{'invisible': [('tsalida','!=', 'venta')]}"/>
             <!--  <field name="cantidad"/>  -->         
