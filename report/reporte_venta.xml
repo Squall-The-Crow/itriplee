@@ -29,6 +29,7 @@
         <t t-call="web.external_layout">
 
         <div class="page">
+        <!--
          <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="o_boxed_header">
             <div class="row mb8">
@@ -44,7 +45,7 @@
             </div>
             </div>
         </div>
-        </div>
+        </div>-->
 
         <t t-foreach="docs" t-as="o">
     <div class="row">
@@ -75,14 +76,14 @@
     </tr>
 </t>
 
-<div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+<!--<div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
             <div class="text-center">
                 <div t-field="company.report_footer"/>
                 <div t-if="report_type == 'pdf'">
                     Page: <span class="page"/> / <span class="topage"/>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         </t>
         </t>   
