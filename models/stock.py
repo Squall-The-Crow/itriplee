@@ -25,6 +25,7 @@ class stock(models.Model):
     #atrasado = fields.Integer('Cantidad', required=True) visualizar el stock entrante
     almacen = fields.Many2one('itriplee.almacen', string='Almacen')
     minimo = fields.Integer('Cantidad Minima')
+    maximo = fields.Integer('Cantidad Maxima')
     cb =  fields.Char('Codigo de Barras')
     tecnico = fields.Many2one('res.users', 'Técnico', ondelete="cascade")
     series =  fields.One2many('itriplee.stock.series', 'producto', string='Numeros de Serie')
