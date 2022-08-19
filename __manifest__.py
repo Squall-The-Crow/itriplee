@@ -43,7 +43,8 @@
         'views/heredado.xml',
         'views/almacen.xml',
         'report/cotizaciones_report.xml',
-        'report/cotizaciones_template.xml',        
+        'report/cotizaciones_template.xml',
+        'report/salida_venta.xml',        
         ],
     # only loaded in demonstration mode
     'demo': [

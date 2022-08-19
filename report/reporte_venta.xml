@@ -1,0 +1,90 @@
+<odoo>
+<record id="paperformat_letter_vertical" model="report.paperformat">
+<field name="name">Letter vertical</field>
+<field name="format">Letter</field>
+<field name="orientation">portrait</field>
+<field name="margin_top">40</field>
+<field name="margin_bottom">32</field>
+<field name="margin_left">7</field>
+<field name="margin_right">7</field>
+<field name="header_line" eval="False" />
+<field name="header_spacing">35</field>
+<field name="dpi">90</field>
+</record>
+
+    <record id="action_movimientos_venta"
+    model="ir.actions.report">
+        <field name="name">Formato Venta</field>
+        <field name="model">itriplee.movimientos</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">itriplee.movimientos.venta</field>
+        <field name="paperformat_id" ref="paperformat_letter_vertical" />
+        <field name="binding_model_id" ref="itriplee.model_itriplee_movimientos" />
+        <field name="binding_type">report</field>
+    </record>
+ 
+    <template id="Movimientos_venta">
+        <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+
+        <div class="page">
+         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+            <div class="o_boxed_header">
+            <div class="row mb8">
+                <div class="col-6">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                </div>
+                <div class="col-6 text-right mb4">
+                    <h4 class="mt0" t-field="company.report_header"/>
+                    <div name="company_address" class="float-right mb4">
+                        <span t-if="company.company_details" t-field="company.company_details"/>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <t t-foreach="docs" t-as="o">
+    <div class="row">
+        <div class="col-3">
+        <h4><span t-field="o.name" /></h4>
+        </div>
+
+        <div class="col-2">
+        <span t-field="o.documento_salida" />
+        </div>
+
+        <div class="col-2">
+        <span t-field="o.fecha" t-options="{'widget': 'date'}" />
+        </div>
+
+        <div class="col-3">
+        <span t-field="o.tecnico.name" />
+        </div>
+
+        <div class="col-3">
+        <span t-field="o.servicio.cliente.name" />
+        </div>
+    </div>
+
+    <tr t-foreach="o.salidas" t-as='line'>
+                            <td><span t-esc="line.series.name"/></td>
+                            <td><span t-esc="line.productod.name"/></td>
+    </tr>
+</t>
+
+<div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+            <div class="text-center">
+                <div t-field="company.report_footer"/>
+                <div t-if="report_type == 'pdf'">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+
+        </t>
+        </t>   
+    </template>
+
+</odoo>
