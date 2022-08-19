@@ -71,7 +71,7 @@
     </div>
 
     <tr t-foreach="o.salidas" t-as='line'>
-                            <td><span t-esc="line.series.name"/></td>
+                            <td><span t-esc="line.seriesdisponibles.name"/></td>
                             <td><span t-esc="line.productod.name"/></td>
     </tr>
 </t>
