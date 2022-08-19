@@ -318,7 +318,7 @@
             <group>
               <field name="almacen"/>
               <field name="minimo"/>
-              <field name="minimo"/>
+              <field name="maximo"/>
               <field name="cb"/>
             </group>
             </group>
