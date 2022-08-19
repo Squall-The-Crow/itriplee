@@ -318,6 +318,7 @@
             <group>
               <field name="almacen"/>
               <field name="minimo"/>
+              <field name="minimo"/>
               <field name="cb"/>
             </group>
             </group>
