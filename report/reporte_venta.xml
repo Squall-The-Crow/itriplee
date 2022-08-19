@@ -1,4 +1,5 @@
 <odoo>
+<!--
 <record id="paperformat_letter_vertical" model="report.paperformat">
 <field name="name">Letter vertical</field>
 <field name="format">Letter</field>
@@ -10,7 +11,7 @@
 <field name="header_line" eval="False" />
 <field name="header_spacing">35</field>
 <field name="dpi">90</field>
-</record>
+</record>-->
 
     <record id="action_movimientos_venta"
     model="ir.actions.report">
@@ -18,7 +19,7 @@
         <field name="model">itriplee.movimientos</field>
         <field name="report_type">qweb-html</field>
         <field name="report_name">itriplee.movimientos.venta</field>
-        <field name="paperformat_id" ref="paperformat_letter_vertical" />
+       <!-- <field name="paperformat_id" ref="paperformat_letter_vertical" />-->
         <field name="binding_model_id" ref="itriplee.model_itriplee_movimientos" />
         <field name="binding_type">report</field>
     </record>
