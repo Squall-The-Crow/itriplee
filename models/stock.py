@@ -9,6 +9,7 @@ AVAILABLE_STATES = [
     ('garantia', 'En Garantia'),
     ('Instalado', 'Instalado'),
     ('vendida', 'Vendida'),
+    ('recibida', 'Recibida'),
     ]
 
 class stock(models.Model):
