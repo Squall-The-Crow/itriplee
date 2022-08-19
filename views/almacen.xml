@@ -222,7 +222,6 @@
 
     <record id="action_itriplee_almacen_view" model="ir.actions.act_window">
       <field name="name">Itriplee Almacen</field>
-      <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.almacen</field>
       <field name="view_mode">tree,form</field>
     </record>
