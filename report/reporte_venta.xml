@@ -18,7 +18,7 @@
         <field name="name">Formato Venta</field>
         <field name="model">itriplee.movimientos</field>
         <field name="report_type">qweb-html</field>
-        <field name="report_name">itriplee.reporte_venta</field>
+        <field name="report_name">itriplee.Movimientos_venta</field>
        <!-- <field name="paperformat_id" ref="paperformat_letter_vertical" />-->
         <field name="binding_model_id" ref="itriplee.model_itriplee_movimientos" />
         <field name="binding_type">report</field>
