@@ -2,7 +2,14 @@
  <odoo>
   <data>
 
-    <record id="view_itriplee_ventas_catalogo_form" model="ir.ui.view">
+  <act_window id="action_itriplee_catalogo_view"
+        name="Itriplee Catalogo"
+        res_model="itriplee.catalogo"
+        view_mode="tree,form"
+        limit="80"
+        />
+
+    <record id="view_itriplee_catalogo_form" model="ir.ui.view">
       <field name="name">view.itriplee.catalogo.form</field>
       <field name="model">itriplee.catalogo</field>
       <field name="arch" type="xml">
@@ -56,7 +63,7 @@
       </field>
     </record>
 
-    <record id="view_itriplee_ventas_catalogo_tree" model="ir.ui.view">
+    <record id="view_itriplee_catalogo_tree" model="ir.ui.view">
       <field name="name">view.itriplee.catalogo.tree</field>
       <field name="model">itriplee.catalogo</field>
       <field name="arch" type="xml">
@@ -103,10 +110,18 @@
       </field>
     </record>
 
-    <record id="action_itriplee_catalogo_view" model="ir.actions.act_window">
-      <field name="name">Itriplee Catalogo</field>
-      <field name="res_model">itriplee.catalogo</field>
-      <field name="view_mode">tree,form</field>
+    <record id="action_itriplee_catalogo_view_tree" model="ir.actions.act_window">
+      <field eval="3" name="sequence"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_itriplee_catalogo_tree"/>
+      <field name="act_window_id" ref="action_itriplee_catalogo_view" />
+    </record>
+
+    <record id="action_itriplee_catalogo_view_form" model="ir.actions.act_window">
+      <field eval="3" name="sequence"/>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_itriplee_catalogo_form"/>
+      <field name="act_window_id" ref="action_itriplee_catalogo_view" />
     </record>
 
     <record id="action_itriplee_marca_view" model="ir.actions.act_window">
