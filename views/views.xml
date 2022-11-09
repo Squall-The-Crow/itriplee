@@ -110,14 +110,14 @@
       </field>
     </record>
 
-    <record id="action_itriplee_catalogo_view_tree" model="ir.actions.act_window">
+    <record id="action_itriplee_catalogo_view_tree" model="ir.actions.act_window.view">
       <field eval="3" name="sequence"/>
       <field name="view_mode">tree</field>
       <field name="view_id" ref="view_itriplee_catalogo_tree"/>
       <field name="act_window_id" ref="action_itriplee_catalogo_view" />
     </record>
 
-    <record id="action_itriplee_catalogo_view_form" model="ir.actions.act_window">
+    <record id="action_itriplee_catalogo_view_form" model="ir.actions.act_window.view">
       <field eval="3" name="sequence"/>
       <field name="view_mode">form</field>
       <field name="view_id" ref="view_itriplee_catalogo_form"/>
