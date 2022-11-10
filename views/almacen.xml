@@ -253,6 +253,12 @@
       </field>
     </record>
 
+    <record id="action_itriplee_productos_almacen_view" model="ir.actions.act_window">
+      <field name="name">Itriplee Productos</field>
+      <field name="res_model">itriplee.catalogo</field>
+      <field name="view_mode">tree,form</field>
+      <field name="limit">80</field>
+    </record>
 
     <record id="view_itriplee_almacen_productos_tree" model="ir.ui.view">
       <field name="name">view.itriplee.almacen.productos.tree</field>
