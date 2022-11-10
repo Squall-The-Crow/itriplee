@@ -63,6 +63,23 @@
       </field>
     </record>
 
+    <record id="view_itriplee_selector_form" model="ir.ui.view">
+      <field name="name">view.itriplee.selector.form</field>
+      <field name="model">itriplee.selector</field>
+      <field name="arch" type="xml">
+        <form string="Selector Form">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="capacidad"/>
+              <field name="precio"/>
+              <field name="tc"/>
+            </group>          
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <record id="view_itriplee_catalogo_tree" model="ir.ui.view">
       <field name="name">view.itriplee.catalogo.tree</field>
       <field name="model">itriplee.catalogo</field>
@@ -139,7 +156,7 @@
     <record id="action_itriplee_selector_view" model="ir.actions.act_window">
       <field name="name">Itriplee Selector</field>
       <field name="res_model">itriplee.selector</field>
-      <field name="view_mode">tree</field>
+      <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_itriplee_ventas_root" name="Ventas" sequence="10" web_icon="itriplee,static/src/img/ventas.png"/>
@@ -149,6 +166,7 @@
     <menuitem id="menu_itriplee_marca_action" name="Marca" parent="menu_itriplee_configuracion_categ" action="action_itriplee_marca_view" sequence="2"/>
     <menuitem id="menu_itriplee_tipo_action" name="Tipo" parent="menu_itriplee_configuracion_categ" action="action_itriplee_tipo_view" sequence="3"/>
     <menuitem id="menu_itriplee_selector_action" name="Selectores" parent="menu_itriplee_configuracion_categ" action="action_itriplee_selector_view" sequence="4"/>
+
     
   </data>
 </odoo>

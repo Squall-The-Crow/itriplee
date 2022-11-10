@@ -199,15 +199,7 @@
       <field name="name">Itriplee TC</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.tc</field>
-      <field name="view_mode">tree,form</field>
-      <field name="help" type="html">
-        <p class="oe_view_nocontent_create">
-          Tipo de Cambio
-        </p>
-        <p>
-          Presiona para modificar un tipo de cambio
-        </p>
-      </field>
+      <field name="view_mode">tree,form</field>      
     </record>
 
     <record id="action_itriplee_cotizaciones_view" model="ir.actions.act_window">
