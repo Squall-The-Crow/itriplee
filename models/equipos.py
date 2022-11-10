@@ -17,6 +17,6 @@ class equipos(models.Model):
     vendedor = fields.Many2one('res.users', 'Vendido Por')
     poliza = fields.Many2one('itriplee.polizas', 'Poliza')
     garantia = fields.Many2one('itriplee.garantias', 'Garantia')
-    visitas = fields.Many2many ('itriplee.servicio', 'Visitas Realizadas')
+    visitas = fields.Many2many ('itriplee.servicio', string='Visitas Realizadas')
 
     #Revisar
