@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
  <odoo>
   <data>
-
-  <act_window id="action_itriplee_catalogo_view"
-        name="Itriplee Catalogo"
-        res_model="itriplee.catalogo"
-        view_mode="tree,form"
-        limit="80"
-        />
-
     <record id="view_itriplee_catalogo_form" model="ir.ui.view">
       <field name="name">view.itriplee.catalogo.form</field>
       <field name="model">itriplee.catalogo</field>
