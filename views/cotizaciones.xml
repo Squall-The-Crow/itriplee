@@ -197,7 +197,6 @@
 
     <record id="action_itriplee_tc_view" model="ir.actions.act_window">
       <field name="name">Itriplee TC</field>
-      <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.tc</field>
       <field name="view_mode">tree,form</field>      
     </record>
