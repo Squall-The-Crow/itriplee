@@ -36,7 +36,7 @@
                     <div class="col-5">
                     <img src='/itriplee/static/src/img/logo.jpg' width="300" height="94" class="img-fluid"/>
                     </div>                    
-                    <div class="col-7 align-self-center"> 
+                    <div class="col-7 align-middle"> 
                     <h5>      Ciudad de Mexico a <span t-field="o.fecha"/></h5>
                     </div>
             </div>
