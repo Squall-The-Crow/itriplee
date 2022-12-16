@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-12 no-gutters text-right align-middle">
                     <img style="float:left" src='/itriplee/static/src/img/logo.jpg' width="300" height="94"/>
-                    <div class="align bottom"> <h5>      Ciudad de Mexico a <span t-field="o.fecha"/></h5></div>
+                    <span class="align-bottom"> <h5>      Ciudad de Mexico a <span t-field="o.fecha"/></h5></span>
                 </div>
             </div>
             <div class="row">
