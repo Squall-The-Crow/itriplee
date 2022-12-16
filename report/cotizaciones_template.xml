@@ -34,7 +34,7 @@
         <div class="header">
             <div class="row">
                 <div class="col-12">
-                    <div class="col-3">
+                    <div class="col">
                     <img src='/itriplee/static/src/img/logo.jpg' width="300" height="94" class="img-fluid"/>
                     </div>                    
                     <div class="col-3 align-self-center"> 
