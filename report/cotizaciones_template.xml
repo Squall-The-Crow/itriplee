@@ -35,11 +35,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="col-3">
-                    <img style="float:left" src='/itriplee/static/src/img/logo.jpg' width="300" height="94"/>
-                    </div>
-                    
+                    <img src='/itriplee/static/src/img/logo.jpg' width="300" height="94" class="img-fluid"/>
+                    </div>                    
                     <div class="col-3 align-self-center"> 
-                    <h5>      Ciudad de Mexico a <span t-field="o.fecha"/></h5></div>
+                    <h5>      Ciudad de Mexico a <span t-field="o.fecha"/></h5>
+                    </div>
                 </div>
             </div>
             <div class="row">
