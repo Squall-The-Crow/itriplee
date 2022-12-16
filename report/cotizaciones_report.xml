@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="cotizaciones_rerport"
+            model="ir.actions.report">
+
+        <field name="name">Formato de Cotizaciones</field>
+        <field name="model">itriplee.cotizaciones</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">itriplee.cotizaciones_template</field>
+        <field name="report_file">itriplee.cotizaciones_template</field>
+        <field name="print_report_name">’Cotización - %s' % (object.name))</field>
+        <field name="binding_model_id" ref="itriplee.model_itriplee_cotizaciones" />
+        <field name="binding_type">report</field>
+    </record>
+    
+        <!--
     <report id="formato_cotizacion"
             model="itriplee.cotizaciones"
             string="Formato de cotizaciones"
             report_type="qweb-pdf"
             name="itriplee.cotizaciones_template"
             file="itriplee.cotizaciones_template"/>
+            -->
 </odoo>
