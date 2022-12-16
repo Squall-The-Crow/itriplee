@@ -33,9 +33,9 @@
         <!-- Multicompany -->
         <div class="header">
             <div class="row">
-                <div class="col-xs-12 text-right align-middle">
+                <div class="col-12 no-gutters text-right align-middle">
                     <img style="float:left" src='/itriplee/static/src/img/logo.jpg' width="300" height="94"/>
-                    <div class="content-heading text-middle"> <h4>      Ciudad de Mexico <span t-field="o.fecha"/></h4></div>
+                    <div class="content-heading text-middle"> <h3>      Ciudad de Mexico a<span t-field="o.fecha"/></h3></div>
                 </div>
             </div>
             <div class="row">

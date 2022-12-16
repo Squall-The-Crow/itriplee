@@ -12,13 +12,4 @@
         <field name="binding_model_id" ref="itriplee.model_itriplee_cotizaciones" />
         <field name="binding_type">report</field>
     </record>
-    
-        <!--
-    <report id="formato_cotizacion"
-            model="itriplee.cotizaciones"
-            string="Formato de cotizaciones"
-            report_type="qweb-pdf"
-            name="itriplee.cotizaciones_template"
-            file="itriplee.cotizaciones_template"/>
-            -->
 </odoo>
