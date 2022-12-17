@@ -41,7 +41,7 @@
                     </div>
             </div>
             <div class="row">
-                <div class="col-6  text-left">
+                <div class="col-5  text-left">
                     <strong>EMPRESA: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.empresa"/>
@@ -60,8 +60,8 @@
                     </t>
                 </div>
                 <div class="col-3 text-left">
-                    <strong>Cotizacion: 
-                        <span style="color:red" t-field="o.name"/></strong>
+                    <strong>Cotizacion: </strong>
+                    <div class="text-danger"><strong><span t-field="o.name"/></strong><div/>
                     </div>
                     
             </div>
