@@ -60,8 +60,8 @@
                     </t>
                 </div>
                 <div class="col-3 text-left">
-                    <strong>Cotizacion: </strong>
-                    <div class="text-danger"><strong><span t-field="o.name"/></strong><div/>
+                    <strong>Cotizacion: 
+                        <span style="color:red" t-field="o.name"/></strong>
                     </div>
                     
             </div>
