@@ -85,7 +85,7 @@
     <template id="contenido1">
         <!-- Multicompany -->
         <div class="page" >
-            <table class="table table-condensed">
+            <table class="table table-sm">
                     <thead>
                     <tr class="table-danger">
                         <th>Descripcion</th>
