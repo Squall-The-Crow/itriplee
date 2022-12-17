@@ -491,6 +491,7 @@
                 </table>
             </div>
             <div class="row">
+            <div class="col-12 text-center align-center">
                 <p>
                     <strong>Tiempo de Entrega: </strong>
                     <span t-field="o.tiempo_entrega"/> -
@@ -535,7 +536,8 @@
                                 El precio es en Moneda Nacional y es L.A.B. en sus instalaciones.
                         </t>
 
-                </p>         
+                </p> 
+            </div>        
             </div>
 
             <div class="row">
