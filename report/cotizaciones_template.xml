@@ -490,70 +490,72 @@
                     </thead>
                 </table>
             </div>
-            <div class="row small py-0 my-0">
-            <div class="col-12 small py-0 my-0">
-                <p>
-                    <strong>Tiempo de Entrega: </strong>
-                    <span t-field="o.tiempo_entrega"/> -
-                    <strong>Vigencia de cotizacion: </strong>
-                    <span t-field="o.vigencia"/>
-                </p>
-                <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
+            <div class="container">
+                <div class="row small py-0 my-0">
+                <div class="col-12">
+                    <p>
+                        <strong>Tiempo de Entrega: </strong>
+                        <span t-field="o.tiempo_entrega"/> -
+                        <strong>Vigencia de cotizacion: </strong>
+                        <span t-field="o.vigencia"/>
+                    </p>
+                    <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
 
-                    <p>
-                     3 AÑOS DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
-                    </p>
-                </t>
-                <t t-if="o.tipo_equipo.name == 'UPS'">
-                    <p>
-                        1 AÑO DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
-                    </p>
-                </t>
-                    <p>
-                        <strong>Condiciones de pago: </strong>
-                            <span t-field="o.condiciones_pago"/>
-                            a Integracion de Equipos Electricos y Electronicos, S.A. de C.V.,
-                    </p>
-                    <p>
-                                                BBVA M.N. 0453048020, Clabe: 01218000453048020-8;
-                    </p>
-                    <p>
-                                                BBVA USD 0144263596 SUC. 3463, Clabe: 012180001442635966;
-                    </p>
-                    <p>
-                                                HSBC M.N. 4031905698 - Clabe: 0211800040319056989
-                    </p>
-                    <p>
-                        <strong>La cotizacion incluye: </strong>
-                        <span t-field="o.incluye"/>
-                    </p>
-                    <p>
-                        <t t-if="o.usdomxn == 'USD'">
-                                El precio es en Dolares Americanos pagadero en Moneda Nacional al tipo de cambio interbancario
-                                del dia de la operacion. Tomando como referencia el de BBVA.
-                        </t>
-                        <t t-if="o.usdomxn == 'MXN'">
-                                El precio es en Moneda Nacional y es L.A.B. en sus instalaciones.
-                        </t>
+                        <p>
+                        3 AÑOS DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
+                        </p>
+                    </t>
+                    <t t-if="o.tipo_equipo.name == 'UPS'">
+                        <p>
+                            1 AÑO DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
+                        </p>
+                    </t>
+                        <p>
+                            <strong>Condiciones de pago: </strong>
+                                <span t-field="o.condiciones_pago"/>
+                                a Integracion de Equipos Electricos y Electronicos, S.A. de C.V.,
+                        </p>
+                        <p>
+                                                    BBVA M.N. 0453048020, Clabe: 01218000453048020-8;
+                        </p>
+                        <p>
+                                                    BBVA USD 0144263596 SUC. 3463, Clabe: 012180001442635966;
+                        </p>
+                        <p>
+                                                    HSBC M.N. 4031905698 - Clabe: 0211800040319056989
+                        </p>
+                        <p>
+                            <strong>La cotizacion incluye: </strong>
+                            <span t-field="o.incluye"/>
+                        </p>
+                        <p>
+                            <t t-if="o.usdomxn == 'USD'">
+                                    El precio es en Dolares Americanos pagadero en Moneda Nacional al tipo de cambio interbancario
+                                    del dia de la operacion. Tomando como referencia el de BBVA.
+                            </t>
+                            <t t-if="o.usdomxn == 'MXN'">
+                                    El precio es en Moneda Nacional y es L.A.B. en sus instalaciones.
+                            </t>
 
-                </p> 
-            </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 text-center align-center">
-                    <p><strong>
-                        A T E N T A M E N T E:
-                    </strong></p>
+                    </p> 
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center align-center">
-                    <p><span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" /></p>
-                    <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
-                    <span t-field="o.vendedor.signature"/>
                 </div>
-            </div>            
+
+                <div class="row">
+                    <div class="col-12 text-center align-center">
+                        <p><strong>
+                            A T E N T A M E N T E:
+                        </strong></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center align-center">
+                        <p><span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" /></p>
+                        <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
+                        <span t-field="o.vendedor.signature"/>
+                    </div>
+                </div>  
+            </div>          
 
             <div class="article">
                 <t t-raw="0" />
