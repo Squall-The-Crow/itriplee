@@ -491,6 +491,7 @@
                 </table>
             </div>
             <div class="row">
+            <div class="col-12">
             <small>
                 <p>
                     <strong>Tiempo de Entrega: </strong>
@@ -539,6 +540,7 @@
                 </p> 
             </small>
             </div>
+            </div>
 
             <div class="row">
                 <div class="col-12 text-center align-center">
@@ -549,7 +551,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center align-center">
-                    <span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" />
+                    <p><span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" /></p>
                     <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
                     <span t-field="o.vendedor.signature"/>
                 </div>
