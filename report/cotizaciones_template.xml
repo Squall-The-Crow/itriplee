@@ -480,7 +480,7 @@
     </template>-->
 
     <template id="custom_footer1">
-        <div class="footer text-center">
+        <div class="footer">
             <div class="row">
                 <div class="col-12 text-center align-center">
                             <p><strong>
