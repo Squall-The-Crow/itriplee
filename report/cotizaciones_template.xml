@@ -491,7 +491,7 @@
                 </table>
             </div>
             <div class="row">
-            <div class="col-12 small">
+            <div class="col-sm-12 small">
                 <p>
                     <strong>Tiempo de Entrega: </strong>
                     <span t-field="o.tiempo_entrega"/> -
