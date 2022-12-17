@@ -384,7 +384,7 @@
     <template id="custom_footer">
     <div class="footer">
        <div class="row">
-         <table class="table" cellpadding = "0">
+         <table class="table" style="padding: 0px;">
                     <thead>
                     <tr class="table-danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
