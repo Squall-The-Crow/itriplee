@@ -384,13 +384,13 @@
     <template id="custom_footer">
     <div class="footer">
        <div class="row">
-         <table class="table" style="padding: 0px;">
+         <table class="table table-sm">
                     <thead>
                     <tr class="table-danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
                     </tr>
                 </thead>
-                <tbody class="sale_tbody">
+                <tbody class="sale_tbody" style="padding: 0px;">
                     <tr>
                         <td>
                             <p>
