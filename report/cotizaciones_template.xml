@@ -384,6 +384,12 @@
     <template id="custom_footer">
     <div class="footer">
        <div class="row">
+        <div class="col-12 text-center align-center">
+                    <p><strong>
+                        A T E N T A M E N T E:
+                    </strong></p>
+                </div>
+       <!--
          <table class="table table-sm">
                     <thead class="table-danger text-center">
                     <tr class="table-danger text-center">
@@ -464,6 +470,7 @@
                    <span t-field="o.vendedor.signature"/>
                 </div>
             </div>
+            -->
 
     </div>
         <div class="article">
