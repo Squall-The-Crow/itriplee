@@ -197,10 +197,10 @@
                         <small>Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
                         alimentacion alterna en caso de que el acondicionador requiera mantenimiento</small>
                         </div>
-                    </div>
+             </div>
                 </t>
-            <div class="col-7 text-left">    
-                <t t-if="o.tipo_equipo.name == 'Baterias'">
+                <div class="col-7 text-left">
+                    <t t-if="o.tipo_equipo.name == 'Baterias'">
                         <p>
                     <strong>Volts: </strong>
                         <span t-field="o.modelo.volts"/>
@@ -211,12 +211,14 @@
                         <span t-field="o.modelo.amperes"/>
                         Kg.
                     </p>
-                </t>
+                        </t>
+                    <p>
                     <strong>Notas: </strong>
                         <t t-if="o.tipo_equipo.name == 'UPS'">
                         <span t-field="o.modelo.notas"/>
                         </t>
                         <span t-field="o.notas"/>
+                    </p>
                     <t t-if="o.modelo.FT is not False">
                     <p><strong>Ficha Tecnica:</strong>
                         <div class="text-pupdauprimary"><span t-field="o.modelo.FT"/></div></p>
