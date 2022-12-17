@@ -304,19 +304,19 @@
             </table>
                </div>
            <div class="row">
-                <div class="col-xs-7 text-left">
+                <div class="col-7 text-left">
                     <p>
                     <strong>Notas: </strong>
                         <span t-field="o.notas"/>
                     </p>
                 </div>
                 <t t-if="o.modelo.imagen is not False">
-               <div class="col-xs-5 text-right align-right">
+               <div class="col-5 text-right align-right">
                     <span t-field="o.modelo.imagen" t-field-options='{"widget": "image"}'/>
                 </div>
                 </t>
                  <t t-if="o.modelo.imagen is False">
-               <div class="col-xs-5 text-right">
+               <div class="col-5 text-right">
                     <img src='/itriplee/static/src/img/logo1.png' class="rounded float-right" width="150" height="150"/>
                 </div>
                 </t>
