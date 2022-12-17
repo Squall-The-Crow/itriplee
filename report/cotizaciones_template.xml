@@ -450,7 +450,7 @@
                     </strong></p>
                 </div>
                     <div class="col-12 text-center align-center">
-                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.digital_signature)"/>
+                    <img t-att-src="'data:image/png;base64,%s' % to_text(doc.vendedor.digital_signature)"/>
                     </div>
 
             <div class="col-12 text-center align-center">
