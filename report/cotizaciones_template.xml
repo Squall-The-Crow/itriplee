@@ -453,7 +453,7 @@
                 .
             </div>
                     <div class="col-10 text-center align-center">
-                    <img  t-att-src="image_data_uri(o.vendedor.digital_signature)"/>
+                    <img t-att-src="'data:image/png;base64,%s' % to_text(o.vendedor.digital_signature)"/>
                     </div>
 
             <div class="col-12 text-center align-center">
