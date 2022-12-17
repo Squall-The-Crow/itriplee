@@ -154,13 +154,12 @@
                     </tr>
                     <t t-if="o.modelo.tecnologia == 'trifasico'">
                         <tr>
-                            <td class="text-right">
+                            <td>
                                 <div class="text-danger">
                                 <p><strong>Selector de Linea marca Vogar</strong></p>
                             <p><strong>Modelo: </strong><span t-field="o.modelo.selector.name"/></p>
                             <p><strong>Capacidad: </strong><span t-field="o.modelo.selector.capacidad"/></p>
                                 </div>
-
                             </td>
                             <td class="text-right">
                                 <div class="text-danger">
@@ -200,8 +199,8 @@
                         </div>
                     </div>
                 </t>
+            <div class="col-7 text-left">    
                 <t t-if="o.tipo_equipo.name == 'Baterias'">
-                <div class="col-7 text-left">
                         <p>
                     <strong>Volts: </strong>
                         <span t-field="o.modelo.volts"/>
@@ -212,9 +211,7 @@
                         <span t-field="o.modelo.amperes"/>
                         Kg.
                     </p>
-                </div>
                 </t>
-                <div class="col-7 text-left">
                     <strong>Notas: </strong>
                         <t t-if="o.tipo_equipo.name == 'UPS'">
                         <span t-field="o.modelo.notas"/>
