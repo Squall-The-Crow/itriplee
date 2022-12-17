@@ -489,7 +489,7 @@
                 </div>
             </div>
             <div class="article">
-            <t t-out="0" />
+            <t t-out="body" />
             </div>
         </div>
     </template>
