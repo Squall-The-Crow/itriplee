@@ -490,7 +490,7 @@
                     </thead>
                 </table>
             </div>
-            <div class="row">
+            <div class="row small py-0 my-0">
             <div class="col-12 small py-0 my-0">
                 <p>
                     <strong>Tiempo de Entrega: </strong>
