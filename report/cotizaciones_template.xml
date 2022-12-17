@@ -87,7 +87,7 @@
         <div class="page" >
             <table class="table table-condensed">
                     <thead>
-                    <tr class="danger">
+                    <tr class="table-danger">
                         <th>Descripcion</th>
                         <th class="text-right">Cantidad</th>
                         <th class="text-right">Precio</th>
@@ -202,7 +202,7 @@
                 </t>
 
 
-                <div class="col-xs-7 text-left">
+                <div class="col-7 text-left">
                     <t t-if="o.tipo_equipo.name == 'Baterias'">
                         <p>
                     <strong>Volts: </strong>
@@ -238,12 +238,12 @@
                     </t>
                 </div>
                 <t t-if="o.modelo.imagen is not False">
-               <div class="col-xs-5 text-right align-right">
+               <div class="col-5 text-right align-right">
                     <span t-field="o.modelo.imagen" t-field-options='{"widget": "image", "style":"max-height:240px"}'/>
                 </div>
                 </t>
                  <t t-if="o.modelo.imagen is False">
-               <div class="col-xs-5 text-right align-right">
+               <div class="col-5 text-right align-right">
                     <img src='/itriplee/static/src/img/logo1.png' width="250" height="250"/>
                 </div>
                 </t>
