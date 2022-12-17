@@ -381,12 +381,13 @@
         </div>
     </template>
 
-<template id="custom_footer">
+    <template id="custom_footer">
     <div class="footer">
+    <!--
        <div class="row">
-         <table class="table table-condensed">
-                    <thead class="danger text-center">
-                    <tr class="danger text-center">
+         <table class="table table-sm">
+                    <thead class="table-danger text-center">
+                    <tr class="table-danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
                     </tr>
                 </thead>
@@ -443,36 +444,28 @@
                 </tbody>
          </table>
        </div>
+       -->
         <div class="row">
-                <div class="col-xs-12 text-center align-center">
-                    <p><strong>
-                        A T E N T A M E N T E:
-                    </strong></p>
-                </div>
-            <div class="col-xs-2 text-center align-center">
-                .
+            <div class="col-12 text-center align-center">
+                <p><strong>
+                     A T E N T A M E N T E:
+                </strong></p>
             </div>
-                    <div class="col-xs-10 text-center align-center">
-                    <span t-field="o.vendedor.digital_signature" t-field-options='{"widget": "image"}'/>
-                    </div>
 
-            <div class="col-xs-12 text-center align-center">
-                    <p><strong>
-                        <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
-                    </strong></p>
-                </div>
-            </div>
+        </div>
+        <!--
             <div class="row">
-                <div class="col-xs-12 text-center align-center">
-                   <small><span t-field="o.vendedor.signature"/></small>
+                <div class="col-12 text-center align-center">
+                    <span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" />
+                    <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
+                   <span t-field="o.vendedor.signature"/>
                 </div>
+                 -->
             </div>
-
-    </div>
         <div class="article">
           <t t-raw="0" />
         </div>
+           
     </template>
-
 
 </odoo>
