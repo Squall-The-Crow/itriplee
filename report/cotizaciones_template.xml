@@ -193,7 +193,7 @@
             </table>
             <div class="row">
                 <t t-if="o.modelo.tecnologia == 'trifasico'">
-                    <div class="col-xs-12">
+                    <div class="col-12">
                         <div class="text-danger">
                         <small>Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
                         alimentacion alterna en caso de que el acondicionador requiera mantenimiento</small>
