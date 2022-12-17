@@ -331,9 +331,9 @@
 
         <template id="contenido3">
           <div class="page" >
-            <table class="table table-sm">
+            <table class="table table-condensed">
                     <thead>
-                    <tr class="table-danger">
+                    <tr class="danger">
                         <th>Modelo</th>
                         <th class="text-center">Descripcion</th>
                         <th class="text-right">Precio</th>
@@ -385,12 +385,12 @@
     <div class="footer">
        <div class="row">
          <table class="table table-sm">
-                    <thead>
+                    <thead class="table-danger text-center">
                     <tr class="table-danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
                     </tr>
                 </thead>
-                <tbody class="sale_tbody">
+                <tbody class="invoice_tbody">
                     <tr>
                         <td>
                             <p>
