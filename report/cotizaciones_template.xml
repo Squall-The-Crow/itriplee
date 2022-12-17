@@ -59,11 +59,9 @@
                     <span t-field="o.cliente_registrado.phone"/>
                     </t>
                 </div>
-                <div class="col-3 text-left">
+                <div class="col-3 text-right">
                     <strong>Cotizacion: 
                 <span style="color:red" t-field="o.name"/></strong>
-                    
-                    
             </div>
         </div>
             <div class="row">
