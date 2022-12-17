@@ -385,7 +385,7 @@
     <div class="footer">
        <div class="row">
          <table class="table table-sm">
-                    <thead class="danger text-center">
+                    <thead class="table-danger text-center">
                     <tr class="table-danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
                     </tr>
@@ -453,7 +453,7 @@
                 .
             </div>
                     <div class="col-10 text-center align-center">
-                    <span t-field="o.vendedor.digital_signature" t-field-options='{"widget": "image"}'/>
+                    <img  t-att-src="image_data_uri(o.vendedor.digital_signature)"/>
                     </div>
 
             <div class="col-12 text-center align-center">
