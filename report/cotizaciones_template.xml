@@ -77,6 +77,9 @@
                 </t>
             </div>
         </div>
+        <div class="article">
+          <t t-out="0" />
+        </div>
     </template>
 
     <template id="contenido1">
@@ -247,6 +250,9 @@
 
             </div>
         </div>
+        <div class="article">
+          <t t-out="body" />
+        </div>
     </template>
 
     <template id="contenido2">
@@ -317,6 +323,10 @@
             </div>
 
         </div>
+
+        <div class="article">
+          <t t-out="body" />
+        </div>
     </template>
 
         <template id="contenido3">
@@ -365,6 +375,9 @@
                             </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="article">
+          <t t-out="body" />
         </div>
     </template>
 
@@ -469,11 +482,14 @@
     <template id="custom_footer1">
         <div class="footer">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 text-center align-center">
                             <p><strong>
                                 A T E N T A M E N T E:
                             </strong></p>
                 </div>
+            </div>
+            <div class="article">
+            <t t-out="0" />
             </div>
         </div>
     </template>
