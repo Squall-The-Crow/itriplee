@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="cotizaciones_rerport"
+    <record id="cotizaciones_report"
             model="ir.actions.report">
         <field name="name">Formato de Cotizaciones</field>
         <field name="model">itriplee.cotizaciones</field>
