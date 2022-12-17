@@ -460,8 +460,9 @@
                     <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
                    <span t-field="o.vendedor.signature"/>
                 </div>
+                 -->
             </div>
-            -->
+           
     </template>
 
 </odoo>
