@@ -390,7 +390,7 @@
                         <th>CARACTERISTICAS COMERCIALES</th>
                     </tr>
                 </thead>
-                <tbody class="sale_tbody" style="padding: 0px;">
+                <tbody class="sale_tbody">
                     <tr>
                         <td>
                             <p>
