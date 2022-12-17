@@ -4,7 +4,7 @@
     <template id="cotizaciones_template">
           <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="itriplee.external_layout">
+                <t t-call="report.external_layout">
                     <!--<div class="header">
                         <img src='/itriplee/static/src/img/logo.jpg' width="100" height="100"/>
                     </div>
