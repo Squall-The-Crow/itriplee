@@ -85,7 +85,7 @@
     <template id="contenido1">
         <!-- Multicompany -->
         <div class="page" >
-            <table class="table table-sm py-0">
+            <table class="table table-sm py-0 my-0">
                     <thead>
                     <tr class="table-danger">
                         <th>Descripcion</th>
@@ -491,7 +491,7 @@
                 </table>
             </div>
             <div class="row">
-            <div class="col-12 small py-0">
+            <div class="col-12 small py-0 my-0">
                 <p>
                     <strong>Tiempo de Entrega: </strong>
                     <span t-field="o.tiempo_entrega"/> -
