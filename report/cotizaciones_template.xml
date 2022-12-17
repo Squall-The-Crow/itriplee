@@ -383,6 +383,7 @@
 
     <template id="custom_footer">
     <div class="footer">
+    <!--
        <div class="row">
          <table class="table table-sm">
                     <thead class="table-danger text-center">
@@ -443,6 +444,7 @@
                 </tbody>
          </table>
        </div>
+       -->
         <div class="row">
                 <div class="col-12 text-center align-center">
                     <p><strong>
