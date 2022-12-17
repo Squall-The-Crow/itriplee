@@ -59,7 +59,7 @@
                     <span t-field="o.cliente_registrado.phone"/>
                     </t>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-3 text-left">
                     <strong>Cotizacion: </strong>
                     </div>
                     <div class="text-danger"><strong><span t-field="o.name"/></strong><div/>
