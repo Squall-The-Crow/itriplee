@@ -449,10 +449,7 @@
                         A T E N T A M E N T E:
                     </strong></p>
                 </div>
-            <div class="col-2 text-center align-center">
-                .
-            </div>
-                    <div class="col-10 text-center align-center">
+                    <div class="col-12 text-center align-center">
                     <img t-att-src="'data:image/png;base64,%s' % to_text(o.vendedor.digital_signature)"/>
                     </div>
 
@@ -464,7 +461,7 @@
             </div>
             <div class="row">
                 <div class="col-12 text-center align-center">
-                   <small><span t-field="o.vendedor.signature"/></small>
+                   <span t-field="o.vendedor.signature"/>
                 </div>
             </div>
 
