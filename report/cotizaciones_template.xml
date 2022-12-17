@@ -154,7 +154,7 @@
                     </tr>
                     <t t-if="o.modelo.tecnologia == 'trifasico'">
                         <tr>
-                            <td style=style="padding-bottom: 0px;">
+                            <td class="text-right" style="padding-bottom: 1px;">
                                 <div class="text-danger">
                                 <p><strong>Selector de Linea marca Vogar</strong></p>
                             <p><strong>Modelo: </strong><span t-field="o.modelo.selector.name"/></p>
@@ -162,13 +162,13 @@
                                 </div>
 
                             </td>
-                            <td class="text-right" style="padding-bottom: 0px;">
+                            <td class="text-right" style="padding-bottom: 1px;">
                                 <div class="text-danger">
                                 <p> 1 </p>
                             <p>16 % </p>
                                 </div>
                             </td>
-                            <td class="text-right">
+                            <td class="text-right" style="padding-bottom: 1px;">
                                 <div class="text-danger">
                               <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc"
                                          t-options='{"widget": "float", "precision": 2}'/></p>
@@ -176,7 +176,7 @@
                             <p> Total</p>
                                 </div>
                             </td>
-                            <td class="text-right" style=style="padding-bottom: 0px;">
+                            <td class="text-right" style="padding-bottom: 1px;">
                                 <div class="text-danger">
                               <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc"
                                          t-options='{"widget": "float", "precision": 2}'/></p>
