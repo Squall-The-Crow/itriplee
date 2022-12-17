@@ -33,15 +33,13 @@
         <!-- Multicompany -->
         <div class="header">
             <div class="row">
-                    <div class="col-5">
-                    <img src='/itriplee/static/src/img/logo.jpg' width="300" height="94"/>
-                    </div>                    
-                    <div class="col-7 align-self-end text-right"> 
-                    <h5>      Ciudad de Mexico a <span t-field="o.fecha"/></h5>
-                    </div>
+                <div class="col-xs-12 text-right align-middle">
+                    <img style="float:left" src='/itriplee/static/src/img/logo.jpg' width="300" height="94"/>
+                    <div class="content-heading text-middle"> <h4>      Ciudad de Mexico <span t-field="o.fecha"/></h4></div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-5  text-left">
+                <div class="col-xs-5  text-left">
                     <strong>EMPRESA: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.empresa"/>
@@ -50,7 +48,7 @@
                     <span t-field="o.cliente_registrado.parent_id.name"/>
                     </t>
                     </div>
-                <div class="col-3 text-right">
+                <div class="col-xs-3 text-right">
                     <strong>Telefono: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.telefono"/>
@@ -59,19 +57,22 @@
                     <span t-field="o.cliente_registrado.phone"/>
                     </t>
                 </div>
-                <div class="col-3 text-right">
-                    <strong>Cotizacion: 
-                <span style="color:red" t-field="o.name"/></strong>
+                <div class="col-xs-2 text-right">
+                    <strong>Cotizacion: </strong>
+                    </div>
+                <div class="col-xs-2 text-left">
+                <div class="text-danger"><strong><span t-field="o.name"/></strong><div/>
+                </div>
             </div>
         </div>
             <div class="row">
                 <t t-if="o.nuevo == True">
-               <div class="col-12  text-left">
+               <div class="col-xs-4  text-center">
                     <strong>At'n: </strong><span t-field="o.cliente"/>
                     </div>
                 </t>
                 <t t-if="o.nuevo == False">
-               <div class="col-12  text-left">
+               <div class="col-xs-4  text-center">
                     <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
                     </div>
                 </t>
@@ -85,9 +86,9 @@
     <template id="contenido1">
         <!-- Multicompany -->
         <div class="page" >
-            <table class="table table-sm">
+            <table class="table table-condensed">
                     <thead>
-                    <tr class="table-danger">
+                    <tr class="danger">
                         <th>Descripcion</th>
                         <th class="text-right">Cantidad</th>
                         <th class="text-right">Precio</th>
@@ -202,7 +203,7 @@
                 </t>
 
 
-                <div class="col-7 text-left">
+                <div class="col-xs-7 text-left">
                     <t t-if="o.tipo_equipo.name == 'Baterias'">
                         <p>
                     <strong>Volts: </strong>
@@ -238,12 +239,12 @@
                     </t>
                 </div>
                 <t t-if="o.modelo.imagen is not False">
-               <div class="col-5 text-right align-right">
+               <div class="col-xs-5 text-right align-right">
                     <span t-field="o.modelo.imagen" t-field-options='{"widget": "image", "style":"max-height:240px"}'/>
                 </div>
                 </t>
                  <t t-if="o.modelo.imagen is False">
-               <div class="col-5 text-right align-right">
+               <div class="col-xs-5 text-right align-right">
                     <img src='/itriplee/static/src/img/logo1.png' width="250" height="250"/>
                 </div>
                 </t>
@@ -384,16 +385,9 @@
     <template id="custom_footer">
     <div class="footer">
        <div class="row">
-        <div class="col-12 text-center align-center">
-                    <p><strong>
-                        A T E N T A M E N T E:
-                    </strong></p>
-                </div>
-        </div>
-       <!--
-         <table class="table table-sm">
-                    <thead class="table-danger text-center">
-                    <tr class="table-danger text-center">
+         <table class="table table-condensed">
+                    <thead class="danger text-center">
+                    <tr class="danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
                     </tr>
                 </thead>
@@ -451,27 +445,29 @@
          </table>
        </div>
         <div class="row">
-                <div class="col-12 text-center align-center">
+                <div class="col-xs-12 text-center align-center">
                     <p><strong>
                         A T E N T A M E N T E:
                     </strong></p>
                 </div>
-                    <div class="col-12 text-center align-center">
-                    <span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" />
+            <div class="col-xs-2 text-center align-center">
+                .
+            </div>
+                    <div class="col-xs-10 text-center align-center">
+                    <span t-field="o.vendedor.digital_signature" t-field-options='{"widget": "image"}'/>
                     </div>
 
-            <div class="col-12 text-center align-center">
+            <div class="col-xs-12 text-center align-center">
                     <p><strong>
                         <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
                     </strong></p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 text-center align-center">
-                   <span t-field="o.vendedor.signature"/>
+                <div class="col-xs-12 text-center align-center">
+                   <small><span t-field="o.vendedor.signature"/></small>
                 </div>
             </div>
-            -->
 
     </div>
         <div class="article">
