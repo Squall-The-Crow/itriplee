@@ -41,7 +41,7 @@
                     </div>
             </div>
             <div class="row">
-                <div class="col-xs-5  text-left">
+                <div class="col-5  text-left">
                     <strong>EMPRESA: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.empresa"/>
@@ -50,7 +50,7 @@
                     <span t-field="o.cliente_registrado.parent_id.name"/>
                     </t>
                     </div>
-                <div class="col-xs-3 text-right">
+                <div class="col-3 text-right">
                     <strong>Telefono: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.telefono"/>
@@ -59,10 +59,10 @@
                     <span t-field="o.cliente_registrado.phone"/>
                     </t>
                 </div>
-                <div class="col-xs-2 text-right">
+                <div class="col-2 text-right">
                     <strong>Cotizacion: </strong>
                     </div>
-                <div class="col-xs-2 text-left">
+                <div class="col-2 text-left">
                 <div class="text-danger"><strong><span t-field="o.name"/></strong><div/>
                 </div>
             </div>
