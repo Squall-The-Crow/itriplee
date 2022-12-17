@@ -488,8 +488,6 @@
                     </strong></p>
         </div>
         </div>
-
-     </div>
         <div class="article">
           <t t-raw="0" />
         </div>
