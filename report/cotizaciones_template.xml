@@ -194,34 +194,37 @@
                 <t t-if="o.modelo.tecnologia == 'trifasico'">
                     <div class="col-12">
                         <div class="text-danger">
-                        <small>Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
-                        alimentacion alterna en caso de que el acondicionador requiera mantenimiento</small>
+                        Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
+                        alimentacion alterna en caso de que el acondicionador requiera mantenimiento
                         </div>
-             </div>
+                    </div>
                 </t>
-                <div class="col-7 text-left">
+            <div class="col-7 text-left">
                     <t t-if="o.tipo_equipo.name == 'Baterias'">
                         <p>
-                    <strong>Volts: </strong>
-                        <span t-field="o.modelo.volts"/>
-                        Kg.
-                    </p>
+                        <strong>Volts: </strong>
+                            <span t-field="o.modelo.volts"/>
+                            Kg.
+                        </p>
                         <p>
-                    <strong>Amperes: </strong>
-                        <span t-field="o.modelo.amperes"/>
-                        Kg.
-                    </p>
-                        </t>
-                    <p>
-                    <strong>Notas: </strong>
-                        <t t-if="o.tipo_equipo.name == 'UPS'">
+                        <strong>Amperes: </strong>
+                            <span t-field="o.modelo.amperes"/>
+                            Kg.
+                        </p>
+                    </t>
+            <p>
+            <strong>Notas: </strong>
+                    <t t-if="o.tipo_equipo.name == 'UPS'">
                         <span t-field="o.modelo.notas"/>
-                        </t>
-                        <span t-field="o.notas"/>
-                    </p>
+                    </t>
+            <span t-field="o.notas"/>
+            </p>
                     <t t-if="o.modelo.FT is not False">
-                    <p><strong>Ficha Tecnica:</strong>
-                        <div class="text-pupdauprimary"><span t-field="o.modelo.FT"/></div></p>
+                        <p>
+                        <strong>Ficha Tecnica:</strong>
+                            <div class="text-pupdauprimary"><span t-field="o.modelo.FT"/>
+                        </div>
+                        </p>
                     </t>
                     <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
                         <div class="fixed-bottom">
@@ -229,22 +232,20 @@
                         </div>
                     </t>
                     <t t-if="o.tipo_equipo.name == 'UPS'">
-                    <div class="fixed-bottom">
-                         <img src='/itriplee/static/src/img/tira_salicru.jpeg' width="300" height="62"/>
+                        <div class="fixed-bottom">
+                            <img src='/itriplee/static/src/img/tira_salicru.jpeg' width="300" height="62"/>
                         </div>
                     </t>
-                </div>
-                <t t-if="o.modelo.imagen is not False">
-               <div class="col-5 text-right align-right">
+            </div>
+            <div class="col-5 text-right align-right">
+                <t t-if="o.modelo.imagen is not False">               
                     <span t-field="o.modelo.imagen" t-field-options='{"widget": "image", "style":"max-height:240px"}'/>
-                </div>
+            
                 </t>
                  <t t-if="o.modelo.imagen is False">
-               <div class="col-5 text-right align-right">
-                    <img src='/itriplee/static/src/img/logo1.png' width="250" height="250"/>
-                </div>
+                    <img src='/itriplee/static/src/img/logo1.png' width="250" height="250"/>                
                 </t>
-
+            </div>
             </div>
         </div>
         <div class="article">
