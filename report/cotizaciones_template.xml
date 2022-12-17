@@ -558,17 +558,17 @@
                     </div>
                 </div>
                 <div class="row py-0 my-0">
-                    <div class="col-12 align-center">
+                    <div class="col-12 text-center align-center">
                         <span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" />
                     </div>
                 </div>
                 <div class="row py-0 my-0">
-                <div class="col-12 align-center">
+                <div class="col-12 text-center align-center">
                     <span t-field="o.vendedor.name"/> / <span t-field="o.vendedor.puesto"/>
                 </div>
                 </div>
                 <div class="row small py-0 my-0">
-                <div class="col-12 align-center">
+                <div class="col-12 text-center align-center">
                     <span t-field="o.vendedor.signature"/>
                 </div>
                 </div>    
