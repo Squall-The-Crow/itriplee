@@ -446,14 +446,13 @@
        </div>
        -->
         <div class="row">
-            <div class="col-12 text-center align-center">
-                <p><strong>
-                     A T E N T A M E N T E:
-                </strong></p>
-            </div>
+                <div class="col-12 text-center align-center">
+                    <p><strong>
+                        A T E N T A M E N T E:
+                    </strong></p>
+                </div>
 
-        </div>
-        <!--
+            </div>
             <div class="row">
                 <div class="col-12 text-center align-center">
                     <span t-field="o.vendedor.digital_signature" t-options="{'widget':'image'}" />
@@ -461,7 +460,11 @@
                    <span t-field="o.vendedor.signature"/>
                 </div>
             </div>
-            -->
+
+    </div>
+        <div class="article">
+          <t t-raw="0" />
+        </div>
     </template>
 
 </odoo>
