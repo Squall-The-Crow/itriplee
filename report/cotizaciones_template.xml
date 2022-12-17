@@ -85,7 +85,7 @@
     <template id="contenido1">
         <!-- Multicompany -->
         <div class="page" >
-            <table class="table table-sm">
+            <table class="table table-sm py-0">
                     <thead>
                     <tr class="table-danger">
                         <th>Descripcion</th>
@@ -96,7 +96,7 @@
                 </thead>
                 <tbody class="invoice_tbody">
                     <tr>
-                        <td style="padding-bottom: 0px;">
+                        <td>
                             <p><strong><span t-field="o.tipo_equipo.name"/> <span t-field="o.marca.name"/> - Modelo: </strong>
                             <span t-field="o.modelo.name"/></p>
                             <p><strong>Capacidad: </strong><span t-field="o.modelo.capacidad"/>
@@ -118,7 +118,7 @@
                                 <p><strong>Tecnologia: </strong><span t-field="o.modelo.tecnologia"/></p>
                             </t>
                         </td>
-                        <td class="text-right" style="padding-bottom: 0px;">
+                        <td class="text-right">
                             <p><span t-field="o.cantidad"/></p>
                             <t t-if="o.descuento != 0">
                             <p><span t-field="o.descuento"/> %</p>
@@ -133,7 +133,7 @@
                                 </t>
                             </p>
                         </td>
-                        <td class="text-right" style="padding-bottom: 0px;">
+                        <td class="text-right">
                             <p>$<span t-field="o.precio_final"/></p>
                             <t t-if="o.descuento != 0">
                             <p>Descuento: </p>
@@ -142,7 +142,7 @@
                              <p>IVA: </p>
                              <p>Total: </p>
                         </td>
-                         <td class="text-right" style="padding-bottom: 0px;">
+                         <td class="text-right">
                             <p>$<span t-esc="'{0:,.2f}'.format(int(o.cantidad*o.precio_final))"/></p>
                              <t t-if="o.descuento != 0">
                            <p> $<span t-esc="'{0:,.2f}'.format(int(o.cantidad*o.descuento_total))"/></p>
@@ -154,7 +154,7 @@
                     </tr>
                     <t t-if="o.modelo.tecnologia == 'trifasico'">
                         <tr>
-                            <td class="text-right" style="padding-bottom: 1px;">
+                            <td class="text-right">
                                 <div class="text-danger">
                                 <p><strong>Selector de Linea marca Vogar</strong></p>
                             <p><strong>Modelo: </strong><span t-field="o.modelo.selector.name"/></p>
@@ -162,13 +162,13 @@
                                 </div>
 
                             </td>
-                            <td class="text-right" style="padding-bottom: 1px;">
+                            <td class="text-right">
                                 <div class="text-danger">
                                 <p> 1 </p>
                             <p>16 % </p>
                                 </div>
                             </td>
-                            <td class="text-right" style="padding-bottom: 1px;">
+                            <td class="text-right">
                                 <div class="text-danger">
                               <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc"
                                          t-options='{"widget": "float", "precision": 2}'/></p>
@@ -176,7 +176,7 @@
                             <p> Total</p>
                                 </div>
                             </td>
-                            <td class="text-right" style="padding-bottom: 1px;">
+                            <td class="text-right">
                                 <div class="text-danger">
                               <p> $<span t-esc="o.modelo.selector.precio * o.modelo.selector.tc.tc"
                                          t-options='{"widget": "float", "precision": 2}'/></p>
@@ -491,7 +491,7 @@
                 </table>
             </div>
             <div class="row">
-            <div class="col-sm-12 small">
+            <div class="col-12 small py-0">
                 <p>
                     <strong>Tiempo de Entrega: </strong>
                     <span t-field="o.tiempo_entrega"/> -
