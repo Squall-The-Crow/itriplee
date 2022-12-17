@@ -66,12 +66,12 @@
         </div>
             <div class="row">
                 <t t-if="o.nuevo == True">
-               <div class="col-xs-4  text-center">
+               <div class="col-12  text-left">
                     <strong>At'n: </strong><span t-field="o.cliente"/>
                     </div>
                 </t>
                 <t t-if="o.nuevo == False">
-               <div class="col-xs-4  text-center">
+               <div class="col-12  text-left">
                     <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
                     </div>
                 </t>
