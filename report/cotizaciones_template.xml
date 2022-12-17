@@ -384,7 +384,7 @@
 <template id="custom_footer">
     <div class="footer">
        <div class="row">
-         <table class="table table-condensed">
+         <table class="table table-sm">
                     <thead class="danger text-center">
                     <tr class="danger text-center">
                         <th>CARACTERISTICAS COMERCIALES</th>
