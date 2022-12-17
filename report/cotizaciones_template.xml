@@ -331,9 +331,9 @@
 
         <template id="contenido3">
           <div class="page" >
-            <table class="table table-sm">
+            <table class="table table-condensed">
                     <thead>
-                    <tr class="table-danger">
+                    <tr class="danger">
                         <th>Modelo</th>
                         <th class="text-center">Descripcion</th>
                         <th class="text-right">Precio</th>
@@ -449,6 +449,7 @@
                         A T E N T A M E N T E:
                     </strong></p>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-12 text-center align-center">
