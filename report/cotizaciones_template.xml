@@ -261,7 +261,7 @@
        <div class="page" >
             <table class="table table-sm">
                     <thead>
-                    <tr class="danger">
+                    <tr class="table-danger">
                         <th>Descripcion</th>
                         <th class="text-right">Cantidad</th>
                         <th class="text-right">Precio</th>
