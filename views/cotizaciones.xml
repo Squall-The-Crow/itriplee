@@ -176,8 +176,7 @@
       <field name="arch" type="xml">
         <tree string="cotizaciones Tree">
           <field name="name"/>
-          <field name="cliente_registrado.name"/>
-          <field name="cliente_registrado.parent_id"/>
+          <field name="cliente_registrado"/>
           <field name="vendedor"/>
           <field name="fecha"/>
         </tree>
