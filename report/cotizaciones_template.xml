@@ -259,8 +259,7 @@
 
     <template id="contenido2">
        <div class="page" >
-           <div class="fixed-top">
-            <table class="table table-condensed">
+            <table class="table table-sm">
                     <thead>
                     <tr class="danger">
                         <th>Descripcion</th>
@@ -304,7 +303,6 @@
                     </tr>
                 </tbody>
             </table>
-               </div>
            <div class="row">
                 <div class="col-7 text-left">
                     <p>
