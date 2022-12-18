@@ -78,7 +78,7 @@
             <notebook>
               <page string="Equipos">
                 <group>
-                  <group>
+
                     <field name="multilinea"
                            attrs="{'invisible': [('tipo','!=', 'multilinea')]}" colspan="2">
                        <tree string="Sales Order Lines" editable="bottom">
@@ -92,7 +92,7 @@
                          <field name="subtotal"/>
                        </tree>
                     </field>
-                    </group>
+
                 </group>
                   <group>
                     <group>
