@@ -194,8 +194,10 @@
                     <div class="row">
                     <div class="col-12">
                         <div class="text-danger">
+                        <small>
                         Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
                         alimentacion alterna en caso de que el acondicionador requiera mantenimiento
+                        </small>
                         </div>
                     </div>
                     </div>
@@ -229,14 +231,14 @@
                         </p>
                     </t>
                     <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
-                        <div class="fixed-bottom">
+                        
                          <img src='/itriplee/static/src/img/tira.jpeg' width="300" height="62"/>
-                        </div>
+                        
                     </t>
                     <t t-if="o.tipo_equipo.name == 'UPS'">
-                        <div class="fixed-bottom">
+                        
                             <img src='/itriplee/static/src/img/tira_salicru.jpeg' width="300" height="62"/>
-                        </div>
+                       
                     </t>
             </div>
             <div class="col-5 text-right align-right">
