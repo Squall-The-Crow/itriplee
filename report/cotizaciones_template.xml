@@ -189,16 +189,18 @@
                         </tr>
                     </t>
                 </tbody>
-            </table>
-            <div class="row">
+            </table>            
                 <t t-if="o.modelo.tecnologia == 'trifasico'">
+                    <div class="row">
                     <div class="col-12">
                         <div class="text-danger">
                         Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
                         alimentacion alterna en caso de que el acondicionador requiera mantenimiento
                         </div>
                     </div>
+                    </div>
                 </t>
+            <div class="row">
             <div class="col-7 text-left">
                     <t t-if="o.tipo_equipo.name == 'Baterias'">
                         <p>
