@@ -285,6 +285,7 @@
                         <td class="text-right">
                             <span t-field="o.precio"/>
                             <t t-if="o.descuento != 0">
+                            <p></p>
                             <p>Descuento: </p>
                             </t>
                              <p>Subtotal: </p>
@@ -331,9 +332,9 @@
 
         <template id="contenido3">
           <div class="page" >
-            <table class="table table-condensed">
+            <table class="table table-sm">
                     <thead>
-                    <tr class="danger">
+                    <tr class="table-danger">
                         <th>Modelo</th>
                         <th class="text-center">Descripcion</th>
                         <th class="text-right">Precio</th>
