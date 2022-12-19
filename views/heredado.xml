@@ -20,9 +20,11 @@
       <field name="model">res.partner</field>
       <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
-          <field name="comment" position="after">
-              <field name="cotizaciones" />
-          </field>
+          <xpath expr="//page[@string='Internal Notes']" position="before">
+        <page string="Cotizaciones">
+            <field name="cotizaciones" />
+        </page>
+        </xpath>
           <field name="category_id" position="after">
               <field name="sector" />
           </field>
