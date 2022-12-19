@@ -14,7 +14,7 @@ class equipos(models.Model):
     capacidad = fields.Char('Capacidad', related='modelo.capacidad', readonly=True)
     marca = fields.Char('Marca', related='modelo.marca.name', readonly=True)
     tipo = fields.Char('Tipo', related='modelo.tipo.name', readonly=True)
-    tecnologia = fields.Char('Tecnologia', related='modelo.tipo', readonly=True)
+    tecnologia = fields.Char('Tecnologia', related='modelo.tecnologia', readonly=True)
     cliente = fields.Many2one('res.partner', 'Cliente')
     vendedor = fields.Many2one('res.users', 'Vendido Por')
     poliza = fields.Many2one('itriplee.polizas', 'Poliza')
