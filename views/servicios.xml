@@ -156,7 +156,6 @@
             </field>
             <field name="equipos_genericos">
               <tree string="Equipos Genericos">
-                <field name="name"/>
                 <field name="caracteristicas"/>
                 <field name="capacidad"/>                
               </tree>
