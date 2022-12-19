@@ -14,6 +14,7 @@ access_marca_base,itriplee.marca,model_itriplee_marca,cotizaciones_grupo_base,1,
 access_marca_encargado,itriplee.marca.encargado,model_itriplee_marca,catalogo_grupo_encargado,1,1,1,1
 access_selector_base,itriplee.selector,model_itriplee_selector,cotizaciones_grupo_base,1,0,0,0
 access_selector_encargado,itriplee.selector.encargado,model_itriplee_selector,catalogo_grupo_encargado,1,1,1,1
+access_servicios_solo_lectura,itriplee.servicio.solo_lectura,model_itriplee_servicio,cotizaciones_grupo_base,1,0,0,0
 access_servicios_usuario,itriplee.servicio.usuario,model_itriplee_servicio,servicios_grupo_base,1,0,1,0
 access_servicios_gerencia,itriplee.servicio.gerencia,model_itriplee_servicio,servicios_grupo_gerencia,1,1,1,0
 itriplee.access_itriplee_servicio_refacciones,access_itriplee_servicio_refacciones,itriplee.model_itriplee_servicio_refacciones,base.group_user,1,1,1,1
