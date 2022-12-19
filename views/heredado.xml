@@ -25,6 +25,16 @@
             <field name="cotizaciones" />
         </page>
         </xpath>
+        <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Servicios">
+            <field name="servicios" />
+        </page>
+        </xpath>
+        <xpath expr="//page[@name='internal_notes']" position="before">
+        <page string="Equipos">
+            <field name="equipos" />
+        </page>
+        </xpath>
           <field name="category_id" position="after">
               <field name="sector" />
           </field>
