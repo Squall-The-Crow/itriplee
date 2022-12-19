@@ -148,7 +148,7 @@
             <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]"/>
             <tree string="Equipos">
                 <field name="name"/>
-                <field name="tipo"/>
+
                 <field name="marca"/>
                 <field name="capacidad"/>                
                 <field name="tecnologia"/>
