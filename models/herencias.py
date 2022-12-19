@@ -13,7 +13,7 @@ class resPartner(models.Model):
     _inherit = "res.partner"
     _description = "campos agregados a los clientes"
 
-    cotizaciones = fields.One2many('itriplee.cotizaciones', 'name', string='Cotizaciones', copy=True, auto_join=True)
+    cotizaciones = fields.One2many('itriplee.cotizaciones', 'cliente_registrado', string='Cotizaciones', copy=True, auto_join=True)
     tcliente = fields.Selection([('usuario', 'Usuario'),
                                ('usuario importante', 'Usuario Importante'),
                                ('intermediario', 'Intermediario'),
