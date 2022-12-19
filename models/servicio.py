@@ -59,7 +59,7 @@ class servicio(models.Model):
     garantia_asociada = fields.Many2one('itriplee.garantias', 'Garantias')
     poliza_asociada = fields.Many2one('itriplee.polizas', 'Polizas')
     equipos = fields.Many2many('itriplee.equipos', string='Equipos De Cliente')
-    equipos_genericos = fields.One2many('itriplee.catalogo', 'name', 'Equipos Genericos')
+    equipos_genericos = fields.One2many('itriplee.equipos_genericos', 'name', 'Equipos Genericos')
     observaciones = fields.Text('Observaciones del equipo')
     razon_cancelacion = fields.Text('Razon de Cancelación')
     falla = fields.Text('Falla Reportada')

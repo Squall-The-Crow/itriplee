@@ -1,9 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_cotizaciones_base,itriplee.cotizaciones,model_itriplee_cotizaciones,cotizaciones_grupo_base,1,0,0,0
-access_cotizaciones_usuario,itriplee.cotizaciones.usuario,model_itriplee_cotizaciones,cotizaciones_grupo_general,1,0,1,0
+access_cotizaciones_usuario,itriplee.cotizaciones.usuario,model_itriplee_cotizaciones,cotizaciones_grupo_general,1,1,1,0
 access_cotizaciones_supervisor,itriplee.cotizaciones.supervisor,model_itriplee_cotizaciones,cotizaciones_grupo_supervisor,1,1,1,0
 access_cotizaciones_linea_base,itriplee.cotizaciones.linea,model_itriplee_orden_linea,cotizaciones_grupo_base,1,0,0,0
-access_cotizaciones_linea_usuario,itriplee.cotizaciones.linea.usuario,model_itriplee_orden_linea,cotizaciones_grupo_general,1,0,1,0
+access_cotizaciones_linea_usuario,itriplee.cotizaciones.linea.usuario,model_itriplee_orden_linea,cotizaciones_grupo_general,1,1,1,0
 access_cotizaciones_linea_supervisor,itriplee.cotizaciones.linea.supervisor,model_itriplee_orden_linea,cotizaciones_grupo_supervisor,1,1,1,0
 access_tc_base,itriplee.tc,model_itriplee_tc,cotizaciones_grupo_base,1,0,0,0
 access_catalogo_base,itriplee.catalogo,model_itriplee_catalogo,cotizaciones_grupo_base,1,0,0,0
@@ -23,6 +23,7 @@ itriplee.access_itriplee_servicio_refacciones_transient,access_itriplee_servicio
 itriplee.access_itriplee_garantias,access_itriplee_garantias,itriplee.model_itriplee_garantias,base.group_user,1,1,1,1
 itriplee.access_itriplee_polizas,access_itriplee_polizas,itriplee.model_itriplee_polizas,base.group_user,1,1,1,1
 itriplee.access_itriplee_equipos,access_itriplee_equipos,itriplee.model_itriplee_equipos,base.group_user,1,1,1,1
+itriplee.access_itriplee_equipos_genericos,access_itriplee_equipos_genericos,itriplee.model_itriplee_equipos_genericos,base.group_user,1,1,1,1
 itriplee.access_itriplee_almacen,access_itriplee_almacen,itriplee.model_itriplee_almacen,base.group_user,1,1,1,1
 itriplee.access_itriplee_stock_series,access_itriplee_stock_series,itriplee.model_itriplee_stock_series,base.group_user,1,1,1,1
 itriplee.access_itriplee_movimientos,access_itriplee_movimientos,itriplee.model_itriplee_movimientos,base.group_user,1,1,1,1
