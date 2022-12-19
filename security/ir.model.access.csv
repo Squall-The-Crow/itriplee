@@ -23,6 +23,7 @@ itriplee.access_itriplee_servicio_refacciones_transient,access_itriplee_servicio
 itriplee.access_itriplee_garantias,access_itriplee_garantias,itriplee.model_itriplee_garantias,base.group_user,1,1,1,1
 itriplee.access_itriplee_polizas,access_itriplee_polizas,itriplee.model_itriplee_polizas,base.group_user,1,1,1,1
 itriplee.access_itriplee_equipos,access_itriplee_equipos,itriplee.model_itriplee_equipos,base.group_user,1,1,1,1
+itriplee.access_itriplee_equipos_genericos,access_itriplee_equipos_genericos,itriplee.model_itriplee_equipos_genericos,base.group_user,1,1,1,1
 itriplee.access_itriplee_almacen,access_itriplee_almacen,itriplee.model_itriplee_almacen,base.group_user,1,1,1,1
 itriplee.access_itriplee_stock_series,access_itriplee_stock_series,itriplee.model_itriplee_stock_series,base.group_user,1,1,1,1
 itriplee.access_itriplee_movimientos,access_itriplee_movimientos,itriplee.model_itriplee_movimientos,base.group_user,1,1,1,1
