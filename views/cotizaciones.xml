@@ -66,8 +66,7 @@
               <group>
                 <field name="cliente_registrado"
                        attrs="{'invisible': [('nuevo','=', True)]}"
-                        options="{'no_quick_create': True}"
-                        domain="[('user_id','=', uid)]"/>
+                        options="{'no_quick_create': True}"/>
                 <field name="empresa" attrs="{'invisible': [('nuevo','!=', True)]}"/>
                 <field name="cliente" attrs="{'invisible': [('nuevo','!=', True)]}"/>
               </group>
