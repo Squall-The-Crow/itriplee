@@ -226,7 +226,7 @@
                     <t t-if="o.modelo.FT is not False">
                         <p>
                         <strong>Ficha Tecnica:</strong>
-                            <div class="text-pupdauprimary"><span t-field="o.modelo.FT"/>
+                            <div class="text-primary"><span t-field="o.modelo.FT"/>
                         </div>
                         </p>
                     </t>
