@@ -145,7 +145,7 @@
             </group>
             </group>
             <group>
-            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'cliente': cliente}">
+            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
             <tree string="Equipos">
                 <field name="name"/>
                 <field name="tipo"/>
