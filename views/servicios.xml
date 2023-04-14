@@ -145,7 +145,7 @@
             </group>
             </group>
             <group>
-            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]">
+            <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'cliente': cliente}">
             <tree string="Equipos">
                 <field name="name"/>
                 <field name="tipo"/>
@@ -223,7 +223,7 @@
       <field name="arch" type="xml">
         <calendar string="Servicio Calendar" date_start="visita" color="tecnico" quick_add="false">
           <field name="tecnico" filters="1"/>
-          <field name="cliente"/>
+          <field name="cliente" filters="1"/>
         </calendar>
       </field>
     </record>
