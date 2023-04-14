@@ -10,7 +10,9 @@
           <field name="login" position="after">
               <field name="puesto" />
           </field>
-
+          <field name="puesto" position="after">
+              <field name="rol" />
+          </field>
       </field>
       </record>
 
