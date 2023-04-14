@@ -6,7 +6,10 @@ class resUsers(models.Model):
     _inherit = "res.users"
     _description = "campo de puesto"
 
-    puesto = fields.Char(string='Puesto')    
+    puesto = fields.Char(string='Puesto')  
+    rol = fields.Selection([('vendedor', 'vendedor'),
+                            ('tecnico', 'tecnico'),
+                            ], string='Rol')  
 
 class resPartner(models.Model):
     _inherit = "res.partner"
