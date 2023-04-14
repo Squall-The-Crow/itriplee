@@ -4,10 +4,9 @@ from odoo import fields, models, api
 
 class resUsers(models.Model):
     _inherit = "res.users"
-    puesto = fields.Char(string='Puesto')
     _description = "campo de puesto"
 
-resUsers()
+    puesto = fields.Char(string='Puesto')    
 
 class resPartner(models.Model):
     _inherit = "res.partner"
