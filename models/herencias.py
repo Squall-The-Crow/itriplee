@@ -6,8 +6,8 @@ class resUsers(models.Model):
     _inherit = "res.users"
     puesto = fields.Char(string='Puesto')
     _description = "campo de puesto"
-    tipo = fields.Char('Rol')
 
+resUsers()
 
 class resPartner(models.Model):
     _inherit = "res.partner"
