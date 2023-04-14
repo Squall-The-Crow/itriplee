@@ -3,13 +3,9 @@
 from odoo import fields, models, api
 
 class resUsers(models.Model):
-    _inherit = "res.users"    
-    _description = "campos agregados de usuarios"
-
+    _inherit = "res.users"
     puesto = fields.Char(string='Puesto')
-    rol = fields.Selection([('vendedor', 'Vendedor'),
-                               ('tecnico', 'Tecnico'),
-                               ], string='Rol de usuario')
+    _description = "campo de puesto"
 
 resUsers()
 
