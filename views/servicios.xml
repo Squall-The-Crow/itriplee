@@ -123,7 +123,7 @@
               <field name="cliente"
               options="{'no_create_edit': True},
                {'no_quick_create'}"
-               domain="[('customer','=',True)]"/>
+               domain="[('employee','=',False)]"/>
               <field name="visita"/>
             </group>
             <notebook colspan='4'>
