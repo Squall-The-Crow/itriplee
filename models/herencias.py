@@ -10,7 +10,6 @@ class resUsers(models.Model):
                                ('vendedor', 'vendedor'),
                                ], string='Rol')
 
-resUsers()
 
 class resPartner(models.Model):
     _inherit = "res.partner"
