@@ -122,7 +122,8 @@
             readonly="1"/>
               <field name="cliente"
               options="{'no_create_edit': True},
-               {'no_quick_create'}"/>
+               {'no_quick_create'}"
+               domain="[('customer','=',True)]"/>
               <field name="visita"/>
             </group>
             <notebook colspan='4'>
