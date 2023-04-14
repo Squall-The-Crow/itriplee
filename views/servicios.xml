@@ -138,11 +138,11 @@
               <field name="tecnico"
               options="{'no_create_edit': True},
                         {'no_quick_create'}"
-              domain="[('rol', '=', tecnico)]"/>
+              domain="[('rol', '=', 'tecnico')]"/>
               <field name="vendedor"
               options="{'no_create_edit': True},
                         {'no_quick_create'}"
-              domain="[('rol', '=', vendedor)]"/>              
+              domain="[('rol', '=', 'vendedor')]"/>              
               <field name="reinsidencia"/>       
             </group>
             </group>
