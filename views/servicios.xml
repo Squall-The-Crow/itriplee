@@ -137,10 +137,12 @@
               <field name="ubicacion"/>
               <field name="tecnico"
               options="{'no_create_edit': True},
-                        {'no_quick_create'}"/>
+                        {'no_quick_create'}"
+              domain="[('rol', '=', tecnico)]"/>
               <field name="vendedor"
               options="{'no_create_edit': True},
-                        {'no_quick_create'}"/>
+                        {'no_quick_create'}"
+              domain="[('rol', '=', vendedor)]"/>              
               <field name="reinsidencia"/>       
             </group>
             </group>
