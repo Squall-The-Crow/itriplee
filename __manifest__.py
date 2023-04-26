@@ -33,6 +33,7 @@
     'data': [
         'security/itriplee_security.xml',
         'security/ir.model.access.csv',
+        'views/heredado.xml',
         'views/views.xml', #Es la vista del catalogo
         'views/templates.xml',
         'views/cotizaciones.xml',
@@ -40,7 +41,6 @@
         'views/polizas.xml',
         'views/garantias.xml',
         'views/equipos.xml',      
-        'views/heredado.xml',
         'views/almacen.xml',
         'report/cotizaciones_report.xml',
         'report/cotizaciones_template.xml',
