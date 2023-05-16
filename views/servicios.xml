@@ -69,6 +69,7 @@
     	<field name="arch" type="xml">
         <form string="Wizard calificacion">
         <group>
+        <field name="calificacion"/>
         <field name="horario"/>
         <field name="reparado"/>
         <field name="observaciones"/>
@@ -162,7 +163,8 @@
                 <field name="capacidad"/>                
               </tree>
             </field>
-
+            
+            <field name="equipos_versionanterior"/>
             <field name="garantia_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Garantia')]}"/>
             <field name="poliza_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Poliza')]}" />
             <field name="observaciones"/>

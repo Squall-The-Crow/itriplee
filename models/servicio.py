@@ -60,6 +60,7 @@ class servicio(models.Model):
     poliza_asociada = fields.Many2one('itriplee.polizas', 'Polizas')
     equipos = fields.Many2many('itriplee.equipos', string='Equipos De Cliente')
     equipos_genericos = fields.One2many('itriplee.equipos_genericos', 'name', 'Equipos Genericos')
+    equipos_versionanterior = fields.Text('Equipos Version Anterior')
     observaciones = fields.Text('Observaciones del equipo')
     razon_cancelacion = fields.Text('Razon de Cancelación')
     falla = fields.Text('Falla Reportada')
@@ -90,7 +91,12 @@ class servicio(models.Model):
     	("si","Si"),
     	("no","No")],
     	 '¿El equipo quedo reparado a su entera satisfaccion?') 
-    observaciones = fields.Text('Observaciones del cliente') 
+    observaciones = fields.Text('Observaciones del cliente')
+    calificacion = fields.Selection([
+    	("Bueno","Bueno"),
+    	("Regular","Regular"),
+    	("Malo","Malo"),],
+    	 'calificacion')
 
     @api.model
     def create(self, vals):
@@ -153,7 +159,12 @@ class servicioCalificacion(models.TransientModel):
     reparado = fields.Selection([
     	("si","Si"),
     	("no","No")],
-    	 '¿El equipo quedo reparado a su entera satisfaccion?') 
+    	 '¿El equipo quedo reparado a su entera satisfaccion?')
+    calificacion = fields.Selection([
+    	("Bueno","Bueno"),
+    	("Regular","Regular"),
+    	("Malo","Malo"),],
+    	 'calificacion') 
     observaciones = fields.Text('Observaciones del cliente')  
 
     def button_calificar(self):
@@ -163,6 +174,7 @@ class servicioCalificacion(models.TransientModel):
             'horario' : self.horario,
             'reparado' : self.reparado,
             'observaciones' : self.observaciones,
+            'calificacion' : self.calificacion,
             })
 
 
