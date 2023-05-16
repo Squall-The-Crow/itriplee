@@ -188,6 +188,7 @@
           </page>
           <page name='calidad' string='Calidad'>
           <group>
+            <field name="calificacion"/>
             <field name="horario"/>
             <field name="reparado"/>
             <field name="observaciones"/>
