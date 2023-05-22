@@ -13,6 +13,7 @@ AVAILABLE_PRIORITIES = [
 AVAILABLE_STATES = [
 
     ('confirmar', 'Confirmar'),
+    ('confirmado', 'Confirmado'),
     ('por asignar', 'Por asignar'),
     ('asignado', 'Asignado'),
     ('pendiente', 'Pendiente'),
