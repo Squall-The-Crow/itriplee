@@ -61,7 +61,7 @@ class servicio(models.Model):
     equipos = fields.Many2many('itriplee.equipos', string='Equipos De Cliente')
     equipos_genericos = fields.One2many('itriplee.equipos_genericos', 'name', 'Equipos Genericos')
     equipos_versionanterior = fields.Text('Equipos Version Anterior')
-    observaciones = fields.Text('Observaciones del equipo')
+    observaciones_equipo = fields.Text('Observaciones del equipo')
     razon_cancelacion = fields.Text('Razon de Cancelación')
     falla = fields.Text('Falla Reportada')
     responsable = fields.Selection([

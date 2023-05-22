@@ -167,8 +167,8 @@
             <field name="equipos_versionanterior"/>
             <field name="garantia_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Garantia')]}"/>
             <field name="poliza_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Poliza')]}" />
-            <field name="observaciones"/>
-            <field name="falla" attrs="{'invisible': [('visita','!=', 'Ordinaria')]}"/>
+            <field name="observaciones_equipo"/>
+            <field name="falla"/>
             <field name="razon_cancelacion"/>
             </group>
           </page>
