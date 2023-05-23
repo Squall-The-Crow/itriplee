@@ -6,6 +6,7 @@ access_cotizaciones_linea_base,itriplee.cotizaciones.linea,model_itriplee_orden_
 access_cotizaciones_linea_usuario,itriplee.cotizaciones.linea.usuario,model_itriplee_orden_linea,cotizaciones_grupo_general,1,1,1,0
 access_cotizaciones_linea_supervisor,itriplee.cotizaciones.linea.supervisor,model_itriplee_orden_linea,cotizaciones_grupo_supervisor,1,1,1,0
 access_tc_base,itriplee.tc,model_itriplee_tc,cotizaciones_grupo_base,1,0,0,0
+access_tc_adm,itriplee.tc,model_itriplee_tc,catalogo_grupo_encargado,1,1,1,1
 access_catalogo_base,itriplee.catalogo,model_itriplee_catalogo,cotizaciones_grupo_base,1,0,0,0
 access_catalogo_encargado,itriplee.catalogo.encargado,model_itriplee_catalogo,catalogo_grupo_encargado,1,1,1,1
 access_tipo_base,itriplee.tipo,model_itriplee_tipo,cotizaciones_grupo_base,1,0,0,0
