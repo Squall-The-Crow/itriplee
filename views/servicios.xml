@@ -238,7 +238,7 @@
       <field name="model">itriplee.servicio</field>
       <field name="priority" eval="3"/>
       <field name="arch" type="xml">
-        <kanban default_group_by="estado" quick_create="false" group_create="false">
+        <kanban default_group_by="estado" class="o_kanban_small_column o_opportunity_kanban" quick_create="false" group_create="false">
           <templates>
 
                   
@@ -246,7 +246,7 @@
             <div class="oe_kanban_global_click"> 
             <div class="oe_kanban_content">   
               <div class="o_kanban_record_title">            
-                <field name="name" />
+               <strong> <field name="name" /></strong>
               </div>
               <div class="o_kanban_record_body">
                 <field name="visita" />
