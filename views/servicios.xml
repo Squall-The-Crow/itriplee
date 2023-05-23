@@ -253,7 +253,7 @@
                 <field name="visita" />
               </p>
               <p>
-                <color="2"><field name="cliente" /></color>
+                <field name="cliente" />
               </p>
               <p>
                 <field name="tecnico" />
