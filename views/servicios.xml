@@ -249,9 +249,15 @@
                <strong> <field name="name" /></strong>
               </div>
               <div class="o_kanban_record_body">
+              <p>
                 <field name="visita" />
-                <field name="cliente" />
+              </p>
+              <p>
+                <warning><field name="cliente" /></warning>
+              </p>
+              <p>
                 <field name="tecnico" />
+                </p>
               </div>
               <div class="o_kanban_record_bottom">
               <div class="oe_kanban_bottom_left">
