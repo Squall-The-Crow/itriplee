@@ -9,7 +9,7 @@
 
                 <value
 
-                  eval="[('module', '=', 'itriplee'), ('name', '=', 'cotizaciones_registros_regla')]"
+                  eval="[('module', '=', 'model_itriplee_cotizaciones'), ('name', '=', 'cotizaciones_registros_regla')]"
 
                   />
 
