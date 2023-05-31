@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+
+<function name="write" model="ir.model.data">
+
+            <!-- First we need to find the record...-->
+
+            <function name="search" model="ir.model.data">
+
+                <value
+
+                  eval="[('module', '=', 'itriplee'), ('name', '=', 'cotizaciones_registros_regla')]"
+
+                  />
+
+            </function>
+
+           <!-- ...and temporarily set the noupdate field to False-->
+
+            <value eval="{'noupdate': False}" />
+
+        </function>
+
+       <!-- Get our main job done, i.e. modify the domain_force field of a record -->
+
+        <record id="cotizaciones_registros_regla" model="ir.rule">
+
+            <field name="domain_force">['|',('vendedor','=',user.id),('vendedor','=',False)]</field>
+
+        </record>
+
+    <data noupdate="1">
         <record model="ir.module.category" id="module_category_cotizaciones">
             <field name="name">Cotizaciones Itriplee</field>
             <field name="description">Categorias de seguridad para Cotizaciones</field>
@@ -19,7 +48,7 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
-        <record forcecreate="True" id="cotizaciones_grupo_general" model="res.groups">
+        <record id="cotizaciones_grupo_general" model="res.groups">
             <field name="name">Vendedores</field>
             <field name="category_id" ref="module_category_cotizaciones"/>
             <field name="implied_ids" eval="[(4, ref('cotizaciones_grupo_base'))]"/>
