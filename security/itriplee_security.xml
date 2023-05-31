@@ -2,16 +2,13 @@
 <odoo>
 
     <function name="write" model="ir.model.data">
-         <!-- get the record if from data base -->
         <function name="search" model="ir.model.data">
             <value
               eval="[('module', '=', 'itriplee'), ('name', '=', 'cotizaciones_registros_regla')]"
               />
         </function>
-       <!-- remove noupdate -->
         <value eval="{'noupdate': False}" />
     </function>
-
 
         <record model="ir.rule" id="cotizaciones_registros_regla">
             <field name="name">Solo ver sus propias cotizaciones</field>
@@ -20,7 +17,6 @@
             <field name="groups" eval="[(4, ref('cotizaciones_grupo_general'))]"/>
         </record>
 
-    <!-- reset noupdate -->
     <function name="write" model="ir.model.data">
         <function name="search" model="ir.model.data">
             <value
@@ -30,7 +26,7 @@
         <value eval="{'noupdate': True}" />
     </function>
 
-    <data noupdate="1">
+    <data noupdate="0">
         <record model="ir.module.category" id="module_category_cotizaciones">
             <field name="name">Cotizaciones Itriplee</field>
             <field name="description">Categorias de seguridad para Cotizaciones</field>
