@@ -4,23 +4,23 @@
     <function name="write" model="ir.model.data">
         <function name="search" model="ir.model.data">
             <value
-              eval="[('module', '=', 'itriplee'), ('name', '=', 'cotizaciones_registros_regla')]"
+              eval="[('module', '=', 'itriplee'), ('name', '=', 'clientes_registros_regla')]"
               />
         </function>
         <value eval="{'noupdate': False}" />
     </function>
 
-        <record model="ir.rule" id="cotizaciones_registros_regla">
-            <field name="name">Solo ver sus propias cotizaciones</field>
-            <field name="model_id" ref="model_itriplee_cotizaciones"/>
-            <field name="domain_force">['|',('vendedor','=',user.id),('vendedor','=',False)]</field>
+          <record model="ir.rule" id="clientes_registros_regla">
+            <field name="name">Solo ver sus propios clientes</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
             <field name="groups" eval="[(4, ref('cotizaciones_grupo_general'))]"/>
         </record>
 
     <function name="write" model="ir.model.data">
         <function name="search" model="ir.model.data">
             <value
-              eval="[('module', '=', 'itriplee'), ('name', '=', 'cotizaciones_registros_regla')]"
+              eval="[('module', '=', 'itriplee'), ('name', '=', 'clientes_registros_regla')]"
               />
         </function>
         <value eval="{'noupdate': True}" />
