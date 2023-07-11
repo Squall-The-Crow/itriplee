@@ -242,9 +242,9 @@
                     </t>
             </div>
             <div class="col-5 text-right align-right">
-                <t t-if="o.modelo.imagen is not False">               
-                    <span t-field="o.modelo.imagen" t-field-options="{'widget': 'image', 'style':'max-height:240px'}"/>
-            
+                <t t-if="o.modelo.imagen is not False">   
+                 <img t-att-src="'data:image/png;base64,%s' % to_text(o.modelo.imagen)" style="max-height:240px"/>            
+                                
                 </t>
                  <t t-if="o.modelo.imagen is False">
                     <img src='/itriplee/static/src/img/logo1.png' width="250" height="250"/>                
