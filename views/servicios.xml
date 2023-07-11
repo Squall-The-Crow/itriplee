@@ -226,7 +226,7 @@
       <field name="model">itriplee.servicio</field>
       <field name="priority" eval="2"/>
       <field name="arch" type="xml">
-        <calendar string="Servicio Calendar" display="[tecnico]" date_start="visita" color="tecnico" quick_add="false">
+        <calendar string="Servicio Calendar" display="[name]" date_start="visita" color="tecnico" quick_add="false">
           <field name="tecnico" filters="1"/>
           <field name="cliente" filters="1"/>
         </calendar>
