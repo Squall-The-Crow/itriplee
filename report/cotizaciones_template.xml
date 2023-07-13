@@ -313,7 +313,7 @@
                 </div>
                 <t t-if="o.modelo.imagen is not False">
                <div class="col-5 text-right align-right">
-                    <span t-field="o.modelo.imagen" t-field-options='{"widget": "image"}'/>
+                    <img t-att-src="'data:image/png;base64,%s' % to_text(o.modelo.imagen)" style="max-height:240px"/>
                 </div>
                 </t>
                  <t t-if="o.modelo.imagen is False">
