@@ -24,3 +24,4 @@ class resPartner(models.Model):
                                ('rm', 'Representante de Marca'),
                                ], string='Tipo de Cliente', default='usuario')
     sector = fields.Char('Sector')
+    user_id = fields.Many2one (default=lambda self: self.env.user)
