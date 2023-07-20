@@ -54,7 +54,7 @@ class servicio(models.Model):
     	("Variado","Variado")],
     	 'Estado del Equipo')
     tecnico = fields.Many2one('res.users', 'Tecnico') #
-    vendedor = fields.Many2one('res.users', 'Vendedor', default=lambda self: self.cliente.user_id)# 
+    vendedor = fields.Many2one('res.users', 'Vendedor', default=lambda self: self.cliente.user_id.name)# 
     reinsidencia = fields.Boolean('Es reinsidencia?')
     modelo_transicion = fields.Char('Modelo Version anterior')
     garantia_asociada = fields.Many2one('itriplee.garantias', 'Garantias')
