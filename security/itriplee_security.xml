@@ -12,18 +12,6 @@
             <field name="category_id" ref="module_category_cotizaciones"/>
         </record>
 
-        <record id="almacen_grupo_base" model="res.groups">
-            <field name="name">Grupo de almacen</field>
-            <field name="category_id" ref="module_category_almacen"/>
-        </record>
-
-        <record id="almacen_grupo_encargado" model="res.groups">
-            <field name="name">encargado de almacen</field>
-            <field name="category_id" ref="module_category_almacen"/>
-            <field name="implied_ids" eval="[(4, ref('almacen_grupo_base'))]"/>
-            <field name="users" eval="[(4, ref('base.user_root'))]"/>
-        </record>
-
         <record id="cotizaciones_grupo_contabilidad" model="res.groups">
             <field name="name">Grupo de Facturacion</field>
             <field name="category_id" ref="module_category_cotizaciones"/>
@@ -78,6 +66,27 @@
             <field name="category_id" ref="module_category_servicios"/>
             <field name="implied_ids" eval="[(4, ref('servicios_grupo_base'))]"/>
         </record>
+
+        
+        <record model="ir.module.category" id="module_category_almacen">
+            <field name="name">Almacen Itriplee</field>
+            <field name="description">Categorias de seguridad para Almacen</field>
+            <field name="sequence">47</field>
+        </record>
+
+
+        <record id="almacen_grupo_base" model="res.groups">
+            <field name="name">Grupo de almacen</field>
+            <field name="category_id" ref="module_category_almacen"/>
+        </record>
+
+        <record id="almacen_grupo_encargado" model="res.groups">
+            <field name="name">encargado de almacen</field>
+            <field name="category_id" ref="module_category_almacen"/>
+            <field name="implied_ids" eval="[(4, ref('almacen_grupo_base'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        
 <!-- Reglas de acceso interno -->
         <record model="ir.rule" id="cotizaciones_registros_regla">
             <field name="name">Solo ver sus propias cotizaciones</field>
