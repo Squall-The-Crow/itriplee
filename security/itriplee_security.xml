@@ -102,6 +102,13 @@
             <field name="groups" eval="[(4, ref('servicios_grupo_base'))]"/>
         </record>
 
+        <record model="ir.rule" id="servicios_vendedor_registros_regla">
+            <field name="name">vendedores solo ver sus propios servicios</field>
+            <field name="model_id" ref="model_itriplee_servicio"/>
+            <field name="domain_force">['|',('vendedor','=',user.id),('vendedor','=',False)]</field>
+            <field name="groups" eval="[(4, ref('cotizaciones_grupo_base'))]"/>
+        </record>
+
         <record model="ir.rule" id="servicios_registros_gerente_regla">
             <field name="name">Puede ver todas los servicios</field>
             <field name="model_id" ref="model_itriplee_servicio"/>
