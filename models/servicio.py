@@ -36,7 +36,7 @@ class servicio(models.Model):
 
     name = fields.Char('Consecutivo')
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)
-    visita = fields.Datetime('Visita Programada', required=True)
+    visita = fields.Datetime('Visita Programada', default=lambda self: self.cr.cliente.user_id.id, required=True)
     tipo_visita = fields.Selection([
     	("Ordinaria","Ordinaria"),
     	("Extraordinaria","Extraordinaria")],
@@ -54,7 +54,7 @@ class servicio(models.Model):
     	("Variado","Variado")],
     	 'Estado del Equipo')
     tecnico = fields.Many2one('res.users', 'Tecnico') #
-    vendedor = fields.Many2one('res.users', 'Vendedor', default=lambda self: self.cliente.user_id.name)# 
+    vendedor = fields.Many2one('res.users', 'Vendedor')# 
     reinsidencia = fields.Boolean('Es reinsidencia?')
     modelo_transicion = fields.Char('Modelo Version anterior')
     garantia_asociada = fields.Many2one('itriplee.garantias', 'Garantias')
