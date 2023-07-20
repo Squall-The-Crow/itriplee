@@ -12,6 +12,18 @@
             <field name="category_id" ref="module_category_cotizaciones"/>
         </record>
 
+        <record id="almacen_grupo_base" model="res.groups">
+            <field name="name">Grupo de almacen</field>
+            <field name="category_id" ref="module_category_almacen"/>
+        </record>
+
+        <record id="almacen_grupo_encargado" model="res.groups">
+            <field name="name">encargado de almacen</field>
+            <field name="category_id" ref="module_category_almacen"/>
+            <field name="implied_ids" eval="[(4, ref('almacen_grupo_base'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
         <record id="cotizaciones_grupo_contabilidad" model="res.groups">
             <field name="name">Grupo de Facturacion</field>
             <field name="category_id" ref="module_category_cotizaciones"/>
