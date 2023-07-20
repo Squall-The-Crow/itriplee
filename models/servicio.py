@@ -98,6 +98,11 @@ class servicio(models.Model):
     	("Regular","Regular"),
     	("Malo","Malo"),],
     	 'calificacion')
+    
+    @api.onchange('cliente')
+    def onchange_cliente(self):
+        self.vendedor = self.cliente.user_id
+    
 
     @api.model
     def create(self, vals):
