@@ -70,8 +70,8 @@ class cotizaciones(models.Model):
                                ('otro', 'Otro'),
                                ], string='Tipo de Cotizacion', default='catalogo', required=True)
     ########Generales, Condicionales#####
-    empresa = fields.Char('Empresa') #Falta poner el domain de if empresa
-    cliente = fields.Char('Cliente', size=26) #Falta Poner el Domain de empresa
+    empresa = fields.Char('Empresa', size=26) #Falta poner el domain de if empresa
+    cliente = fields.Char('Cliente') #Falta Poner el Domain de empresa
     telefono = fields.Char('Telefono', size=13)
     tipo_telefono = fields.Selection([
         ("cel","Celular"),
