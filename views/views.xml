@@ -86,11 +86,13 @@
       <field name="name">view.itriplee.catalogo.tree</field>
       <field name="model">itriplee.catalogo</field>
       <field name="arch" type="xml">
-        <tree string="Catalogo Tree">
+        <tree string="Catalogo Tree" editable="top">
           <field name="name"/>
           <field name="tipo"/>
           <field name="marca"/>
           <field name="tecnologia"/>
+          <field name="precio"/>
+          <field name="tc"/>
         </tree>
       </field>
     </record>
