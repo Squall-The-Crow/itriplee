@@ -41,7 +41,7 @@
                     </div>
             </div>
             <div class="row">
-                <div class="col-5  text-left">
+                <div class="col-9  text-left">
                     <strong>EMPRESA: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.empresa"/>
@@ -51,6 +51,23 @@
                     </t>
                     </div>
                 <div class="col-3 text-right">
+                    <strong>Cotizacion: 
+                <span style="color:red" t-field="o.name"/></strong>
+            </div>
+        </div>
+            <div class="row">
+                <t t-if="o.nuevo == True">
+               <div class="col-9  text-left">
+                    <strong>At'n: </strong><span t-field="o.cliente"/>
+                    </div>
+                </t>
+                <t t-if="o.nuevo == False">
+               <div class="col-9  text-left">
+                    <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
+                    </div>
+                </t>
+            </div>
+            <div class="col-3 text-right">
                     <strong>Telefono: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.telefono"/>
@@ -58,23 +75,6 @@
                     <t t-if="o.nuevo == False">
                     <span t-field="o.cliente_registrado.phone"/>
                     </t>
-                </div>
-                <div class="col-3 text-right">
-                    <strong>Cotizacion: 
-                <span style="color:red" t-field="o.name"/></strong>
-            </div>
-        </div>
-            <div class="row">
-                <t t-if="o.nuevo == True">
-               <div class="col-12  text-left">
-                    <strong>At'n: </strong><span t-field="o.cliente"/>
-                    </div>
-                </t>
-                <t t-if="o.nuevo == False">
-               <div class="col-12  text-left">
-                    <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
-                    </div>
-                </t>
             </div>
         </div>
         <div class="article">
