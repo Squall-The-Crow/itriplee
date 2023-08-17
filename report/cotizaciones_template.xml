@@ -66,8 +66,7 @@
                     <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
                     </div>
                 </t>
-            </div>
-            <div class="col-3 text-right">
+                 <div class="col-3 text-right">
                     <strong>Telefono: </strong>
                     <t t-if="o.nuevo == True">
                     <span t-field="o.telefono"/>
@@ -76,6 +75,8 @@
                     <span t-field="o.cliente_registrado.phone"/>
                     </t>
             </div>
+            </div>
+           
         </div>
         <div class="article">
           <t t-out="0" />
