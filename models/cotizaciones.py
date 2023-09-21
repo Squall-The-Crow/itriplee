@@ -25,7 +25,8 @@ class cotizaciones(models.Model):
     @api.depends('multilinea.subtotal')
     def _costo_total(self):
         for order in self:
-            total_sin_iva = iva = 0.0
+            total_sin_iva = 0.0
+            iva = 0.0
             for line in order.multilinea:
                 total_sin_iva += line.subtotal
                 iva += total_sin_iva * 0.16
