@@ -28,7 +28,7 @@ class cotizaciones(models.Model):
             total_sin_iva = 0.0
             iva = 0.0
             for line in order.multilinea:
-                total_sin_iva += (line.precio * (1 - (line.descuento or 0.0) / 100.0)) * line.cantidad
+                total_sin_iva += (line.precio_line * (1 - (line.descuento or 0.0) / 100.0)) * line.cantidad
                 iva += total_sin_iva * 0.16
             order.update({
                 'subtotal_multilinea': total_sin_iva,
