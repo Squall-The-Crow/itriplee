@@ -36,6 +36,19 @@
       </field>
      </record>
 
+    <record id="view_itriplee_cotizaciones_pivot" model="ir.ui.view">
+      <field name="name">view.itriplee.cotizaciones.pivot</field>
+      <field name="model">itriplee.cotizaciones</field>
+      <field name="arch" type="xml">      
+              <pivot>
+                <field name="vendedor" type="row"/>
+                <field name="fecha" interval="week" />                
+                <field name="total" type="measure"/>
+              </pivot>
+      </field>
+     </record>
+
+
     <record id="view_itriplee_cotizaciones_form" model="ir.ui.view">
       <field name="name">view.itriplee.cotizaciones.form</field>
       <field name="model">itriplee.cotizaciones</field>
@@ -204,7 +217,7 @@
       <field name="name">Itriplee Cotizaciones</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">itriplee.cotizaciones</field>
-      <field name="view_mode">tree,form,graph</field>
+      <field name="view_mode">tree,form,graph,pivot</field>
       <field name="help" type="html">
         <p class="oe_view_nocontent_create">
           Cotizaciones Itriplee
