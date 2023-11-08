@@ -14,15 +14,18 @@
               <field name="factura"/>
               <field name="venta"/>
               <field name="vendedor"/> 
+              <field name="cliente"/>  
               </group>              
               <group>
+              <field name="catalogo"/>
               <field name="modelo"/>
+              <field name="modelo_show"/>
               <field name="marca"/>
-              <field name="tipo"/>
-              <field name="cliente"/>                           
+              <field name="tipo"/>                         
             </group>
             </group>            
             <group>
+              <field name="caracteristicas"/>
               <field name="poliza"/>
               <field name="garantia"/>
               <field name="visitas"/>
