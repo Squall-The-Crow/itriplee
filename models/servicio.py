@@ -102,7 +102,13 @@ class servicio(models.Model):
     @api.onchange('cliente')
     def onchange_cliente(self):
         self.vendedor = self.cliente.user_id
-    
+
+    def name_get(self):
+        result = []
+
+        for rec in self:
+            result.append((rec.id, '%s - %s' % (rec.tecnico,rec.name)))
+        return result
 
     @api.model
     def create(self, vals):
