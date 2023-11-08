@@ -107,7 +107,7 @@ class servicio(models.Model):
         result = []
 
         for rec in self:
-            result.append((rec.id, '%s - %s' % (rec.tecnico,rec.name)))
+            result.append((rec.id, '%s - %s' % (rec.tecnico.name,rec.name)))
         return result
 
     @api.model
