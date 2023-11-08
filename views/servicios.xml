@@ -151,10 +151,10 @@
             <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
             <tree string="Equipos">
                 <field name="name"/>
+                <field name="modelo_show"/>
                 <field name="tipo"/>
-                <field name="marca"/>
-                <field name="capacidad"/>                
-                <field name="tecnologia"/>
+                <field name="marca"/>                
+                <field name="capacidad"/>
               </tree>
             </field>
             <field name="equipos_genericos">
