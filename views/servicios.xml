@@ -156,14 +156,7 @@
                 <field name="marca"/>                
                 <field name="capacidad"/>
               </tree>
-            </field>
-            <field name="equipos_genericos">
-              <tree string="Equipos Genericos">
-                <field name="caracteristicas"/>
-                <field name="capacidad"/>                
-              </tree>
-            </field>
-            
+            </field>            
             <field name="equipos_versionanterior"/>
             <field name="garantia_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Garantia')]}"/>
             <field name="poliza_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Poliza')]}" />
