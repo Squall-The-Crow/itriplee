@@ -19,11 +19,11 @@
               <group>
               <field name="catalogo"/>
               <field name="modelo"
-              attrs="{'invisible': [('catalogo','=', True)]}"
+              attrs="{'invisible': [('catalogo','=', False)]}"
               options="{'no_create_edit': True},
                         {'no_quick_create'}"/>
               <field name="modelo_show"
-              attrs="{'invisible': [('catalogo','=', False)]}"/>
+              attrs="{'invisible': [('catalogo','=', True)]}"/>
               <field name="marca"/>
               <field name="tipo"/>                         
             </group>
