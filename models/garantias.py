@@ -39,7 +39,7 @@ class garantias(models.Model):
             'fecha1': self.fecha1
         }
         while ind < cantidad_meses:
-            fecha_6_meses = self.fecha1 + relativedelta(months=6)
+            fecha_6_meses = fecha_compra_inicial + relativedelta(months=6)
             if fecha_6_meses >= now_int:
                 obj_visita.create(folio,
                     {'cliente': cliente, 'visita': fecha_6_meses}
