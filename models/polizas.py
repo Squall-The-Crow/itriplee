@@ -33,7 +33,6 @@ class polizas(models.Model):
         dias = cantidad * 365
         intervalo = dias / cantidad
 
-
         for visita in self:
             fecha_visita = visita.fecha_contratacion + timedelta(days=intervalo)
             
@@ -46,6 +45,8 @@ class polizas(models.Model):
                 }
                 self.env['itriplee.servicio'].create(visita_programada)
                 cantidad -= 1
+
+
 
     #Falta funcion para al momento de guardar se creen las visitas correspondientes
     #falta factura related
