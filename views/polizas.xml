@@ -31,6 +31,9 @@
             </group>            
           </sheet>
         </form>
+        <footer>
+            <button name="create_visita" string="Proramar visitas" type="object"/>
+        </footer>
       </field>
     </record>
 
