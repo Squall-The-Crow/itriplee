@@ -24,7 +24,7 @@ class equipos(models.Model):
     visitas = fields.Many2many ('itriplee.servicio', string='Visitas Realizadas')
     caracteristicas = fields.Text('Caracteristicas')
 
-class equipos(models.Model):
+class equipos_gen(models.Model):
     _name = 'itriplee.equipos_genericos'
     _rec_name = 'name'
     _description = "Modulo de registro de los equipos de cliente y sus movimientos"
