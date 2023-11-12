@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 class polizas(models.Model):
     _name = 'itriplee.polizas'
     _rec_name = 'folio'
+    _inherit = ['itriplee.servicio']
     _description = "Modulo de polizas"
 
     folio = fields.Integer('Folio', required=True)
