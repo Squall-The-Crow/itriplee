@@ -23,3 +23,13 @@ class equipos(models.Model):
     garantia = fields.Many2one('itriplee.garantias', 'Garantia')
     visitas = fields.Many2many ('itriplee.servicio', string='Visitas Realizadas')
     caracteristicas = fields.Text('Caracteristicas')
+
+class equipos(models.Model):
+    _name = 'itriplee.equipos_genericos'
+    _rec_name = 'name'
+    _description = "Modulo de registro de los equipos de cliente y sus movimientos"
+    name = fields.Char('Equipo')
+    caracteristicas = fields.Char('Caracteristicas')
+    capacidad = fields.Char('Capacidad')
+
+    #Revisar
