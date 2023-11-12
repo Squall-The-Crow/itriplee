@@ -6,9 +6,9 @@ from datetime import datetime, timedelta
 class polizas(models.Model):
     _name = 'itriplee.polizas'
     _rec_name = 'folio'
-    _inherit = ['itriplee.servicio']
     _description = "Modulo de polizas"
 
+    name = fields.Integer('ID de poliza', required=True)
     folio = fields.Integer('Folio', required=True)
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)
     fecha_contratacion = fields.Date('Fecha de Contratación', required=True)

@@ -7,9 +7,13 @@
       <field name="model">itriplee.polizas</field>
       <field name="arch" type="xml">
         <form string="polizas Form">
+          <header>
+            <button name="create_visita" string="Proramar visitas" type="object"/>
+          </header>
           <sheet>
           	<group>
           	<group>
+             <field name="name"/>
               <field name="folio"/>
               <field name="cliente"
               options="{'no_create_edit': True},
@@ -26,14 +30,19 @@
             </group>
             <group>
               <field name="visitas"/>
-              <field name="equipos" widget="many2many"/>
+              <field name="equipos" widget="many2many" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}">
+                <tree string="Equipos">
+                  <field name="name"/>
+                  <field name="modelo_show"/>
+                  <field name="tipo"/>
+                  <field name="marca"/>                
+                  <field name="capacidad"/>
+                </tree>
+              </field> 
               <field name="observaciones"/>
             </group>            
           </sheet>
         </form>
-        <footer>
-            <button name="create_visita" string="Proramar visitas" type="object"/>
-        </footer>
       </field>
     </record>
 
