@@ -23,7 +23,6 @@ class polizas(models.Model):
     equipos = fields.One2many('itriplee.equipos', 'name', 'Equipos')
     observaciones = fields.Text('Observaciones')
 
-    @api.multi
     def create_visita(self):
         cantidad = 0
         dias = 0
@@ -45,8 +44,6 @@ class polizas(models.Model):
                 }
                 self.env['itriplee.servicio'].create(visita_programada)
                 cantidad -= 1
-
-
 
     #Falta funcion para al momento de guardar se creen las visitas correspondientes
     #falta factura related
