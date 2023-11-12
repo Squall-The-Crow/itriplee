@@ -19,8 +19,8 @@
             </group>
             <group>
               <field name="horario"/>
-              <field name="tiempo"/>
-              <field name="visitas_contratadas"/>
+              <field name="tiempo_int"/>
+              <field name="visitas_int"/>
               <field name="ubicacion"/>              
             </group>
             </group>
