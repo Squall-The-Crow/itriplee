@@ -7,6 +7,9 @@
       <field name="model">itriplee.garantias</field>
       <field name="arch" type="xml">
         <form string="garantias Form">
+          <header>
+            <button name="generar_visitas_programadas" string="Programar visitas" type="object"/>
+          </header>
           <sheet>
           	<group>
           	<group>
@@ -20,7 +23,7 @@
             </group>
             <group>
               <field name="factura"/>
-              <field name="equipo"/>
+              <field name="equipo" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}"/>
               <field name="modelo"/>
               <field name="marca"/>
               <field name="tipo"/>                             

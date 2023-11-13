@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
+from datetime import datetime, timedelta
 
 class garantias(models.Model):
     _name = 'itriplee.garantias'
@@ -22,28 +21,17 @@ class garantias(models.Model):
     observaciones = fields.Text('Observaciones')
     valoracion = fields.Text('Valoración para Poliza')
 
-    @api.model
-    def create(self, vals):
-        obj_visita = self.pool.get('itriplee.servicio')
-        cliente = self.cliente
-        #fecha_compra = self.equipo.venta
-        fm = '%Y-%m-%d'
-        cantidad_meses = 6
-        ind = 0
-        folio = self.folio
-        now = datetime.now()
-        now_str = now.strftime(fm)
-        now_int = datetime.strptime(now_str, fm)
-        fecha_compra_inicial = datetime.strptime(vals.fecha1, fm)
-        vals = {
-            'fecha1': self.fecha1
-        }
-        while ind < cantidad_meses:
-            fecha_6_meses = fecha_compra_inicial + relativedelta(months=6)
-            if fecha_6_meses >= now_int:
-                obj_visita.create(folio,
-                    {'cliente': cliente, 'visita': fecha_6_meses}
-                )
-            ind = ind + 1
-            self.fecha1 = fecha_6_meses
-        return True
+    def generar_visitas_programadas(self):
+        for garantia in self:
+            fecha_compra = datetime.strptime(garantia.fecha_de_venta, '%Y-%m-%d').date()
+            fecha_actual = datetime.now().date()
+            fecha_limite = fecha_compra + timedelta(days=1095)  # 3 años desde la compra
+            while fecha_compra <= fecha_limite and fecha_compra <= fecha_actual:
+                visita_programada = {
+                    'visita': fecha_compra,
+                    'cliente': garantia.cliente.id,
+                    'garantia_asociada': garantia.id,
+                    'equipos': [(6, 0, [garantia.equipo.id])]
+                }
+                self.env['itriplee.servicio'].create(visita_programada)
+                fecha_compra += timedelta(days=180)  # 6 meses
