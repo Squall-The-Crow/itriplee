@@ -33,7 +33,7 @@ class garantias(models.Model):
                     'garantia_asociada': garantia.id,
                     'tipo_visita': 'Ordinaria',
                     'estado_equipo': 'Garantia',
-                    'prioridad': 'normal',
+                    'prioridad': 'Normal',
                     'equipos': [(6, 0, [garantia.equipo.id])]
                 }
                 self.env['itriplee.servicio'].create(visita_programada)
