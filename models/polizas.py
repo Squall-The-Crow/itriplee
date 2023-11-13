@@ -33,13 +33,10 @@ class polizas(models.Model):
 
         while cantidad > 0:
             # Crear un diccionario para cada equipo
-            #equipo = {
-             #   'name': 'Nombre del equipo',  # Ajusta este valor según tus necesidades
-                # Otros campos del modelo 'itriplee.equipos' que desees asignar
-            #}
+
 
             # Agregar la tupla (0, 0, equipo) a la lista de equipos_relacionados
-            equipos_relacionados.append((6, 0, [self.equipos]))
+            equipos_relacionados.append((6, 0, self.equipos))
 
             cantidad -= 1
 
