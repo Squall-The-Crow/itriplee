@@ -40,7 +40,7 @@ class polizas(models.Model):
                 # Crear el diccionario para cada equipo
                 
                 # Agregar la tupla (0, 0, equipo) a la lista de equipos_relacionados
-                equipos_relacionados.append((6, 0, self.equipos))
+                equipos_relacionados.append(4, (self.equipos))
                 
                 cantidad -= 1
 
