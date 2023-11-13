@@ -23,7 +23,7 @@ class garantias(models.Model):
 
     def generar_visitas_programadas(self):
         for garantia in self:
-            fecha_compra = datetime.strptime(garantia.fecha_de_venta, '%Y-%m-%d').date()
+            fecha_compra = self.fecha_de_venta
             fecha_actual = datetime.now().date()
             fecha_limite = fecha_compra + timedelta(days=1095)  # 3 años desde la compra
             while fecha_compra <= fecha_limite and fecha_compra <= fecha_actual:
