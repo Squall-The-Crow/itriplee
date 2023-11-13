@@ -20,7 +20,7 @@ class polizas(models.Model):
     visitas_contratadas = fields.Selection([("1","1"),("2","2"),("3","3")], 'Visitas anuales contratadas')
     ubicacion = fields.Selection([("Local","Local"),("Foraneo","Foraneo")], 'Local o Foraneo')
     visitas = fields.One2many('itriplee.servicio', 'poliza_asociada', 'Visitas')
-    equipos = fields.One2many('itriplee.equipos', 'name', 'Equipos')
+    equipos = fields.One2many('itriplee.equipos', 'poliza', 'Equipos')
     observaciones = fields.Text('Observaciones')
 
     def create_visita(self):
