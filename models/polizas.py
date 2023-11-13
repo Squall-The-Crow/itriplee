@@ -25,8 +25,7 @@ class polizas(models.Model):
 
     def create_visita(self):
         cantidad = self.tiempo_int * self.visitas_int
-        dias = cantidad * 365
-        intervalo = dias / cantidad       
+        intervalo = 365 / self.visitas_int      
         for i in range(cantidad):
             fecha_visita = self.fecha_contratacion + timedelta(days=intervalo * i)
             equipos_relacionados = [(4, equipo.id, 0) for equipo in self.equipos]
