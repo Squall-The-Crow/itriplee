@@ -37,7 +37,3 @@ class polizas(models.Model):
                 'equipos': equipos_relacionados
             }
             self.env['itriplee.servicio'].create(visita_programada)
-
-
-    #Falta funcion para al momento de guardar se creen las visitas correspondientes
-    #falta factura related
