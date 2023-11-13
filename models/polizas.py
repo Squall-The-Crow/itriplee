@@ -34,7 +34,7 @@ class polizas(models.Model):
                 'visita': fecha_visita,
                 'cliente': self.cliente.id,
                 'poliza_asociada': self.id,
-                'equipos': (6, 0, self.equipos)
+                'equipos': (4, self.equipos.id)
             }
             self.env['itriplee.servicio'].create(visita_programada)
 
