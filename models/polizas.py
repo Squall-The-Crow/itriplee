@@ -32,7 +32,7 @@ class polizas(models.Model):
             visita_programada = {
                 'tipo_visita': 'Ordinaria',
                 'estado_equipo': 'Poliza',
-                'prioridad': '1',
+                'prioridad': '3',
                 'visita': fecha_visita,
                 'cliente': self.cliente.id,
                 'poliza_asociada': self.id,
