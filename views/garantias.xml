@@ -19,7 +19,6 @@
                {'no_quick_create'}"/>
               <field name="serie"/>
               <field name="fecha_de_venta"/> 
-              <field name="fecha1"/> 
             </group>
             <group>
               <field name="factura"/>

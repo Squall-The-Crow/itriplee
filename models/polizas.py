@@ -30,6 +30,9 @@ class polizas(models.Model):
             fecha_visita = self.fecha_contratacion + timedelta(days=intervalo * i)
             equipos_relacionados = [(4, equipo.id, 0) for equipo in self.equipos]
             visita_programada = {
+                'tipo_visita': 'Ordinaria',
+                'estado_equipo': 'Poliza',
+                'prioridad': 'normal',
                 'visita': fecha_visita,
                 'cliente': self.cliente.id,
                 'poliza_asociada': self.id,

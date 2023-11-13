@@ -30,8 +30,8 @@
             </group>            
             <group>
               <field name="caracteristicas"/>
-              <field name="poliza"/>
-              <field name="garantia"/>
+              <field name="poliza" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}"/>
+              <field name="garantia"  domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}"/>
               <field name="visitas"/>
             </group>
           </sheet>
