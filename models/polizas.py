@@ -26,15 +26,15 @@ class polizas(models.Model):
     def create_visita(self):
         cantidad = self.tiempo_int * self.visitas_int
         dias = cantidad * 365
-        intervalo = dias / cantidad
-
+        intervalo = dias / cantidad       
         for i in range(cantidad):
             fecha_visita = self.fecha_contratacion + timedelta(days=intervalo * i)
+            equipos_relacionados = [(4, equipo.id, 0) for equipo in self.equipos]
             visita_programada = {
                 'visita': fecha_visita,
                 'cliente': self.cliente.id,
                 'poliza_asociada': self.id,
-                'equipos': self.equipos.id
+                'equipos': equipos_relacionados
             }
             self.env['itriplee.servicio'].create(visita_programada)
 
