@@ -24,35 +24,34 @@ class polizas(models.Model):
     observaciones = fields.Text('Observaciones')
 
     def create_visita(self):
-        cantidad = 0
-        dias = 0
-        intervalo = 0
-
         cantidad = self.tiempo_int * self.visitas_int
         dias = cantidad * 365
         intervalo = dias / cantidad
 
-        for visita in self:
-            fecha_visita = visita.fecha_contratacion + timedelta(days=intervalo)
-            equipos_relacionados = []             
+        fecha_visita = self.fecha_contratacion + timedelta(days=intervalo)
+        equipos_relacionados = []
 
-            while cantidad > 0:
-                # Crear el diccionario para cada equipo
-                
-                # Agregar la tupla (0, 0, equipo) a la lista de equipos_relacionados
-                equipos_relacionados.append((4, self.equipos))
-                
-                cantidad -= 1
+        while cantidad > 0:
+            # Crear un diccionario para cada equipo
+            #equipo = {
+             #   'name': 'Nombre del equipo',  # Ajusta este valor según tus necesidades
+                # Otros campos del modelo 'itriplee.equipos' que desees asignar
+            #}
 
-                visita_programada = {
-                    'visita': fecha_visita,
-                    'cliente': self.cliente.id,
-                    'poliza_asociada': self.id,
-                    'equipos': equipos_relacionados
-                }
+            # Agregar la tupla (0, 0, equipo) a la lista de equipos_relacionados
+            equipos_relacionados.append((6, 0, [self.equipos]))
 
-                # Crear el registro en 'itriplee.servicio' con los equipos relacionados
-                self.env['itriplee.servicio'].create(visita_programada)
+            cantidad -= 1
+
+            visita_programada = {
+                'visita': fecha_visita,
+                'cliente': self.cliente.id,
+                'poliza_asociada': self.id,
+                'equipos': equipos_relacionados
+            }
+
+            # Crear el registro en 'itriplee.servicio' con los equipos relacionados
+            self.env['itriplee.servicio'].create(visita_programada)
 
 
     #Falta funcion para al momento de guardar se creen las visitas correspondientes
