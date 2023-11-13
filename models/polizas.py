@@ -38,25 +38,21 @@ class polizas(models.Model):
 
             while cantidad > 0:
                 # Crear el diccionario para cada equipo
-                equipo = {
-                    'name': 'Nombre del equipo',
-                    # Otros campos del modelo 'itriplee.equipos' que desees asignar
-                }
                 
                 # Agregar la tupla (0, 0, equipo) a la lista de equipos_relacionados
-                equipos_relacionados.append((0, 0, equipo))
+                equipos_relacionados.append((4, 0, self.equipos))
                 
                 cantidad -= 1
 
-            visita_programada = {
-                'visita': fecha_visita,
-                'cliente': self.cliente.id,
-                'poliza_asociada': self.id,
-                'equipos': equipos_relacionados
-            }
+                visita_programada = {
+                    'visita': fecha_visita,
+                    'cliente': self.cliente.id,
+                    'poliza_asociada': self.id,
+                    'equipos': equipos_relacionados
+                }
 
-            # Crear el registro en 'itriplee.servicio' con los equipos relacionados
-            self.env['itriplee.servicio'].create(visita_programada)
+                # Crear el registro en 'itriplee.servicio' con los equipos relacionados
+                self.env['itriplee.servicio'].create(visita_programada)
 
 
     #Falta funcion para al momento de guardar se creen las visitas correspondientes
