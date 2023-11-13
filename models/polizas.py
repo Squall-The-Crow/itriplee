@@ -28,26 +28,14 @@ class polizas(models.Model):
         dias = cantidad * 365
         intervalo = dias / cantidad
 
-        fecha_visita = self.fecha_contratacion + timedelta(days=intervalo)
-        equipos_relacionados = []
-
-        while cantidad > 0:
-            # Crear un diccionario para cada equipo
-
-
-            # Agregar la tupla (0, 0, equipo) a la lista de equipos_relacionados
-            equipos_relacionados.append((6, 0, self.equipos))
-
-            cantidad -= 1
-
+        for i in range(cantidad):
+            fecha_visita = self.fecha_contratacion + timedelta(days=intervalo * i)
             visita_programada = {
                 'visita': fecha_visita,
                 'cliente': self.cliente.id,
                 'poliza_asociada': self.id,
-                'equipos': equipos_relacionados
+                'equipos': (6, 0, self.equipos)
             }
-
-            # Crear el registro en 'itriplee.servicio' con los equipos relacionados
             self.env['itriplee.servicio'].create(visita_programada)
 
 
