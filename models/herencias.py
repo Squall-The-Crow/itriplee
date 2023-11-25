@@ -25,3 +25,11 @@ class resPartner(models.Model):
                                ], string='Tipo de Cliente', default='usuario')
     sector = fields.Char('Sector')
     user_id = fields.Many2one (default=lambda self: self.env.user)
+    vat = fields.Char(default='Nuevo')
+
+    @api.model
+    def create(self, vals):
+        if vals.get('vat', 'Nuevo') == 'Nuevo':
+            vals['vat'] = self.env['ir.sequence'].next_by_code('mi_modulo.mi_modelo.sequence') or 'Nuevo'
+        return super(resPartner, self).create(vals)
+
