@@ -30,6 +30,6 @@ class resPartner(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('vat', 'Nuevo') == 'Nuevo':
-            vals['vat'] = self.env['ir.sequence'].next_by_code('mi_modulo.mi_modelo.sequence') or 'Nuevo'
+            vals['vat'] = self.env['ir.sequence'].next_by_code('rfc') or 'Nuevo'
         return super(resPartner, self).create(vals)
 
