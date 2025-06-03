@@ -52,6 +52,15 @@
           <field name="sector" position="after">
               <field name="tcliente" />
           </field>
+            <field name="vat" position="after">
+                <field name="contacto_responsable"/>
+            </field>
+            <field name="contacto_responsable" position="after">
+                <field name="contacto_responsable_telefono"/>
+            </field>
+            <field name="contacto_responsable_telefono" position="after">
+                <field name="contacto_responsable_correo"/>
+            </field>
       </field>
       </record>
 
