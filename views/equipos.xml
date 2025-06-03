@@ -25,6 +25,7 @@
               <field name="modelo_show"
               attrs="{'invisible': [('catalogo','=', True)]}"/>
               <field name="marca"/>
+              <field name="capacidad"/>    
               <field name="tipo"/>                         
             </group>
             </group>            
