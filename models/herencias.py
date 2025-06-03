@@ -26,6 +26,9 @@ class resPartner(models.Model):
     sector = fields.Char('Sector')
     user_id = fields.Many2one (default=lambda self: self.env.user)
     vat = fields.Char(default='Nuevo')
+    contacto_responsable = fields.Char(string='Contacto Responsable')
+    contacto_responsable_telefono = fields.Char(string='Telefono Responsable')
+    contacto_responsable_correo = fields.Char(string='Correo Responsable')
 
     @api.model
     def create(self, vals):
