@@ -168,13 +168,13 @@
             <page name='servicios_resultado' string='Resultado'>
             <group>
             <field name="responsable"
-               attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
+               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
             <field name="resultado"
-               attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
+               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
             <field name="comentarios"
-               attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
+               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
             <field name="firma" widget="image" readonly="1"
-               attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
+               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
             </group>
           </page>
             <page name='refacciones' string='Refacciones'>
@@ -185,8 +185,7 @@
           </page>
           <page name='calidad' string='Calidad'>
           <group>
-            <field name="calificacion"
-               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
+            <field name="calificacion"/>
             <field name="horario"/>
             <field name="reparado"/>
             <field name="observaciones"/>
