@@ -168,16 +168,12 @@
             <page name='servicios_resultado' string='Resultado'>
             <group>
             <field name="responsable"
-            groups="itriplee.almacen_grupo_encargado"
                attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
             <field name="resultado"
-            groups="itriplee.almacen_grupo_encargado"
                attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
             <field name="comentarios"
-            groups="itriplee.almacen_grupo_encargado"
                attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
             <field name="firma" widget="image" readonly="1"
-            groups="itriplee.almacen_grupo_encargado"
                attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
             </group>
           </page>
@@ -190,8 +186,7 @@
           <page name='calidad' string='Calidad'>
           <group>
             <field name="calificacion"
-            groups="itriplee.almacen_grupo_encargado"
-               attrs="{'readonly': [('estado', '=', 'asignado')]}"/>
+               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
             <field name="horario"/>
             <field name="reparado"/>
             <field name="observaciones"/>

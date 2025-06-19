@@ -159,6 +159,28 @@
             <field name="domain_force">[('estado','=','recibida')]</field>
         </record>
 
+         <record model="ir.rule" id="bloquear_calificada">
+            <field name="name">No editar cuando el estado sea calificado</field>
+            <field name="model_id" ref="model_itriplee_servicio"/>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+            <field name="domain_force">[('estado','=','calificado')]</field>
+        </record>
+
+        <record model="ir.rule" id="bloquear_tecnicos_noasignados">
+            <field name="name">No editar cuando el estado sea sin asignar y solo a tecnicos</field>
+            <field name="model_id" ref="model_itriplee_servicio"/>
+            <field name="groups" eval="[(4, ref('almacen_grupo_encargado'))]"/>
+            <field eval="0" name="perm_unlink"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_create"/>
+            <field name="domain_force">[('estado','!=','asignado')]</field>
+        </record>
+
 
 
     </data>
