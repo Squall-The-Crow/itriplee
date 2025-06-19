@@ -127,7 +127,9 @@
               <field name="visita"/>
             </group>
             <notebook colspan='4'>
-            <page name='servicios_servicio' string='Servicio' groups="itriplee.almacen_grupo_encargado" attrs="{'readonly': [('estado', '!=', 'asignado')]}">
+    <page name='servicios_servicio' string='Servicio'
+          groups="itriplee.almacen_grupo_encargado"
+          attrs="{'readonly': [('estado', '=', 'asignado')]}">
             <group>  
             <group>
               <field name="tipo_visita"/>              
@@ -165,7 +167,9 @@
             <field name="razon_cancelacion"/>
             </group>
           </page>
-            <page name='servicios_resultado' string='Resultado' groups="itriplee.almacen_grupo_encargado" attrs="{'readonly': [('estado', '!=', 'asignado')]}">
+            <page name='servicios_resultado' string='Resultado'
+          groups="itriplee.almacen_grupo_encargado"
+          attrs="{'readonly': [('estado', '=', 'asignado')]}">
             <group>
             <field name="responsable"/>
             <field name="resultado"/>
@@ -173,13 +177,17 @@
             <field name="firma" widget="image" readonly="1"/>
             </group>
           </page>
-            <page name='refacciones' string='Refacciones' groups="itriplee.almacen_grupo_encargado" attrs="{'readonly': [('estado', '!=', 'asignado')]}">
+            <page name='refacciones' string='Refacciones'
+          groups="itriplee.almacen_grupo_encargado"
+          attrs="{'readonly': [('estado', '=', 'asignado')]}">
             <group>
             <field name="estado_refacciones"/>
             <field name="refacciones"/>
             </group>
           </page>
-          <page name='calidad' string='Calidad' groups="itriplee.almacen_grupo_encargado" attrs="{'readonly': [('estado', '!=', 'asignado')]}">
+          <page name='calidad' string='Calidad'
+          groups="itriplee.almacen_grupo_encargado"
+          attrs="{'readonly': [('estado', '=', 'asignado')]}">
           <group>
             <field name="calificacion"/>
             <field name="horario"/>
