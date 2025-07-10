@@ -210,7 +210,7 @@ class ServicioWizard(models.TransientModel):
         ], 'De Preferencia') 
     
 class ServicioTerminado(models.TransientModel):
-    _name = 'itriplee.servicio.Terminado.transient'
+    _name = 'itriplee.servicio.terminado.transient'
     _description = "Wizard para Finalizar el servicio"
 
     responsable = fields.Selection([
