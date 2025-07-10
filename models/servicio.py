@@ -112,16 +112,16 @@ class servicio(models.Model):
     # ...existing code...
     @api.model
     def create(self, vals):
-        if vals.get('tecnico'):
-            vals['estado'] = 'asignado'
+        #if vals.get('tecnico'):
+         #   vals['estado'] = 'asignado'
         vals['name'] = self.env['ir.sequence'].next_by_code('servicio') or 'New'
         res = super(servicio, self).create(vals)
         return res
 # ...existing code...
     
     def write(self, vals):
-        if vals.get('tecnico'):
-            vals['estado'] = 'asignado'
+        #if vals.get('tecnico'):
+         #   vals['estado'] = 'asignado'
         return super(servicio, self).write(vals)
 
 class servicioRefacciones(models.TransientModel):
