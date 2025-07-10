@@ -209,6 +209,30 @@ class ServicioWizard(models.TransientModel):
         ("reparada","Reparada"),
         ], 'De Preferencia') 
     
+class ServicioTerminado(models.TransientModel):
+    _name = 'itriplee.servicio.Terminado.transient'
+    _description = "Wizard para Finalizar el servicio"
+
+    responsable = fields.Selection([
+    	("Cliente","Cliente"),
+    	("Almacen","Almacen"),
+    	("Administracion","Administracion"),
+    	("Proveedor","Proveedor"),
+    	("Tecnico","Tecnico"),
+    	("Otro","Otro")], 
+    	'Responsable Actual')
+    resultado = fields.Text('Resultado del Reporte')
+    comentarios = fields.Text('Comentarios del Técnico')
+
+    def button_finalizar(self):
+        active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))
+        active_obj.estado = 'terminado'
+        active_obj.write({
+            'responsable' : self.responsable,
+            'resultado' : self.resultado,
+            'comentarios' : self.comentarios,
+            })
+    
 
 
 
