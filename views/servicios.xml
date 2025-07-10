@@ -63,7 +63,7 @@
     </record>
 
     <record id="view_wizard_terminado" model="ir.ui.view">
-      <field name="name">itriplee.servicio.terminado.view</field>
+      <field name="name">itriplee.servicio.terminado.transient.view</field>
       <field name="model">itriplee.servicio.terminado.transient</field>
 	    <field name="type">form</field>
     	<field name="arch" type="xml">
@@ -140,7 +140,7 @@
         type="action"
         attrs="{'invisible': [('estado','!=', 'terminado')]}">
         </button>
-        <button name="%(action_wizard_terminar)d"
+        <button name="%(action_wizard_terminado)d"
         string="Terminar" 
         type="action" 
         class="oe_highlight" 
