@@ -189,13 +189,13 @@ class servicioCalificacion(models.TransientModel):
 
     def button_calificar(self):
         active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))        
-        active_obj.write({
+        active_obj.sudo().write({
             'horario' : self.horario,
             'reparado' : self.reparado,
             'observaciones' : self.observaciones,
             'calificacion' : self.calificacion,
+            'estado' : 'calificado',
             })
-        active_obj.estado = 'calificado'
 
 
 class ServicioWizard(models.TransientModel):
