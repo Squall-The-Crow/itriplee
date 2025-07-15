@@ -165,8 +165,8 @@ class servicioFirma(models.TransientModel):
 
     def button_terminar(self):
         active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))
-        active_obj.estado = 'firmado'
-        active_obj.write({'firma' : self.firma})
+        active_obj.sudo().write({'firma' : self.firma,
+                          'estado' : 'firmado',})
 
 class servicioCalificacion(models.TransientModel):
     _name = 'itriplee.servicio.calificacion'
