@@ -188,14 +188,14 @@ class servicioCalificacion(models.TransientModel):
     observaciones = fields.Text('Observaciones del cliente')  
 
     def button_calificar(self):
-        active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))
-        active_obj.estado = 'calificado'
+        active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))        
         active_obj.write({
             'horario' : self.horario,
             'reparado' : self.reparado,
             'observaciones' : self.observaciones,
             'calificacion' : self.calificacion,
             })
+        active_obj.estado = 'calificado'
 
 
 class ServicioWizard(models.TransientModel):
@@ -225,14 +225,13 @@ class ServicioTerminado(models.TransientModel):
     comentarios = fields.Text('Comentarios del Técnico')
 
     def button_finalizar(self):
-        active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))
-        active_obj.estado = 'terminado'
+        active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))        
         active_obj.write({
             'responsable' : self.responsable,
             'resultado' : self.resultado,
             'comentarios' : self.comentarios,
             })
-    
+        active_obj.estado = 'terminado'
 
 
 
