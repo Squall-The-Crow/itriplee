@@ -226,12 +226,12 @@ class ServicioTerminado(models.TransientModel):
 
     def button_finalizar(self):
         active_obj = self.env['itriplee.servicio'].browse(self._context.get('active_ids'))        
-        active_obj.write({
+        active_obj.sudo().write({
             'responsable' : self.responsable,
             'resultado' : self.resultado,
             'comentarios' : self.comentarios,
+            'estado' : 'terminado',
             })
-        active_obj.estado = 'terminado'
 
 
 
