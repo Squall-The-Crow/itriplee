@@ -65,7 +65,10 @@
           <field name="name"/>
           <field name="factura"/>
           <field name="cliente"/>
-          <field name="vendedor"/>
+          <field name="marca"/>
+          <field name="modelo"/>
+          <field name="capacidad"/>
+          <field name="tipo"/>
         </tree>
       </field>
     </record>
