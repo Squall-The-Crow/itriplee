@@ -18,22 +18,39 @@
               </group>              
               <group>
               <field name="catalogo"/>
-              <field name="modelo"
-              attrs="{'invisible': [('catalogo','=', False)]}"
-              options="{'no_create_edit': True},
-                        {'no_quick_create'}"/>
-              <field name="modelo_show"
-              attrs="{'invisible': [('catalogo','=', True)]}"/>
+              <field name="modelo" attrs="{
+           'readonly': [('catalogo', '=', False)],
+           'invisible': [('catalogo','=', False)]
+                    }"
+             options="{'no_create_edit': True, 'no_quick_create': True}"/>
+              <field name="modelo_show" attrs="{'invisible': [('catalogo','=', True)]}"/>
+            <field name="marca"
+            attrs="{'readonly': [('catalogo', '=', True)]}"/>
+
+              <field name="capacidad"
+              attrs="{'readonly': [('catalogo', '=', True)]}"/>
+
+              <field name="tipo"
+              attrs="{'readonly': [('catalogo', '=', True)]}"/>          
+            </group>
+            <!--  
+            
+            <group>
+              <field name="catalogo"/>
+              <field name="modelo" attrs="{'invisible': [('catalogo','=', False)]}" options="{'no_create_edit': True},                         {'no_quick_create'}"/>
+              <field name="modelo_show" attrs="{'invisible': [('catalogo','=', True)]}"/>
               <field name="marca"/>
               <field name="capacidad"/>    
               <field name="tipo"/>                         
             </group>
+            
+            -->
             </group>            
             <group>
               <field name="caracteristicas"/>
               <field name="poliza" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}"/>
-              <field name="garantia"  domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}"/>
-              <field name="visitas"/>
+              <field name="garantia" domain="[('cliente', '=', cliente)]" context="{'default_cliente': cliente}"/>
+              <field name="visitas" readonly="1" />
             </group>
           </sheet>
         </form>
