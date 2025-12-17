@@ -240,11 +240,11 @@
       <field name="name">view.itriplee.servicio.tree</field>
       <field name="model">itriplee.servicio</field>
       <field name="arch" type="xml">
-        <tree string="Servicio Tree">
-          <field name="cliente"/>
-          <field name="visita"/>
-          <field name="estado"/>
-          <field name="estado_equipo"/>
+        <tree string="Servicio Tree" default_order="visita desc">
+            <field name="cliente"/>
+            <field name="visita"/>
+            <field name="estado"/>
+            <field name="estado_equipo"/>
         </tree>
       </field>
     </record>
