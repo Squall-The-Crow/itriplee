@@ -164,6 +164,9 @@
               <field name="tipo_visita"/>              
               <field name="prioridad"/>
               <field name="estado_equipo"/>
+              <field name="origen"/>
+              <field name="origen_valor"/>
+              <field name="razon_caso_especial" attrs="{'invisible': [('origen','!=', 'CE')]}"/>
             </group>
             <group>
               <field name="ubicacion"/>

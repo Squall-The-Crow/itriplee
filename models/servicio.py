@@ -53,6 +53,14 @@ class servicio(models.Model):
     	("Sin Garantia","Fuera de Garantia"),
     	("Variado","Variado")],
     	 'Estado del Equipo')
+    origen = fields.Selection([
+    	("OC","Orden de Compra"),
+    	("OS","Orden de Servicio"),
+    	("IN","Incidencia"),
+    	("CE","Caso Especial")],
+    	 'Origen del Servicio')
+    origen_valor = fields.Char('Valor del Origen')
+    razon_caso_especial = fields.Char('Razon del Caso Especial')
     tecnico = fields.Many2one('res.users', 'Tecnico') #
     vendedor = fields.Many2one('res.users', 'Vendedor', related="cliente.user_id", store=True, readonly=False)# 
     reinsidencia = fields.Boolean('Es reinsidencia?')
