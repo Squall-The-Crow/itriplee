@@ -29,7 +29,14 @@
             </group>
             </group>    
             <group>    
-	            <field name="visitas"/>
+	            <field name="visitas">
+                <tree string="Visitas Programadas">
+                  <field name="numero_visita"/>
+                  <field name="visita"/>
+                  <field name="estado"/>
+                  <field name="tipo_visita"/>
+                </tree>
+              </field>
 	            <field name="observaciones"/>
 	            <field name="valoracion"/>
             </group>

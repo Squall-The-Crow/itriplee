@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
-from datetime import datetime, timedelta
+from odoo import models, fields
+from dateutil.relativedelta import relativedelta
 
 class garantias(models.Model):
     _name = 'itriplee.garantias'
@@ -22,13 +22,32 @@ class garantias(models.Model):
     valoracion = fields.Text('Valoración para Poliza')
 
     def generar_visitas_programadas(self):
+        fecha_actual = fields.Date.context_today(self)
+
         for garantia in self:
-            fecha_compra = self.fecha_de_venta
-            fecha_actual = datetime.now().date()
-            fecha_limite = fecha_compra + timedelta(days=1095)  # 3 años desde la compra
-            while fecha_compra <= fecha_limite and fecha_compra <= fecha_actual:
+            if not garantia.fecha_de_venta:
+                continue
+
+            # Genera 6 visitas: una cada 6 meses durante 3 años.
+            fecha_visita = garantia.fecha_de_venta
+            for numero_visita in range(1, 7):
+                fecha_visita = fecha_visita + relativedelta(months=6)
+
+                # Solo registra visitas pendientes a partir de la fecha actual.
+                if fecha_visita <= fecha_actual:
+                    continue
+
+                visita_existente = self.env['itriplee.servicio'].search([
+                    ('garantia_asociada', '=', garantia.id),
+                    ('visita', '=', fecha_visita),
+                ], limit=1)
+
+                if visita_existente:
+                    continue
+
                 visita_programada = {
-                    'visita': fecha_compra,
+                    'visita': fecha_visita,
+                    'numero_visita': numero_visita,
                     'cliente': garantia.cliente.id,
                     'garantia_asociada': garantia.id,
                     'tipo_visita': 'Ordinaria',
@@ -37,4 +56,3 @@ class garantias(models.Model):
                     'equipos': [(6, 0, [garantia.equipo.id])]
                 }
                 self.env['itriplee.servicio'].create(visita_programada)
-                fecha_compra += timedelta(days=180)  # 6 meses

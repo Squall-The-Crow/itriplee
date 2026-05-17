@@ -36,6 +36,7 @@ class servicio(models.Model):
 
     name = fields.Char('Consecutivo')
     cliente = fields.Many2one('res.partner', 'Cliente', required=True)
+    numero_visita = fields.Integer('Numero de visita')
     visita = fields.Datetime('Visita Programada', required=True)
     tipo_visita = fields.Selection([
     	("Ordinaria","Ordinaria"),

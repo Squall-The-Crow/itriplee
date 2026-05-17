@@ -155,6 +155,7 @@
               <field name="cliente"
               options="{'no_create_edit': True},
                {'no_quick_create'}"/>
+              <field name="numero_visita"/>
               <field name="visita"/>
             </group>
             <notebook colspan='4'>
@@ -245,6 +246,7 @@
       <field name="arch" type="xml">
         <tree string="Servicio Tree" default_order="visita desc">
             <field name="cliente"/>
+          <field name="numero_visita"/>
             <field name="visita"/>
             <field name="estado"/>
             <field name="estado_equipo"/>
