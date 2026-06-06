@@ -150,35 +150,28 @@
         </header>
           <sheet>
             <group>
-            <field name="name"
-            readonly="1"/>
-              <field name="cliente"
-              options="{'no_create_edit': True},
-               {'no_quick_create'}"/>
-              <field name="numero_visita"/>
+            <field name="name" readonly="1"/>
+              <field name="cliente" options="{'no_create_edit': True, 'no_quick_create': True}"/>
+              <field name="numero_visita"  string="Servicio en garantia"/>
               <field name="visita"/>
             </group>
-            <notebook colspan='4'>
-            <page name='servicios_servicio' string='Servicio'>
+            <notebook colspan="4">
+            <page name="servicios_servicio" string="Servicio">
             <group>  
             <group>
               <field name="tipo_visita"/>              
               <field name="prioridad"/>
               <field name="estado_equipo"/>
-              <field name="origen"/>
-              <field name="origen_valor"/>
-              <field name="razon_caso_especial" attrs="{'invisible': [('origen','!=', 'CE')]}"/>
+              <field name="origen" string="Documento Origen"/>
+              <field name="origen_valor" string="Número de folio / Referencia" attrs="{'invisible': ['|', ('origen','=', False), ('origen','=','CE')]}"/>
+              <field name="razon_caso_especial" attrs="{'invisible': [('origen','!=','CE')]}"/>
             </group>
             <group>
               <field name="ubicacion"/>
-              <field name="tecnico"
-              options="{'no_create_edit': True},
-                        {'no_quick_create'}"
-              domain="[('rol', '=', 'tecnico')]"/>
-              <field name="vendedor"
-              options="{'no_create_edit': True},
-                        {'no_quick_create'}"
-              domain="[('rol', '=', 'vendedor')]"/>              
+              <field name="tecnico" options="{'no_create_edit': True},
+              {'no_quick_create'}" domain="[('rol', '=', 'tecnico')]"/>
+              <field name="vendedor" options="{'no_create_edit': True},
+              {'no_quick_create'}" domain="[('rol', '=', 'vendedor')]"/>              
               <field name="reinsidencia"/>       
             </group>
             </group>
@@ -192,33 +185,30 @@
                 <field name="capacidad"/>
               </tree>
             </field>            
-            <field name="equipos_versionanterior"/>
+            
+            <field name="falla" string="Servicio a realizar"/>
             <field name="garantia_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Garantia')]}"/>
-            <field name="poliza_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Poliza')]}" />
+            <field name="poliza_asociada" attrs="{'invisible': [('estado_equipo','!=', 'Poliza')]}"/>
             <field name="observaciones_equipo"/>
-            <field name="falla"/>
             <field name="razon_cancelacion"/>
+            <field name="equipos_versionanterior" readonly="1"/>
             </group>
           </page>
-            <page name='servicios_resultado' string='Resultado'>
+            <page name="servicios_resultado" string="Resultado">
             <group>
-            <field name="responsable"
-               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
-            <field name="resultado"
-               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
-            <field name="comentarios"
-               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
-            <field name="firma" widget="image" readonly="1"
-               attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
+            <field name="responsable" attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
+            <field name="resultado" attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
+            <field name="comentarios" attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
+            <field name="firma" widget="image" readonly="1" attrs="{'readonly': [('estado', '!=', 'asignado')]}"/>
             </group>
           </page>
-            <page name='refacciones' string='Refacciones'>
+            <page name="refacciones" string="Refacciones">
             <group>
             <field name="estado_refacciones"/>
             <field name="refacciones"/>
             </group>
           </page>
-          <page name='calidad' string='Calidad'>
+          <page name="calidad" string="Calidad">
           <group>
             <field name="calificacion"/>
             <field name="horario"/>
@@ -230,10 +220,10 @@
         </notebook>
       </sheet>
       <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers"/>
-                        <field name="activity_ids" widget="mail_activity" modifiers="{}"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="activity_ids" widget="mail_activity" modifiers="{}"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
         </form>
       </field>
     </record>
@@ -259,7 +249,7 @@
       <field name="model">itriplee.servicio</field>
       <field name="priority" eval="2"/>
       <field name="arch" type="xml">
-        <calendar string="Servicio Calendar" event_open_popup="True" date_start="visita" color="tecnico" quick_add="false">
+        <calendar string="Servicio Calendar" event_open_popup="True" date_start="visita" color="tecnico" quick_add="false" mode="month">
           <field name="tecnico" filters="1"/>
           <field name="cliente" filters="1"/>
         </calendar>
