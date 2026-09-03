@@ -5,118 +5,65 @@
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <div class="row mb-3">
-                            <div class="col-8">
-                                <h2>Solicitud de servicio</h2>
-                                <strong>Folio: </strong><span t-field="o.folio"/>
+                        <style type="text/css">
+                            .solicitud { font-size: 10px; line-height: 1.2; }
+                            .solicitud h3 { font-size: 12px; font-style: italic; margin: 12px 0 3px; }
+                            .solicitud .document-title { font-size: 13px; font-weight: bold; font-style: italic; text-align: center; margin: 10px 0 28px; }
+                            .solicitud table { width: 100%; border-collapse: collapse; }
+                            .solicitud .box { border: 1px solid #333; border-radius: 5px; margin-bottom: 10px; }
+                            .solicitud .box td { padding: 2px 5px; vertical-align: top; }
+                            .solicitud .label { width: 16%; font-weight: bold; font-style: italic; white-space: nowrap; }
+                            .solicitud .value { border-bottom: 1px solid #bbb; }
+                            .solicitud .activity { min-height: 100px; padding: 8px; white-space: pre-line; }
+                            .solicitud .notes { font-size: 9px; margin: 12px 3px; }
+                            .solicitud .signatures th, .solicitud .signatures td { border: 1px solid #333; padding: 4px; text-align: center; }
+                            .solicitud .signature-space { height: 48px; }
+                            .solicitud .signature-image { max-height: 45px; max-width: 180px; }
+                        </style>
+                        <div class="solicitud">
+                            <div class="row">
+                                <div class="col-2"><img src="/itriplee/static/src/img/logo.jpg" style="max-height: 68px; max-width: 100px;"/></div>
+                                <div class="col-10"><h3 style="margin-top: 10px; font-size: 14px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
                             </div>
-                            <div class="col-4 text-right">
-                                <strong>Fecha de solicitud: </strong><span t-field="o.fecha_solicitud"/>
-                            </div>
-                        </div>
-
-                        <table class="table table-sm table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th>Fecha de servicio</th>
-                                    <td><span t-field="o.fecha_servicio"/></td>
-                                    <th>Horario</th>
-                                    <td>
-                                        <span t-field="o.hora_inicio" t-options="{'widget': 'float_time'}"/>
-                                        <span> a </span>
-                                        <span t-field="o.hora_fin" t-options="{'widget': 'float_time'}"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Estado</th>
-                                    <td colspan="3"><span t-field="o.estado"/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h4 class="mt-4">Datos del cliente</h4>
-                        <table class="table table-sm table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th>Empresa</th>
-                                    <td><span t-field="o.empresa_cliente"/></td>
-                                    <th>Nombre</th>
-                                    <td><span t-field="o.nombre_cliente"/></td>
-                                </tr>
-                                <tr>
-                                    <th>Telefono</th>
-                                    <td><span t-field="o.telefono_cliente"/></td>
-                                    <th>Cargo</th>
-                                    <td><span t-field="o.cargo_cliente"/></td>
-                                </tr>
-                                <tr>
-                                    <th>E-mail</th>
-                                    <td colspan="3"><span t-field="o.email_cliente"/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <h4 class="mt-4">Ubicacion del servicio</h4>
-                        <table class="table table-sm table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th>Empresa</th>
-                                    <td><span t-field="o.empresa_servicio"/></td>
-                                    <th>Contacto</th>
-                                    <td><span t-field="o.nombre_servicio"/></td>
-                                </tr>
-                                <tr>
-                                    <th>Telefono</th>
-                                    <td><span t-field="o.telefono_servicio"/></td>
-                                    <th>Cargo</th>
-                                    <td><span t-field="o.cargo_servicio"/></td>
-                                </tr>
-                                <tr>
-                                    <th>E-mail</th>
-                                    <td colspan="3"><span t-field="o.email_servicio"/></td>
-                                </tr>
-                                <tr>
-                                    <th>Calle</th>
-                                    <td><span t-field="o.calle_servicio"/></td>
-                                    <th>Numero exterior / interior</th>
-                                    <td><span t-field="o.numero_exterior_servicio"/> / <span t-field="o.numero_interior_servicio"/></td>
-                                </tr>
-                                <tr>
-                                    <th>Colonia</th>
-                                    <td><span t-field="o.colonia_servicio"/></td>
-                                    <th>Ciudad / Estado</th>
-                                    <td><span t-field="o.ciudad_servicio"/> / <span t-field="o.estado_servicio"/></td>
-                                </tr>
-                                <tr>
-                                    <th>Entre calles</th>
-                                    <td colspan="3"><span t-field="o.entre_calles_servicio"/></td>
-                                </tr>
-                                <tr>
-                                    <th>Referencias</th>
-                                    <td colspan="3"><span t-field="o.referencias_servicio"/></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <t t-if="o.estado == 'aprobada' or o.firma">
-                            <h4 class="mt-4">Autorizacion</h4>
-                            <table class="table table-sm table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <th>Autorizo</th>
-                                        <td><span t-field="o.autoriza"/></td>
-                                    </tr>
-                                    <tr t-if="o.firma">
-                                        <th>Firma</th>
-                                        <td><span t-field="o.firma" t-options="{'widget': 'image'}" style="max-height: 90px; max-width: 260px;"/></td>
-                                    </tr>
-                                </tbody>
+                            <div class="document-title"><span t-field="o.folio"/> - SOLICITUD DE SERVICIO</div>
+                            <table style="width: 45%; margin-left: auto; margin-bottom: 28px;">
+                                <tr><td class="label">FECHA DE SOLICITUD:</td><td class="value"><span t-field="o.fecha_solicitud"/></td></tr>
+                                <tr><td class="label">FECHA DEL SERVICIO:</td><td class="value"><span t-field="o.fecha_servicio"/></td></tr>
+                                <tr><td class="label">HORARIO DE ATENCION:</td><td class="value"><span t-field="o.hora_inicio" t-options="{'widget': 'float_time'}"/> a <span t-field="o.hora_fin" t-options="{'widget': 'float_time'}"/></td></tr>
                             </table>
-                        </t>
-                        <t t-if="o.motivo_rechazo">
-                            <h4 class="mt-4">Motivo de rechazo</h4>
-                            <p t-field="o.motivo_rechazo"/>
-                        </t>
+
+                            <h3>DATOS DEL CLIENTE</h3>
+                            <table class="box"><tbody>
+                                <tr><td class="label">RAZON SOCIAL:</td><td class="value" colspan="3"><span t-field="o.empresa_cliente"/></td></tr>
+                                <tr><td class="label">CONTACTO:</td><td class="value"><span t-field="o.nombre_cliente"/></td><td class="label">CARGO:</td><td class="value"><span t-field="o.cargo_cliente"/></td></tr>
+                                <tr><td class="label">TELEFONO:</td><td class="value"><span t-field="o.telefono_cliente"/></td><td class="label">E-MAIL:</td><td class="value"><span t-field="o.email_cliente"/></td></tr>
+                            </tbody></table>
+
+                            <h3>DATOS DEL SERVICIO</h3>
+                            <table class="box"><tbody>
+                                <tr><td class="label">CONTACTO:</td><td class="value"><span t-field="o.nombre_servicio"/></td><td class="label">TELEFONO:</td><td class="value"><span t-field="o.telefono_servicio"/></td></tr>
+                                <tr><td class="label">DIRECCION:</td><td class="value" colspan="3"><span t-field="o.calle_servicio"/>, <span t-field="o.colonia_servicio"/>, <span t-field="o.ciudad_servicio"/>, <span t-field="o.estado_servicio"/></td></tr>
+                                <tr><td class="label">NUMEROS:</td><td class="value"><strong>No. Ext.</strong> <span t-field="o.numero_exterior_servicio"/></td><td class="label">No. Int.</td><td class="value"><span t-field="o.numero_interior_servicio"/></td></tr>
+                                <tr><td class="label">ENTRE CALLES:</td><td class="value" colspan="3"><span t-field="o.entre_calles_servicio"/></td></tr>
+                                <tr><td class="label">REFERENCIAS:</td><td class="value" colspan="3"><span t-field="o.referencias_servicio"/></td></tr>
+                            </tbody></table>
+
+                            <h3>ACTIVIDAD A REALIZAR</h3>
+                            <div class="box activity"><span t-field="o.actividad_realizar"/></div>
+
+                            <div class="notes">
+                                <strong>NOTAS:</strong><br/>
+                                Los horarios de servicio se consideran de lunes a viernes de 09:00 a 17:00 horas; fuera de este horario puede aplicar un cargo adicional.<br/>
+                                Para agendar el servicio, envie este formato debidamente requisitado con al menos 24 horas de anticipacion.<br/>
+                                <br/><strong>REQUISITOS PREVIOS AL SERVICIO PREVENTIVO:</strong><br/>
+                                Acceso a los tableros de control por personal autorizado del cliente. Durante el servicio debe estar presente un responsable del cliente.
+                            </div>
+
+                            <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody><tr>
+                                <td class="signature-space"><span t-field="o.solicitante.name"/></td>
+                                <td class="signature-space"><span t-if="o.firma" t-field="o.firma" t-options="{'widget': 'image'}" class="signature-image"/><span t-if="not o.firma" t-field="o.autoriza.name"/></td>
+                            </tr><tr><td>NOMBRE Y FIRMA</td><td>NOMBRE Y FIRMA</td></tr></tbody></table>
+                        </div>
                     </div>
                 </t>
             </t>

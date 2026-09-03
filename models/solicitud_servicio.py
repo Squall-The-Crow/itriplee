@@ -39,6 +39,7 @@ class solicitud_servicio(models.Model):
     estado_servicio = fields.Char('Estado')
     entre_calles_servicio = fields.Char('Entre calles')
     referencias_servicio = fields.Text('Referencias')
+    actividad_realizar = fields.Text('Actividad a realizar')
     estado = fields.Selection([('borrador', 'Borrador'),
                                    ('pendiente', 'Pendiente'),
                                    ('aprobada', 'Aprobada'),

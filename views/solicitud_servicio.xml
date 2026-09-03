@@ -75,22 +75,25 @@
             </group>
             <group string="Ubicacion del servicio">
               <group>
-                <field name="empresa_servicio"/>
-                <field name="nombre_servicio"/>
-                <field name="telefono_servicio"/>
-                <field name="cargo_servicio"/>
-                <field name="email_servicio"/>
-                <field name="calle_servicio"/>
-                <field name="numero_exterior_servicio"/>
+                <field name="empresa_servicio" string="Empresa"/>
+                <field name="nombre_servicio" string="Contacto"/>
+                <field name="telefono_servicio" string="Telefono"/>
+                <field name="cargo_servicio" string="Cargo"/>
+                <field name="email_servicio" string="Correo"/>
+                <field name="calle_servicio" string="Calle"/>
+                <field name="numero_exterior_servicio" string="No. Ext."/>
               </group>
               <group>
-                <field name="numero_interior_servicio"/>
-                <field name="colonia_servicio"/>
-                <field name="ciudad_servicio"/>
-                <field name="estado_servicio"/>
-                <field name="entre_calles_servicio"/>
-                <field name="referencias_servicio"/>
+                <field name="numero_interior_servicio" string="No. Int."/>
+                <field name="colonia_servicio" string="Colonia"/>
+                <field name="ciudad_servicio" string="Ciudad"/>
+                <field name="estado_servicio" string="Estado"/>
+                <field name="entre_calles_servicio" string="Entre calles"/>
+                <field name="referencias_servicio" string="Referencia"/>
               </group>
+            </group>
+            <group string="Actividad a realizar">
+              <field name="actividad_realizar" nolabel="1" placeholder="Describa la actividad solicitada..."/>
             </group>
           </sheet>
         </form>
