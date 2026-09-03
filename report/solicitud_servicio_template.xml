@@ -61,7 +61,7 @@
 
                             <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody><tr>
                                 <td class="signature-space"><span t-field="o.solicitante.name"/></td>
-                                <td class="signature-space"><span t-if="o.firma" t-field="o.firma" t-options="{'widget': 'image'}" class="signature-image"/><span t-if="not o.firma" t-field="o.autoriza.name"/></td>
+                                <td class="signature-space"><img t-if="o.firma" t-att-src="'data:image/png;base64,%s' % to_text(o.firma)" class="signature-image"/><span t-if="not o.firma" t-field="o.autoriza.name"/></td>
                             </tr><tr><td>NOMBRE Y FIRMA</td><td>NOMBRE Y FIRMA</td></tr></tbody></table>
                         </div>
                     </div>

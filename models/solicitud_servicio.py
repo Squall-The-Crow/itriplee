@@ -150,6 +150,11 @@ class solicitud_servicio(models.Model):
             raise UserError(_('No se puede modificar una solicitud finalizada.'))
         return super(solicitud_servicio, self).write(vals)
 
+    def unlink(self):
+        if any(solicitud.estado == 'finalizada' for solicitud in self):
+            raise UserError(_('No se puede eliminar una solicitud finalizada.'))
+        return super(solicitud_servicio, self).unlink()
+
     @api.model
     def create(self, vals):
         vals['folio'] = self.env['ir.sequence'].next_by_code('solicitud_servicio') or ('New')

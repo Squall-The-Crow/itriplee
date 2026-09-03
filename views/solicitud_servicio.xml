@@ -38,7 +38,7 @@
             <field name="estado" widget="statusbar" statusbar_visible="borrador,pendiente,aprobada,finalizada" readonly="1"/>
           </header>
           <sheet attrs="{'readonly': [('estado', '=', 'finalizada')]}">
-            <group>
+            <group attrs="{'readonly': [('estado', '=', 'finalizada')]}">
               <group>
                 <field name="folio" readonly="1"/>
                 <field name="es_cliente"/>
@@ -60,7 +60,7 @@
               <field name="motivo_rechazo" readonly="1" attrs="{'invisible': [('motivo_rechazo', '=', False)]}"/>
               <field name="firma" widget="signature" readonly="1" attrs="{'invisible': [('firma', '=', False)]}"/>
             </group>
-            <group string="Datos del cliente">
+            <group string="Datos del cliente" attrs="{'readonly': [('estado', '=', 'finalizada')]}">
               <field name="datos_cliente_completos" invisible="1"/>
               <group>
                 <field name="empresa_cliente"/>
@@ -73,7 +73,7 @@
                 <field name="mismos_datos_contacto" attrs="{'invisible': [('datos_cliente_completos', '=', False)]}"/>
               </group>
             </group>
-            <group string="Ubicacion del servicio">
+            <group string="Ubicacion del servicio" attrs="{'readonly': [('estado', '=', 'finalizada')]}">
               <group>
                 <field name="empresa_servicio" string="Empresa"/>
                 <field name="nombre_servicio" string="Contacto"/>
@@ -92,7 +92,7 @@
                 <field name="referencias_servicio" string="Referencia"/>
               </group>
             </group>
-            <group string="Actividad a realizar">
+            <group string="Actividad a realizar" attrs="{'readonly': [('estado', '=', 'finalizada')]}">
               <field name="actividad_realizar" nolabel="1" placeholder="Describa la actividad solicitada..."/>
             </group>
           </sheet>
