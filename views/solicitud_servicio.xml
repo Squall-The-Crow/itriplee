@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <odoo>
+  <data>
+
+    <record id="seq_cotizaciones" model="ir.sequence">
+      <field name="name">Secuencia de solicitud de servicios</field>
+      <field name="code">solicitud_servicio</field>
+      <field name="prefix">SOLS</field>
+      <field name="padding">4</field>
+      <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="view_itriplee_solicitud_servicio_tree" model="ir.ui.view">
+      <field name="name">itriplee.solicitud.servicio.tree</field>
+      <field name="model">itriplee.solicitud_servicio</field>
+      <field name="arch" type="xml">
+        <tree string="Solicitudes de servicio">
+          <field name="folio"/>
+          <field name="fecha_servicio"/>
+          <field name="hora_inicio" widget="float_time"/>
+          <field name="hora_fin" widget="float_time"/>
+          <field name="cliente"/>
+          <field name="estado"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_itriplee_solicitud_servicio_form" model="ir.ui.view">
+      <field name="name">itriplee.solicitud.servicio.form</field>
+      <field name="model">itriplee.solicitud_servicio</field>
+      <field name="arch" type="xml">
+        <form string="Solicitud de servicio">
+          <header>
+            <button name="action_mandar_solicitud" string="Mandar solicitud" type="object" class="oe_highlight" groups="itriplee.cotizaciones_grupo_general" attrs="{'invisible': [('estado', '!=', 'borrador')]}"/>
+            <button name="action_aprobar" string="Aprobar" type="object" class="oe_highlight" groups="itriplee.servicios_grupo_gerencia" attrs="{'invisible': [('estado', '!=', 'pendiente')]}"/>
+            <button name="action_rechazar" string="Rechazar" type="object" groups="itriplee.servicios_grupo_gerencia" attrs="{'invisible': [('estado', '!=', 'pendiente')]}"/>
+            <button name="action_finalizar" string="Finalizar" type="object" class="oe_highlight" groups="itriplee.servicios_grupo_gerencia" attrs="{'invisible': [('estado', '!=', 'aprobada')]}"/>
+            <field name="estado" widget="statusbar" statusbar_visible="borrador,pendiente,aprobada,finalizada" readonly="1"/>
+          </header>
+          <sheet attrs="{'readonly': [('estado', '=', 'finalizada')]}">
+            <group>
+              <group>
+                <field name="folio" readonly="1"/>
+                <field name="es_cliente"/>
+                <field name="cliente" attrs="{'invisible': [('es_cliente', '=', False)], 'required': [('es_cliente', '=', True)]}"/>
+                <field name="estado"/>
+              </group>
+              <group>
+                <field name="fecha_solicitud"/>
+                <field name="fecha_servicio"/>
+                <label for="hora_inicio" string="Horario de servicio"/>
+                <div>
+                  <field name="hora_inicio" widget="float_time" class="oe_inline"/>
+                  <span class="oe_inline"> a </span>
+                  <field name="hora_fin" widget="float_time" class="oe_inline"/>
+                </div>
+              </group>
+            </group>
+            <group string="Autorizacion" attrs="{'invisible': [('estado', 'in', ['borrador', 'pendiente'])]}">
+              <field name="autoriza" readonly="1"/>
+              <field name="motivo_rechazo" readonly="1" attrs="{'invisible': [('motivo_rechazo', '=', False)]}"/>
+              <field name="firma" widget="signature" readonly="1" attrs="{'invisible': [('firma', '=', False)]}"/>
+            </group>
+            <group string="Datos del cliente">
+              <field name="datos_cliente_completos" invisible="1"/>
+              <group>
+                <field name="empresa_cliente"/>
+                <field name="nombre_cliente"/>
+                <field name="telefono_cliente"/>
+              </group>
+              <group>
+                <field name="cargo_cliente"/>
+                <field name="email_cliente"/>
+                <field name="mismos_datos_contacto" attrs="{'invisible': [('datos_cliente_completos', '=', False)]}"/>
+              </group>
+            </group>
+            <group string="Ubicacion del servicio">
+              <group>
+                <field name="empresa_servicio"/>
+                <field name="nombre_servicio"/>
+                <field name="telefono_servicio"/>
+                <field name="cargo_servicio"/>
+                <field name="email_servicio"/>
+                <field name="calle_servicio"/>
+                <field name="numero_exterior_servicio"/>
+              </group>
+              <group>
+                <field name="numero_interior_servicio"/>
+                <field name="colonia_servicio"/>
+                <field name="ciudad_servicio"/>
+                <field name="estado_servicio"/>
+                <field name="entre_calles_servicio"/>
+                <field name="referencias_servicio"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_solicitud_servicio_aprobar_wizard" model="ir.ui.view">
+      <field name="name">itriplee.solicitud.servicio.aprobar.wizard.form</field>
+      <field name="model">itriplee.solicitud.servicio.aprobar.wizard</field>
+      <field name="arch" type="xml">
+        <form string="Aprobar solicitud">
+          <group>
+            <field name="aprobador_id"/>
+            <field name="firma" widget="signature"/>
+          </group>
+          <footer>
+            <button name="action_confirmar" string="Aprobar" type="object" class="btn-primary"/>
+            <button string="Cancelar" special="cancel" class="btn-secondary"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_itriplee_solicitud_servicio_rechazar_wizard" model="ir.ui.view">
+      <field name="name">itriplee.solicitud.servicio.rechazar.wizard.form</field>
+      <field name="model">itriplee.solicitud.servicio.rechazar.wizard</field>
+      <field name="arch" type="xml">
+        <form string="Rechazar solicitud">
+          <group>
+            <field name="rechazado_por_id"/>
+            <field name="motivo_rechazo"/>
+          </group>
+          <footer>
+            <button name="action_confirmar" string="Rechazar" type="object" class="btn-primary"/>
+            <button string="Cancelar" special="cancel" class="btn-secondary"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_itriplee_solicitud_servicio" model="ir.actions.act_window">
+      <field name="name">Solicitudes de servicio</field>
+      <field name="res_model">itriplee.solicitud_servicio</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_itriplee_solicitud_servicio" name="Solicitudes de servicio" parent="menu_itriplee_ventas_categ" action="action_itriplee_solicitud_servicio" groups="itriplee.cotizaciones_grupo_general,itriplee.servicios_grupo_gerencia" sequence="5"/>
+
+    </data>
+</odoo>
