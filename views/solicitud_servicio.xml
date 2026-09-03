@@ -43,7 +43,6 @@
                 <field name="folio" readonly="1"/>
                 <field name="es_cliente"/>
                 <field name="cliente" attrs="{'invisible': [('es_cliente', '=', False)], 'required': [('es_cliente', '=', True)]}"/>
-                <field name="estado"/>
               </group>
               <group>
                 <field name="fecha_solicitud"/>

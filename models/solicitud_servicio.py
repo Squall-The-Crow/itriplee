@@ -12,7 +12,7 @@ class solicitud_servicio(models.Model):
     def _default_fecha_solicitud(self):
         return fields.Date.context_today(self)
 
-    folio = fields.Char('Modelo', required=True,)
+    folio = fields.Char('Folio', required=True, readonly=True, default=lambda self: _('New'))
     fecha_solicitud = fields.Date('Fecha', default=_default_fecha_solicitud)
     fecha_servicio = fields.Date('Fecha de Servicio')
     hora_inicio = fields.Float('Hora de inicio')
