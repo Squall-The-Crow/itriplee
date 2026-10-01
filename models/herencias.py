@@ -10,6 +10,7 @@ class resUsers(models.Model):
     rol = fields.Selection([('vendedor', 'vendedor'),
                             ('tecnico', 'tecnico'),
                             ], string='Rol')  
+    digital_signature = fields.Binary(string='Firma Digital')
 
 class resPartner(models.Model):
     _inherit = "res.partner"

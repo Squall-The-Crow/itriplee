@@ -3,7 +3,7 @@
     <template id="solicitud_servicio_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="web.external_layout">
+                <t t-call="web.basic_layout">
                     <div class="page">
                         <style type="text/css">
                             .solicitud { font-size: 10px; line-height: 1.2; }
@@ -13,17 +13,17 @@
                             .solicitud .box { border: 1px solid #333; border-radius: 5px; margin-bottom: 10px; }
                             .solicitud .box td { padding: 2px 5px; vertical-align: top; }
                             .solicitud .label { width: 16%; font-weight: bold; font-style: italic; white-space: nowrap; }
-                            .solicitud .value { border-bottom: 1px solid #bbb; }
                             .solicitud .activity { min-height: 100px; padding: 8px; white-space: pre-line; }
                             .solicitud .notes { font-size: 9px; margin: 12px 3px; }
                             .solicitud .signatures th, .solicitud .signatures td { border: 1px solid #333; padding: 4px; text-align: center; }
                             .solicitud .signature-space { height: 48px; }
                             .solicitud .signature-image { max-height: 45px; max-width: 180px; }
+                            .solicitud .signature-footer { font-size: 8px; margin-top: 2px; }
                         </style>
                         <div class="solicitud">
                             <div class="row">
-                                <div class="col-2"><img src="/itriplee/static/src/img/logo.jpg" style="max-height: 68px; max-width: 100px;"/></div>
-                                <div class="col-10"><h3 style="margin-top: 10px; font-size: 14px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
+                                <div class="col-4"><img src="/itriplee/static/src/img/logo.jpg" style="max-height: 140px; max-width: 220px;"/></div>
+                                <div class="col-8"><h3 style="margin-top: 10px; font-size: 14px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
                             </div>
                             <div class="document-title"><span t-field="o.folio"/> - SOLICITUD DE SERVICIO</div>
                             <table style="width: 45%; margin-left: auto; margin-bottom: 28px;">
@@ -59,10 +59,20 @@
                                 Acceso a los tableros de control por personal autorizado del cliente. Durante el servicio debe estar presente un responsable del cliente.
                             </div>
 
-                            <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody><tr>
-                                <td class="signature-space"><span t-field="o.solicitante.name"/></td>
-                                <td class="signature-space"><img t-if="o.firma" t-att-src="'data:image/png;base64,%s' % to_text(o.firma)" class="signature-image"/><span t-if="not o.firma" t-field="o.autoriza.name"/></td>
-                            </tr><tr><td>NOMBRE Y FIRMA</td><td>NOMBRE Y FIRMA</td></tr></tbody></table>
+                            <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody>
+                                <tr>
+                                    <td class="signature-space"><span t-field="o.solicitante.digital_signature" t-options="{'widget': 'image'}" class="signature-image"/></td>
+                                    <td class="signature-space"><span t-field="o.autoriza.digital_signature" t-options="{'widget': 'image'}" class="signature-image"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><span t-field="o.solicitante.name"/> / <span t-field="o.solicitante.puesto"/></strong></td>
+                                    <td><strong><span t-field="o.autoriza.name"/> / <span t-field="o.autoriza.puesto"/></strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="signature-footer"><span t-field="o.solicitante.signature"/> <span t-field="o.solicitante.email"/></td>
+                                    <td class="signature-footer"><span t-field="o.autoriza.signature"/> <span t-field="o.autoriza.email"/></td>
+                                </tr>
+                            </tbody></table>
                         </div>
                     </div>
                 </t>
