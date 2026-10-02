@@ -3,7 +3,8 @@
     <template id="solicitud_servicio_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="web.basic_layout">
+                <div class="header"></div>
+                <div class="article">
                     <div class="page">
                         <style type="text/css">
                             .solicitud { font-size: 10px; line-height: 1.2; }
@@ -21,9 +22,6 @@
                             .solicitud .date-table { width: auto; margin-left: auto; margin-bottom: 16px; }
                             .solicitud .date-table td { padding: 1px 4px; white-space: nowrap; }
                             .solicitud .date-table .label { text-align: right; width: auto; }
-                        </style>
-                        <style type="text/css">
-                            .general-footer { font-size: 9px; text-align: center; color: #555; position: fixed; bottom: 0; left: 0; right: 0; }
                         </style>
                         <div class="solicitud">
                             <div class="row">
@@ -68,8 +66,8 @@
 
                             <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody>
                                 <tr>
-                                    <td class="signature-space"><span t-if="o.solicitante" t-field="o.solicitante.signature"/></td>
-                                    <td class="signature-space"><span t-if="o.autoriza" t-field="o.autoriza.signature"/></td>
+                                    <td class="signature-space"><span t-if="o.solicitante" t-field="o.solicitante.digital_signature" t-options="{'widget': 'image'}"/></td>
+                                    <td class="signature-space"><span t-if="o.autoriza" t-field="o.autoriza.digital_signature" t-options="{'widget': 'image'}"/></td>
                                 </tr>
                                 <tr>
                                     <td><strong><span t-field="o.solicitante.name"/> / <span t-field="o.solicitante.puesto"/></strong></td>
@@ -78,11 +76,13 @@
                             </tbody></table>
                         </div>
                     </div>
-                    <div class="general-footer">
+                </div>
+                <div class="footer">
+                    <div class="text-center" style="font-size: 9px; color: #555;">
                         Prolongacion Petroleos Mexicanos No. 75 Col Petrolera, Azcapotzalco, CDMX, Mexico. CP 02480.<br/>
                         T. (0155) 5352 5946, 800 509 7130. Correo electronico: contacto@variacionesdevoltaje.com
                     </div>
-                </t>
+                </div>
             </t>
         </t>
     </template>
