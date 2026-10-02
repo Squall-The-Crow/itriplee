@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="solicitud_servicio_paperformat" model="report.paperformat">
+        <field name="name">Solicitud de servicio</field>
+        <field name="format">Letter</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">8</field>
+        <field name="margin_bottom">8</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="solicitud_servicio_report" model="ir.actions.report">
+        <field name="name">Solicitud de servicio</field>
+        <field name="model">itriplee.solicitud_servicio</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">itriplee.solicitud_servicio_template</field>
+        <field name="report_file">itriplee.solicitud_servicio_template</field>
+        <field name="print_report_name">('Solicitud de servicio - %s' % (object.folio))</field>
+        <field name="paperformat_id" ref="solicitud_servicio_paperformat"/>
+        <field name="binding_model_id" ref="itriplee.model_itriplee_solicitud_servicio"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

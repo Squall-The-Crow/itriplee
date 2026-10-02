@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="solicitud_servicio_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="header"></div>
+                <div class="article">
+                    <div class="page">
+                        <style type="text/css">
+                            .solicitud { font-size: 10px; line-height: 1.2; }
+                            .solicitud h3 { font-size: 12px; font-style: italic; margin: 12px 0 3px; }
+                            .solicitud .document-title { font-size: 13px; font-weight: bold; font-style: italic; text-align: center; margin: 8px 0 16px; }
+                            .solicitud table { width: 100%; border-collapse: collapse; }
+                            .solicitud .box { border: 1px solid #333; border-radius: 5px; margin-bottom: 10px; }
+                            .solicitud .box td { padding: 2px 5px; vertical-align: top; }
+                            .solicitud .label { width: 16%; font-weight: bold; font-style: italic; white-space: nowrap; }
+                            .solicitud .activity { min-height: 100px; padding: 8px; white-space: pre-line; }
+                            .solicitud .notes { font-size: 9px; margin: 12px 3px; }
+                            .solicitud .signatures th, .solicitud .signatures td { border: 1px solid #333; padding: 4px; text-align: center; }
+                            .solicitud .signature-space { height: 48px; overflow: hidden; }
+                            .solicitud .signature-space img { max-height: 45px; max-width: 180px; }
+                            .solicitud .date-table { width: auto; margin-left: auto; margin-bottom: 16px; }
+                            .solicitud .date-table td { padding: 1px 4px; white-space: nowrap; }
+                            .solicitud .date-table .label { text-align: right; width: auto; }
+                        </style>
+                        <div class="solicitud">
+                            <div class="row">
+                                <div class="col-4"><img src="/itriplee/static/src/img/logo.jpg" style="max-height: 140px; max-width: 220px;"/></div>
+                                <div class="col-8"><h3 style="margin-top: 30px; font-size: 20px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
+                            </div>
+                            <div class="document-title">FGS025 R01 &#8211; <span t-field="o.folio"/> - SOLICITUD DE SERVICIO</div>
+                            <table class="date-table">
+                                <tr><td class="label">FECHA DE SOLICITUD:</td><td class="value"><span t-field="o.fecha_solicitud"/></td></tr>
+                                <tr><td class="label">FECHA DEL SERVICIO:</td><td class="value"><span t-field="o.fecha_servicio"/></td></tr>
+                                <tr><td class="label">HORARIO DE ATENCION:</td><td class="value"><span t-field="o.hora_inicio" t-options="{'widget': 'float_time'}"/> a <span t-field="o.hora_fin" t-options="{'widget': 'float_time'}"/></td></tr>
+                            </table>
+
+                            <h3>DATOS DEL CLIENTE</h3>
+                            <table class="box"><tbody>
+                                <tr><td class="label">RAZON SOCIAL:</td><td class="value" colspan="3"><span t-field="o.empresa_cliente"/></td></tr>
+                                <tr><td class="label">CONTACTO:</td><td class="value"><span t-field="o.nombre_cliente"/></td><td class="label">CARGO:</td><td class="value"><span t-field="o.cargo_cliente"/></td></tr>
+                                <tr><td class="label">TELEFONO:</td><td class="value"><span t-field="o.telefono_cliente"/></td><td class="label">E-MAIL:</td><td class="value"><span t-field="o.email_cliente"/></td></tr>
+                            </tbody></table>
+
+                            <h3>DATOS DEL SERVICIO</h3>
+                            <table class="box"><tbody>
+                                <tr><td class="label">CONTACTO:</td><td class="value"><span t-field="o.nombre_servicio"/></td><td class="label">TELEFONO:</td><td class="value"><span t-field="o.telefono_servicio"/></td></tr>
+                                <tr><td class="label">DIRECCION:</td><td class="value" colspan="3">
+                                    <span t-field="o.calle_servicio"/><t t-if="o.numero_exterior_servicio"> No. Ext. <span t-field="o.numero_exterior_servicio"/></t><t t-if="o.numero_interior_servicio"> No. Int. <span t-field="o.numero_interior_servicio"/></t><t t-if="o.campos_complementarios_servicio">, <span t-field="o.campos_complementarios_servicio"/></t>
+                                </td></tr>
+                                <tr><td class="label">COLONIA:</td><td class="value"><span t-field="o.colonia_servicio"/></td><td class="label">CIUDAD / ESTADO:</td><td class="value"><span t-field="o.ciudad_servicio"/> / <span t-field="o.estado_servicio"/></td></tr>
+                                <tr><td class="label">ENTRE CALLES:</td><td class="value" colspan="3"><span t-field="o.entre_calles_servicio"/></td></tr>
+                                <tr><td class="label">REFERENCIAS:</td><td class="value" colspan="3"><span t-field="o.referencias_servicio"/></td></tr>
+                            </tbody></table>
+
+                            <h3>ACTIVIDAD A REALIZAR</h3>
+                            <div class="box activity"><span t-field="o.actividad_realizar"/></div>
+
+                            <div class="notes">
+                                <strong>NOTAS:</strong><br/>
+                                Los horarios de servicio se consideran de lunes a viernes de 09:00 a 17:00 horas; fuera de este horario puede aplicar un cargo adicional.<br/>
+                                Para agendar el servicio, envie este formato debidamente requisitado con al menos 24 horas de anticipacion.<br/>
+                                <br/><strong>REQUISITOS PREVIOS AL SERVICIO PREVENTIVO:</strong><br/>
+                                Acceso a los tableros de control por personal autorizado del cliente. Durante el servicio debe estar presente un responsable del cliente.
+                            </div>
+
+                            <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody>
+                                <tr>
+                                    <td class="signature-space"><img t-if="o.solicitante and o.solicitante.digital_signature" t-att-src="'data:image/png;base64,%s' % to_text(o.solicitante.digital_signature)"/></td>
+                                    <td class="signature-space"><img t-if="o.autoriza and o.autoriza.digital_signature" t-att-src="'data:image/png;base64,%s' % to_text(o.autoriza.digital_signature)"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><span t-field="o.solicitante.name"/> / <span t-field="o.solicitante.puesto"/></strong></td>
+                                    <td><strong><span t-field="o.autoriza.name"/> / <span t-field="o.autoriza.puesto"/></strong></td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="text-center" style="font-size: 9px; color: #555;">
+                        Prolongacion Petroleos Mexicanos No. 75 Col Petrolera, Azcapotzalco, CDMX, Mexico. CP 02480.<br/>
+                        T. (0155) 5352 5946, 800 509 7130. Correo electronico: contacto@variacionesdevoltaje.com
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

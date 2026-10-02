@@ -11,4 +11,5 @@ from . import equipos
 from . import almacen
 from . import stock
 from . import movimientos
+from . import solicitud_servicio
 #from . import marketing
