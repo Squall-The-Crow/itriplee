@@ -66,8 +66,8 @@
 
                             <table class="signatures"><thead><tr><th>SOLICITA EL SERVICIO</th><th>AUTORIZA</th></tr></thead><tbody>
                                 <tr>
-                                    <td class="signature-space"><span t-if="o.solicitante" t-field="o.solicitante.digital_signature" t-options="{'widget': 'image'}"/></td>
-                                    <td class="signature-space"><span t-if="o.autoriza" t-field="o.autoriza.digital_signature" t-options="{'widget': 'image'}"/></td>
+                                    <td class="signature-space"><img t-if="o.solicitante and o.solicitante.digital_signature" t-att-src="'data:image/png;base64,%s' % to_text(o.solicitante.digital_signature)"/></td>
+                                    <td class="signature-space"><img t-if="o.autoriza and o.autoriza.digital_signature" t-att-src="'data:image/png;base64,%s' % to_text(o.autoriza.digital_signature)"/></td>
                                 </tr>
                                 <tr>
                                     <td><strong><span t-field="o.solicitante.name"/> / <span t-field="o.solicitante.puesto"/></strong></td>
