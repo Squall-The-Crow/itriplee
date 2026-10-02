@@ -18,7 +18,10 @@
                             .solicitud .signatures th, .solicitud .signatures td { border: 1px solid #333; padding: 4px; text-align: center; }
                             .solicitud .signature-space { height: 48px; }
                             .solicitud .signature-image { max-height: 45px; max-width: 180px; }
-                            .solicitud .general-footer { font-size: 8px; text-align: center; margin-top: 16px; color: #555; }
+                            .solicitud .date-table { width: auto; margin-left: auto; margin-bottom: 16px; }
+                            .solicitud .date-table td { padding: 1px 4px; white-space: nowrap; }
+                            .solicitud .date-table .label { text-align: right; width: auto; }
+                            .solicitud .general-footer { font-size: 10px; text-align: center; color: #555; position: fixed; bottom: 0; left: 0; right: 0; }
                         </style>
                         <div class="solicitud">
                             <div class="row">
@@ -26,7 +29,7 @@
                                 <div class="col-8"><h3 style="margin-top: 30px; font-size: 20px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
                             </div>
                             <div class="document-title">FGS025 R01 &#8211; <span t-field="o.folio"/> - SOLICITUD DE SERVICIO</div>
-                            <table style="width: 45%; margin-left: auto; margin-bottom: 28px;">
+                            <table class="date-table">
                                 <tr><td class="label">FECHA DE SOLICITUD:</td><td class="value"><span t-field="o.fecha_solicitud"/></td></tr>
                                 <tr><td class="label">FECHA DEL SERVICIO:</td><td class="value"><span t-field="o.fecha_servicio"/></td></tr>
                                 <tr><td class="label">HORARIO DE ATENCION:</td><td class="value"><span t-field="o.hora_inicio" t-options="{'widget': 'float_time'}"/> a <span t-field="o.hora_fin" t-options="{'widget': 'float_time'}"/></td></tr>
@@ -42,8 +45,10 @@
                             <h3>DATOS DEL SERVICIO</h3>
                             <table class="box"><tbody>
                                 <tr><td class="label">CONTACTO:</td><td class="value"><span t-field="o.nombre_servicio"/></td><td class="label">TELEFONO:</td><td class="value"><span t-field="o.telefono_servicio"/></td></tr>
-                                <tr><td class="label">DIRECCION:</td><td class="value" colspan="3"><span t-field="o.calle_servicio"/>, <span t-field="o.colonia_servicio"/>, <span t-field="o.ciudad_servicio"/>, <span t-field="o.estado_servicio"/></td></tr>
-                                <tr><td class="label">NUMEROS:</td><td class="value"><strong>No. Ext.</strong> <span t-field="o.numero_exterior_servicio"/></td><td class="label">No. Int.</td><td class="value"><span t-field="o.numero_interior_servicio"/></td></tr>
+                                <tr><td class="label">DIRECCION:</td><td class="value" colspan="3">
+                                    <span t-field="o.calle_servicio"/><t t-if="o.numero_exterior_servicio"> No. Ext. <span t-field="o.numero_exterior_servicio"/></t><t t-if="o.numero_interior_servicio"> No. Int. <span t-field="o.numero_interior_servicio"/></t><t t-if="o.campos_complementarios_servicio">, <span t-field="o.campos_complementarios_servicio"/></t>
+                                </td></tr>
+                                <tr><td class="label">COLONIA:</td><td class="value"><span t-field="o.colonia_servicio"/></td><td class="label">CIUDAD / ESTADO:</td><td class="value"><span t-field="o.ciudad_servicio"/> / <span t-field="o.estado_servicio"/></td></tr>
                                 <tr><td class="label">ENTRE CALLES:</td><td class="value" colspan="3"><span t-field="o.entre_calles_servicio"/></td></tr>
                                 <tr><td class="label">REFERENCIAS:</td><td class="value" colspan="3"><span t-field="o.referencias_servicio"/></td></tr>
                             </tbody></table>

@@ -34,6 +34,7 @@ class solicitud_servicio(models.Model):
     calle_servicio = fields.Char('Calle')
     numero_exterior_servicio = fields.Char('Numero exterior')
     numero_interior_servicio = fields.Char('Numero interior')
+    campos_complementarios_servicio = fields.Char('Campos complementarios')
     colonia_servicio = fields.Char('Colonia')
     ciudad_servicio = fields.Char('Ciudad')
     estado_servicio = fields.Char('Estado')
@@ -84,7 +85,7 @@ class solicitud_servicio(models.Model):
             'cargo_cliente': partner.function,
             'email_cliente': partner.email,
             'calle_servicio': partner.street,
-            'numero_exterior_servicio': partner.street2,
+            'campos_complementarios_servicio': partner.street2,
             'ciudad_servicio': partner.city,
             'estado_servicio': partner.state_id.name,
         })
@@ -169,15 +170,16 @@ class SolicitudServicioAprobarWizard(models.TransientModel):
     solicitud_id = fields.Many2one('itriplee.solicitud_servicio', required=True, readonly=True)
     aprobador_id = fields.Many2one('res.users', 'Aprobador', required=True, readonly=True,
                                    default=lambda self: self.env.user)
-    firma = fields.Binary('Firma de autorizacion', required=True)
+    apruebo = fields.Boolean('Apruebo la solicitud de servicio')
 
     def action_confirmar(self):
         self.ensure_one()
+        if not self.apruebo:
+            raise UserError(_('Debe confirmar que aprueba la solicitud de servicio.'))
         self.solicitud_id._validar_grupo('itriplee.servicios_grupo_gerencia')
         self.solicitud_id._validar_estado('pendiente')
         self.solicitud_id.write({
             'autoriza': self.env.user.id,
-            'firma': self.firma,
             'estado': 'aprobada',
         })
         return {'type': 'ir.actions.act_window_close'}
