@@ -20,6 +20,7 @@
           </field>
           <field name="puesto" position="after">
               <field name="rol" />
+              <field name="digital_signature" widget="image" />
           </field>
       </field>
       </record>

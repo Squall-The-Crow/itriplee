@@ -74,12 +74,11 @@
                                     <td><strong><span t-field="o.autoriza.name"/> / <span t-field="o.autoriza.puesto"/></strong></td>
                                 </tr>
                             </tbody></table>
-
-                            <div class="general-footer">
-                                Prolongacion Petroleos Mexicanos No. 75 Col Petrolera, Azcapotzalco, CDMX, Mexico. CP 02480.<br/>
-                                T. (0155) 5352 5946, 800 509 7130. Correo electronico: contacto@variacionesdevoltaje.com
-                            </div>
                         </div>
+                    </div>
+                    <div class="general-footer">
+                        Prolongacion Petroleos Mexicanos No. 75 Col Petrolera, Azcapotzalco, CDMX, Mexico. CP 02480.<br/>
+                        T. (0155) 5352 5946, 800 509 7130. Correo electronico: contacto@variacionesdevoltaje.com
                     </div>
                 </t>
             </t>
