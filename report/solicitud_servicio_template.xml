@@ -8,7 +8,7 @@
                         <style type="text/css">
                             .solicitud { font-size: 10px; line-height: 1.2; }
                             .solicitud h3 { font-size: 12px; font-style: italic; margin: 12px 0 3px; }
-                            .solicitud .document-title { font-size: 13px; font-weight: bold; font-style: italic; text-align: center; margin: 10px 0 28px; }
+                            .solicitud .document-title { font-size: 13px; font-weight: bold; font-style: italic; text-align: center; margin: 8px 0 16px; }
                             .solicitud table { width: 100%; border-collapse: collapse; }
                             .solicitud .box { border: 1px solid #333; border-radius: 5px; margin-bottom: 10px; }
                             .solicitud .box td { padding: 2px 5px; vertical-align: top; }
@@ -18,14 +18,14 @@
                             .solicitud .signatures th, .solicitud .signatures td { border: 1px solid #333; padding: 4px; text-align: center; }
                             .solicitud .signature-space { height: 48px; }
                             .solicitud .signature-image { max-height: 45px; max-width: 180px; }
-                            .solicitud .signature-footer { font-size: 8px; margin-top: 2px; }
+                            .solicitud .general-footer { font-size: 8px; text-align: center; margin-top: 16px; color: #555; }
                         </style>
                         <div class="solicitud">
                             <div class="row">
                                 <div class="col-4"><img src="/itriplee/static/src/img/logo.jpg" style="max-height: 140px; max-width: 220px;"/></div>
-                                <div class="col-8"><h3 style="margin-top: 10px; font-size: 14px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
+                                <div class="col-8"><h3 style="margin-top: 30px; font-size: 20px;">INTEGRACION DE EQUIPOS ELECTRICOS Y ELECTRONICOS, S.A. DE C.V.</h3></div>
                             </div>
-                            <div class="document-title"><span t-field="o.folio"/> - SOLICITUD DE SERVICIO</div>
+                            <div class="document-title">FGS025 R01 &#8211; <span t-field="o.folio"/> - SOLICITUD DE SERVICIO</div>
                             <table style="width: 45%; margin-left: auto; margin-bottom: 28px;">
                                 <tr><td class="label">FECHA DE SOLICITUD:</td><td class="value"><span t-field="o.fecha_solicitud"/></td></tr>
                                 <tr><td class="label">FECHA DEL SERVICIO:</td><td class="value"><span t-field="o.fecha_servicio"/></td></tr>
@@ -68,11 +68,12 @@
                                     <td><strong><span t-field="o.solicitante.name"/> / <span t-field="o.solicitante.puesto"/></strong></td>
                                     <td><strong><span t-field="o.autoriza.name"/> / <span t-field="o.autoriza.puesto"/></strong></td>
                                 </tr>
-                                <tr>
-                                    <td class="signature-footer"><span t-field="o.solicitante.signature"/> <span t-field="o.solicitante.email"/></td>
-                                    <td class="signature-footer"><span t-field="o.autoriza.signature"/> <span t-field="o.autoriza.email"/></td>
-                                </tr>
                             </tbody></table>
+
+                            <div class="general-footer">
+                                Prolongacion Petroleos Mexicanos No. 75 Col Petrolera, Azcapotzalco, CDMX, Mexico. CP 02480.<br/>
+                                T. (0155) 5352 5946, 800 509 7130. Correo electronico: contacto@variacionesdevoltaje.com
+                            </div>
                         </div>
                     </div>
                 </t>
