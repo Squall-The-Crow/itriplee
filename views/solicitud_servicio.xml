@@ -2,7 +2,7 @@
  <odoo>
   <data>
 
-    <record id="seq_cotizaciones" model="ir.sequence">
+    <record id="seq_solicitud_servicio" model="ir.sequence">
       <field name="name">Secuencia de solicitud de servicios</field>
       <field name="code">solicitud_servicio</field>
       <field name="prefix">SOLS</field>
