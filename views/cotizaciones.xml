@@ -187,11 +187,15 @@
       <field name="name">view.itriplee.cotizaciones.tree</field>
       <field name="model">itriplee.cotizaciones</field>
       <field name="arch" type="xml">
-        <tree string="cotizaciones Tree">
+        <tree string="Cotizaciones" default_order="fecha desc">
           <field name="name"/>
-          <field name="cliente_registrado"/>
+          <field name="cliente"/>
+          <field name="cliente_registrado" string="Cliente Registrado"/>
           <field name="vendedor"/>
           <field name="fecha"/>
+          <field name="tipo_equipo"/>
+          <field name="usdomxn"/>
+          <field name="total"/>
         </tree>
       </field>
     </record>
