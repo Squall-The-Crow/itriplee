@@ -69,6 +69,9 @@
     <template id="contenido1">
         <!-- Multicompany -->
         <div class="page" >
+            <style>
+                .page p { margin-bottom: 0.2rem; }
+            </style>
             <table class="table table-sm py-0 my-0">
                     <thead>
                     <tr class="table-danger">
@@ -204,7 +207,7 @@
                 <strong>La cotizacion incluye: </strong>
                 Asesoria en la conexión y arranque del equipo
                 <span t-field="o.incluye"/>
-                <t t-if="o.megalopolis">
+                <t t-if="o.megalopolis and o.tcliente == 'usuario'">
                     6 visitas de mantenimiento, 1 visita de emergencia.
                 </t>
             </p>
@@ -251,6 +254,9 @@
 
     <template id="contenido2">
        <div class="page" >
+            <style>
+                .page p { margin-bottom: 0.2rem; }
+            </style>
             <table class="table table-sm">
                     <thead>
                     <tr class="table-danger">
@@ -326,11 +332,14 @@
 
         <template id="contenido3">
           <div class="page" >
+            <style>
+               .page p { margin-bottom: 0.2rem; }
+            </style>
             <table class="table table-sm">
-                    <thead>
-                    <tr class="table-danger">
-                        <th>Modelo</th>
-                        <th class="text-center">Descripcion</th>
+                   <thead>
+                   <tr class="table-danger">
+                       <th>Modelo</th>
+                        <th class="text-center" style="width: 60%;">Descripcion</th>
                         <th class="text-right">Precio</th>
                         <th class="text-right">Cantidad</th>
                         <th class="text-right">Descuento</th>
@@ -486,6 +495,10 @@
 
     <template id="custom_footer1">
         <div class="footer">
+            <style>
+                .footer p { margin-bottom: 0.2rem; }
+                .footer .row.small { line-height: 1.15; }
+            </style>
             <div class="row">
                 <table class="table table-sm">
                     <thead class="table-danger text-center">
