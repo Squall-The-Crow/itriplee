@@ -43,12 +43,7 @@
             <div class="row">
                 <div class="col-9  text-left">
                     <strong>EMPRESA: </strong>
-                    <t t-if="o.nuevo == True">
                     <span t-field="o.empresa"/>
-                    </t>
-                    <t t-if="o.nuevo == False">
-                    <span t-field="o.cliente_registrado.parent_id.name"/>
-                    </t>
                     </div>
                 <div class="col-3 text-right">
                     <strong>Cotizacion: 
@@ -56,24 +51,12 @@
             </div>
         </div>
             <div class="row">
-                <t t-if="o.nuevo == True">
                <div class="col-9  text-left">
                     <strong>At'n: </strong><span t-field="o.cliente"/>
                     </div>
-                </t>
-                <t t-if="o.nuevo == False">
-               <div class="col-9  text-left">
-                    <strong>At'n: </strong><span t-field="o.cliente_registrado.name"/>
-                    </div>
-                </t>
                  <div class="col-3 text-right">
                     <strong>Telefono: </strong>
-                    <t t-if="o.nuevo == True">
                     <span t-field="o.telefono"/>
-                    </t>
-                    <t t-if="o.nuevo == False">
-                    <span t-field="o.cliente_registrado.phone"/>
-                    </t>
             </div>
             </div>
            
@@ -218,12 +201,20 @@
                         </p>
                     </t>
             <p>
-            <strong>Notas: </strong>
-                    <t t-if="o.tipo_equipo.name == 'UPS'">
-                        <span t-field="o.modelo.notas"/>
-                    </t>
-            <span t-field="o.notas"/>
+                <strong>La cotizacion incluye: </strong>
+                Asesoria en la conexión y arranque del equipo
+                <span t-field="o.incluye"/>
+                <t t-if="o.megalopolis">
+                    6 visitas de mantenimiento, 1 visita de emergencia.
+                </t>
             </p>
+            <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+            <t t-if="o.tipo_equipo.name == 'UPS'">
+                <p>
+                    <strong>Notas del modelo: </strong>
+                    <span t-field="o.modelo.notas"/>
+                </p>
+            </t>
                     <t t-if="o.modelo.FT is not False">
                         <p>
                         <strong>Ficha Tecnica:</strong>
@@ -308,9 +299,11 @@
            <div class="row">
                 <div class="col-7 text-left">
                     <p>
-                    <strong>Notas: </strong>
-                        <span t-field="o.notas"/>
+                    <strong>La cotizacion incluye: </strong>
+                        Asesoria en la conexión y arranque del equipo
+                        <span t-field="o.incluye"/>
                     </p>
+                    <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
                 </div>
                 <t t-if="o.modelo.imagen is not False">
                <div class="col-5 text-right align-right">
@@ -377,6 +370,16 @@
                             </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        <strong>La cotizacion incluye: </strong>
+                        Asesoria en la conexión y arranque del equipo
+                        <span t-field="o.incluye"/>
+                    </p>
+                    <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+                </div>
+            </div>
         </div>
         <div class="article">
           <t t-out="body" />
@@ -537,8 +540,8 @@
                 </div>
                 <div class="row small py-0 my-0">
                 <div class="col-12">
-                            <strong>La cotizacion incluye: </strong>
-                            <span t-field="o.incluye"/>
+                            <strong>Notas: </strong>
+                            <span t-field="o.notas"/>
                 </div>
                 </div>
                 <div class="row small py-0 my-0">

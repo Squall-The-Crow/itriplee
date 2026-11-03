@@ -25,6 +25,7 @@ class resPartner(models.Model):
                                ('rm', 'Representante de Marca'),
                                ], string='Tipo de Cliente', default='usuario')
     sector = fields.Char('Sector')
+    megalopolis = fields.Boolean('Megalopolis')
     user_id = fields.Many2one (default=lambda self: self.env.user)
     vat = fields.Char(default='Nuevo')
     contacto_responsable = fields.Char(string='Contacto Responsable')

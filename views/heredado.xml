@@ -51,6 +51,7 @@
           </field>
           <field name="sector" position="after">
               <field name="tcliente" />
+              <field name="megalopolis" />
           </field>
             <field name="vat" position="after">
                 <field name="contacto_responsable"/>

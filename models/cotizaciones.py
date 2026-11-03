@@ -79,6 +79,10 @@ class cotizaciones(models.Model):
         ("casa","Casa"),
         ("ofi","Oficina")
         ], 'Tipo de Telefono')
+    tcliente = fields.Selection(
+        selection=lambda self: self.env['res.partner']._fields['tcliente'].selection,
+        string='Tipo de Cliente')
+    megalopolis = fields.Boolean('Megalopolis')
     cliente_registrado = fields.Many2one('res.partner', 'Cliente')
     ########Generales#####
     tiempo_entrega = fields.Char('Tiempo de Entrega')
@@ -147,10 +151,32 @@ class cotizaciones(models.Model):
         'total': self.total,
         })
         return res
+    #######Copia de datos del cliente registrado (sin sincronizar)#########
+    @api.model
+    def _datos_cliente_copia(self, partner):
+        return {
+            'empresa': partner.parent_id.name or partner.name,
+            'cliente': partner.name,
+            'telefono': partner.phone,
+            'tcliente': partner.tcliente,
+            'megalopolis': partner.megalopolis,
+        }
+
+    @api.onchange('cliente_registrado')
+    def _onchange_cliente_registrado(self):
+        if self.cliente_registrado:
+            for campo, valor in self._datos_cliente_copia(self.cliente_registrado).items():
+                self[campo] = valor
+
 #######Automatizacion de nombre consecutivo#########
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('cotizaciones') or ('New')
+        if vals.get('cliente_registrado'):
+            partner = self.env['res.partner'].browse(vals['cliente_registrado'])
+            for campo, valor in self._datos_cliente_copia(partner).items():
+                if not vals.get(campo):
+                    vals[campo] = valor
         res = super(cotizaciones, self).create(vals)
         return res
 

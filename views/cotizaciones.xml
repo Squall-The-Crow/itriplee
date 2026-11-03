@@ -80,12 +80,14 @@
                 <field name="cliente_registrado"
                        attrs="{'invisible': [('nuevo','=', True)]}"
                         options="{'no_quick_create': True}"/>
-                <field name="empresa" attrs="{'invisible': [('nuevo','!=', True)]}"/>
-                <field name="cliente" attrs="{'invisible': [('nuevo','!=', True)]}"/>
+                <field name="empresa"/>
+                <field name="cliente"/>
               </group>
               <group>
-                <field name="telefono" attrs="{'invisible': [('nuevo','!=', True)]}"/>
-                <field name="tipo_telefono" attrs="{'invisible': [('nuevo','!=', True)]}"/>
+                <field name="telefono"/>
+                <field name="tipo_telefono"/>
+                <field name="tcliente"/>
+                <field name="megalopolis"/>
               </group>
             </group>
             <notebook>
