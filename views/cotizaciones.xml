@@ -77,7 +77,8 @@
             <group string="Datos de Cliente">
               <group>
                 <field name="cliente_registrado"
-                        options="{'no_quick_create': True}"/>
+                        options="{'no_quick_create': True}"
+                        string="Cliente Registrado"/>
                 <field name="empresa"/>
                 <field name="cliente"/>
               </group>
