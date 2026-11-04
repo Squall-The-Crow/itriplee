@@ -60,8 +60,7 @@ class cotizaciones(models.Model):
                                ], string='Estado', default='vigente')
     fecha = fields.Date('Fecha', default=_default_fecha)
     vendedor = fields.Many2one('res.users', string='Vendedor', default=lambda self: self.env.user)
-########Obligatorios, antes de empezar#####
-    nuevo = fields.Boolean('Nuevo Cliente', required=True)
+    ########Obligatorios, antes de empezar#####
     usdomxn = fields.Selection([
         ("USD", "USD"),
         ("MXN", "MXN"),

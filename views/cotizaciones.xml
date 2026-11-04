@@ -70,7 +70,6 @@
                         {'no_quick_create'}"/>
               </group>
               <group>
-                <field name="nuevo" string="Datos de Cliente"/>
                 <field name="tipo"/>
                 <field name="usdomxn"/>
               </group>
@@ -78,7 +77,6 @@
             <group string="Datos de Cliente">
               <group>
                 <field name="cliente_registrado"
-                       attrs="{'invisible': [('nuevo','=', True)]}"
                         options="{'no_quick_create': True}"/>
                 <field name="empresa"/>
                 <field name="cliente"/>
