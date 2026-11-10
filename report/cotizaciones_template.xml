@@ -66,6 +66,15 @@
         </div>
     </template>
 
+    <template id="garantia_cotizacion">
+        <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
+            <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+        </t>
+        <t t-if="o.tipo_equipo.name == 'UPS'">
+            <p>1 año de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+        </t>
+    </template>
+
     <template id="contenido1">
         <!-- Multicompany -->
         <div class="page" >
@@ -182,7 +191,7 @@
                     <div class="col-12">
                         <div class="text-danger">
                         <small>
-                        Nota: Este dispositivo es opcional y nos permite con solo mover una perilla contar con una
+                        Nota: El selector es opcional y nos permite con solo mover una perilla contar con una
                         alimentacion alterna en caso de que el acondicionador requiera mantenimiento
                         </small>
                         </div>
@@ -207,12 +216,12 @@
                 <strong>La cotizacion incluye: </strong>
                 Asesoria en la conexión y arranque del equipo<t t-if="o.incluye">, </t>
                 <span t-field="o.incluye"/>
-                <t t-if="o.megalopolis and o.tcliente == 'usuario'">
+                <t t-if="o.megalopolis and o.tcliente == 'usuario' and o.tipo_equipo.name == 'Acondicionadores'">
                     <t t-if="o.incluye">, </t>
-                    6 visitas de mantenimiento, 1 visita de emergencia.
+                    6 visitas de mantenimiento.
                 </t>
             </p>
-            <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+            <t t-call="itriplee.garantia_cotizacion"/>
             <t t-if="o.tipo_equipo.name == 'UPS'">
                 <p>
                     <strong>Notas del modelo: </strong>
@@ -310,7 +319,7 @@
                         Asesoria en la conexión y arranque del equipo<t t-if="o.incluye">, </t>
                         <span t-field="o.incluye"/>
                     </p>
-                    <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+                    <t t-call="itriplee.garantia_cotizacion"/>
                 </div>
                 <t t-if="o.modelo.imagen is not False">
                <div class="col-5 text-right align-right">
@@ -387,7 +396,7 @@
                         Asesoria en la conexión y arranque del equipo<t t-if="o.incluye">, </t>
                         <span t-field="o.incluye"/>
                     </p>
-                    <p>3 años de garantia contra cualquier defecto de fabricación y partes del equipo.</p>
+                    <t t-call="itriplee.garantia_cotizacion"/>
                 </div>
             </div>
         </div>
@@ -522,16 +531,6 @@
                 </div>
                 <div class="row small py-0 my-0">
                 <div class="col-12">
-                    <t t-if="o.tipo_equipo.name == 'Acondicionadores'">
-                        3 AÑOS DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
-                    </t>
-                    <t t-if="o.tipo_equipo.name == 'UPS'">
-                            1 AÑO DE GARANTÍA POR DEFECTOS DE FABRICACIÓN
-                    </t>
-                </div>
-                </div>
-                <div class="row small py-0 my-0">
-                <div class="col-12">
                             <strong>Condiciones de pago: </strong>
                                 <span t-field="o.condiciones_pago"/>
                                 a Integracion de Equipos Electricos y Electronicos, S.A. de C.V.,
@@ -565,7 +564,7 @@
                                     del dia de la operacion. Tomando como referencia el de BBVA.
                             </t>
                             <t t-if="o.usdomxn == 'MXN'">
-                                    El precio es en Moneda Nacional y es L.A.B. en sus instalaciones.
+                                    El precio es en Moneda Nacional y es L.A.B. en sus instalaciones en CDMX.
                             </t>
                 </div>
                 </div>
