@@ -215,10 +215,8 @@
             <p>
                 <strong>La cotizacion incluye: </strong>
                 Asesoria en la conexión y arranque del equipo<t t-if="o.incluye">, </t>
-                <span t-field="o.incluye"/>
-                <t t-if="o.megalopolis and o.tcliente == 'usuario' and o.tipo_equipo.name == 'Acondicionadores'">
-                    <t t-if="o.incluye">, </t>
-                    6 visitas de mantenimiento.
+                <span t-field="o.incluye"/><t t-if="o.megalopolis and o.tcliente == 'usuario' and o.tipo_equipo.name in ('Acondicionadores', 'UPS')">, <t t-if="o.tipo_equipo.name == 'Acondicionadores'">6 visitas de mantenimiento.</t>
+                    <t t-if="o.tipo_equipo.name == 'UPS'">1 visita de mantenimiento.</t>
                 </t>
             </p>
             <t t-call="itriplee.garantia_cotizacion"/>
